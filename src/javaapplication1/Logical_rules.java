@@ -5,7 +5,9 @@
  */
 package javaapplication1;
 
+import com.sun.media.sound.InvalidFormatException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -27,7 +29,7 @@ public class Logical_rules {
         this.riesenie.set(i, list);
     }
 
-    public void prienik(int num) { //rule 1.1
+    public void prienik(int num) throws Porucha { //rule 1.1
         int poc_cisel = start.pole_hodnot[num].length;
         int rozdiel = 0;
         int act_cislo;
@@ -37,12 +39,14 @@ public class Logical_rules {
             zaciatok = start.pole_hodnot[num][i][0];
             rozdiel = start.pole_hodnot[num][i][1] + 1 - zaciatok;
             act_cislo = zadanie.get(num).get(i);
-
+            if (rozdiel < act_cislo) {
+                throw new Porucha("PRIENIK", num, i);
+            }
             if (act_cislo * 2 > rozdiel) {
                 farbi = rozdiel - act_cislo;
                 for (int x = 0; x < (act_cislo * 2 - rozdiel); x++, farbi++) {
                     if (riesenie.get(num).get(zaciatok + farbi).value != 1) {
-                        System.out.println("riadok: " + num + " rule 1.1 , policko: " + (zaciatok + farbi));
+                       // System.out.println("riadok: " + num + " rule 1.1 , policko: " + (zaciatok + farbi));
                         riesenie.get(num).get(zaciatok + farbi).value = 1;
                     }
                 }
@@ -51,20 +55,20 @@ public class Logical_rules {
     }
 
     public void jed_medzery(int num) {//rule 1.2
-        int poc_indicii = zadanie.get(num).size();
+        int poc_indicii = zadanie.get(num).size() - 1;
         for (int i = 0; i < start.pole_hodnot[num][0][0]; i++) { //rule 1.2 (1)
             if (riesenie.get(num).get(i).value != 0) {
                 System.out.println("riadok: " + num + " rule 1.2.1 , policko: " + i);
                 riesenie.get(num).get(i).value = 0;
             }
         }
-        for (int i = start.pole_hodnot[num][poc_indicii - 1][1] + 1; i < riesenie.get(num).size(); i++) { //rule 1.2 (2)
+        for (int i = start.pole_hodnot[num][poc_indicii][1] + 1; i < start.p_stlpcov; i++) { //rule 1.2 (2)
             if (riesenie.get(num).get(i).value != 0) {
                 System.out.println("riadok: " + num + " rule 1.2.2 , policko: " + i);
                 riesenie.get(num).get(i).value = 0;
             }
         }
-        for (int i = 0; i < poc_indicii - 2; i++) { // rule 1.2 (3)
+        for (int i = 0; i < poc_indicii; i++) { // rule 1.2 (3)
             // if (start.pole_hodnot[num][i + 1][0] < start.pole_hodnot[num][i][1]) {
             for (int x = start.pole_hodnot[num][i][1] + 1; x < start.pole_hodnot[num][i + 1][0]; x++) {
                 if (riesenie.get(num).get(x).value != 0) {
@@ -123,40 +127,62 @@ public class Logical_rules {
         }
     }
 
-    public void lepidlo2(int num) {
-        ArrayList<Integer> sek;
-        for (int i = 0; i < start.p_stlpcov; i++) {
-            if (i == 0 || riesenie.get(num).get(i).value == 0) {
-
-            }
-        }
-    }
-
     public void lepidlo(int num) { // problem ak je vyfarbene prve policko v riadku
         int min, max;
         ArrayList<Integer> sek;
         int biele, biele2;
+        if (riesenie.get(num).get(0).value == 1) {
+            int cislo = start.zadanie.get(num).get(0);
+            for (int x = 1; x < cislo; x++) { //nemusime sa bat pretecenia, keby sa stalo, je problem v krizovke
+                if (riesenie.get(num).get(x).value != 1) {
+                    System.out.println("riadok: " + num + "rule 1.5.2f , policko: " + x);
+                    riesenie.get(num).get(x).value = 1;
+                }
+            }
+            if (cislo < start.p_stlpcov && riesenie.get(num).get(cislo).value != 0) {
+                System.out.println("riadok: " + num + "rule 1.5.0f , policko: " + cislo);
+                riesenie.get(num).get(cislo).value = 0;
+                start.pole_hodnot[num][0][1] = cislo; //upravime koncovu hranicu
+            }
+        }
+
+        int posledne = start.zadanie.get(num).size() - 1;
+        if (riesenie.get(num).get(start.p_stlpcov - 1).value == 1) {
+            int cislo = start.zadanie.get(num).get(posledne);
+            if (start.p_stlpcov - cislo > 0 && riesenie.get(num).get(start.p_stlpcov - cislo - 1).value != 0) {
+                System.out.println("riadok: " + num + "rule 1.5.0l , policko: " + (start.p_stlpcov - cislo - 1));
+                riesenie.get(num).get(start.p_stlpcov - cislo - 1).value = 0;
+                start.pole_hodnot[num][posledne][0] = start.p_stlpcov - cislo - 1;
+            }
+            for (int x = start.p_stlpcov - cislo; x < start.p_stlpcov; x++) {
+                if (riesenie.get(num).get(x).value != 1) {
+                    System.out.println("riadok: " + num + "rule 1.5.2l , policko: " + x);
+                    riesenie.get(num).get(x).value = 1;
+                }
+            }
+        }
         for (int i = 1; i < start.p_stlpcov; i++) {//bod 0
             if (riesenie.get(num).get(i - 1).value != 1 && riesenie.get(num).get(i).value == 1) {
                 sek = najdi_cisla(num, i);
                 min = minimum(num, sek);//bod 1
                 biele = -1;
                 biele2 = -1;
-                for (int j = Math.max(i - 1, 0); j >= Math.max(i - min + 1, 0); j--) {//hladame biely stvorcek niekde vzadu - bod 2
+                for (int j = Math.max(i - 1, 0); j >= Math.max(i - min + 1, 0); j--) {//hladame biely stvorcek niekde vpredu - bod 2
                     if (riesenie.get(num).get(j).value == 0) {
                         biele = j;
                         break;
                     }
                 }
-                if (biele != -1 || (i - min) < 0) {//ak sa naslo, alebo je to na zaciatku
+                if (biele != -1 || (i - min - 1) < 0) {//ak sa naslo, alebo je to na zaciatku
                     for (int x = i + 1; x <= biele + min; x++) { //nemusime sa bat pretecenia, keby sa stalo, je problem v krizovke
                         if (riesenie.get(num).get(x).value != 1) {
                             System.out.println("riadok: " + num + "rule 1.5.2 , policko: " + x);
                             riesenie.get(num).get(x).value = 1;
                         }
                     }
+
                 }
-                for (int j = i + 1; j < Math.min(i + min + 1, start.p_stlpcov); j++) {//bod 3 hladame biely vpredu
+                for (int j = i + 1; j < Math.min(i + min + 1, start.p_stlpcov); j++) {//bod 3 hladame biely vzadu
                     if (riesenie.get(num).get(j).value == 0) {
                         biele2 = j;
                         break;
@@ -181,19 +207,32 @@ public class Logical_rules {
                         System.out.println("riadok: " + num + "rule 1.5.5 , policko: " + (i + max));
                         riesenie.get(num).get(i + max).value = 0;
                     }
+                    if (sek.size() == 1) {// sekvencia patri len jednej indicii
+                        if (start.pole_hodnot[num][sek.get(0)][0] != i) {
+                            System.out.println("update1.5+ " + num);
+                            start.pole_hodnot[num][sek.get(0)][0] = i;
+                        }
+                        if (start.pole_hodnot[num][sek.get(0)][1] != i + max - 1) {
+                            start.pole_hodnot[num][sek.get(0)][1] = i + max - 1;
+                            System.out.println("update1.5- " + num);
+                            System.out.println(Arrays.toString(start.pole_hodnot[num][sek.get(0)]));
+                        }
+                    }
                 }
 
             }
+
         }
+
     }
 
     public void update0(int num) {
         for (int i = 0; i < zadanie.get(num).size() - 1; i++) {
-            if (start.pole_hodnot[num][i][0] >= start.pole_hodnot[num][i + 1][0]) {
+            if (start.pole_hodnot[num][i][0] + zadanie.get(num).get(i) > start.pole_hodnot[num][i + 1][0]) {
                 System.out.println("update0a riadok" + num + "policko " + i);
                 start.pole_hodnot[num][i + 1][0] = start.pole_hodnot[num][i][0] + zadanie.get(num).get(i) + 1;
             }
-            if (start.pole_hodnot[num][i][1] >= start.pole_hodnot[num][i + 1][1]) {
+            if (start.pole_hodnot[num][i][1] > start.pole_hodnot[num][i + 1][1] - zadanie.get(num).get(i+1)) {
                 System.out.println("update0b riadok" + num + "policko " + i);
                 start.pole_hodnot[num][i][1] = start.pole_hodnot[num][i + 1][1] - zadanie.get(num).get(i + 1) - 1;
             }
@@ -207,12 +246,20 @@ public class Logical_rules {
             poz_e = start.pole_hodnot[num][i][1];
             poz_s = start.pole_hodnot[num][i + 1][0];
             if (riesenie.get(num).get(poz_e + 1).value == 1) {
-                System.out.println("update1a riadok" + num);
-                start.pole_hodnot[num][i][1]--;
+                int x = poz_e;
+                while (riesenie.get(num).get(x).value == 1) {
+                    x--;
+                }
+                System.out.println("update1a riadok" + num + "indicia: " + i);
+                start.pole_hodnot[num][i][1] = x - 1;
             }
             if (riesenie.get(num).get(poz_s - 1).value == 1) {
-                System.out.println("update1b riadok" + num);
-                start.pole_hodnot[num][i + 1][0]++;
+                int x = poz_s;
+                while (riesenie.get(num).get(x).value == 1) {
+                    x++;
+                }
+                System.out.println("update1b riadok" + num + "indicia: " + (i + 1));
+                start.pole_hodnot[num][i + 1][0] = x + 1;
             }
         }
     }
@@ -226,37 +273,40 @@ public class Logical_rules {
             sek = seg_cierne(num, i);
             for (int j = 0; j < sek.size(); j++) {
                 dlzka_seg = sek.get(j).get(1) - sek.get(j).get(0) + 1;
-                if (dlzka_seg > indicia) {
+                if (dlzka_seg > indicia) { // toto sa robi v RULE 3.2 - blbost, tam sa updatuju prilis kratke segmenty
                     if (sek.get(j).get(0) - start.pole_hodnot[num][i][0] - 1 < indicia) {//cize sa indicia dopredu nezmesti
                         System.out.println("update2a riadok" + num);
                         start.pole_hodnot[num][i][0] = sek.get(j).get(1) + 2;
-                    } else {
+                    } else if(start.pole_hodnot[num][i][1] - sek.get(j).get(1) - 1 < indicia){
                         System.out.println("update2b riadok" + num);
                         start.pole_hodnot[num][i][1] = sek.get(j).get(0) - 2;
-                        break;
+                        break;//vdaka tomu nemusime prechadzat z oboch stran, pri prvom nastaveni E koncime
                     }
-                }
+                } 
             }
         }
     }
 
     public void medzivypln(int num) {// rule 3.1
-        int zac, kon;
-        ArrayList<Integer> list;
-        for (int i = 1; i < zadanie.get(num).size() - 1; i++) {
+        int zac, kon;           //pred tymto pravidloom NUTNE aplikovat UPDATE 1
+        ArrayList<Integer> list;        
+        
+                for (int i = 1; i < zadanie.get(num).size() - 1; i++) {
             zac = Math.max(start.pole_hodnot[num][i - 1][1], start.pole_hodnot[num][i][0]);
             kon = Math.min(start.pole_hodnot[num][i + 1][0], start.pole_hodnot[num][i][1]);
-            list = najdi_cierne(num, zac, kon);
+            list = najdi_cierne(num, zac, kon);//zac a kon zabezpecuju, ze najdene cierne budu patrit len 1 indicii
             if (list.size() > 1) {
-                for (int x = list.get(0); x < list.get(list.size() - 1); x++) {
-                    if (riesenie.get(num).get(x).value == 3) {
+                for (int x = list.get(0); x < list.get(1); x++) {
+                    if (riesenie.get(num).get(x).value == 3) {//toto sa vlastne nemusime pytat
                         System.out.println("riadok: " + num + "rule 3.1 , policko: " + x);
                         riesenie.get(num).get(x).value = 1;
                     }
                 }
-                int u = zadanie.get(num).get(i) - (kon - zac + 1);
-                start.pole_hodnot[num][i][0] = zac - u;
-                start.pole_hodnot[num][i][1] = kon + u;
+               
+                int u = zadanie.get(num).get(i) - dlzka_sek(num,list.get(0)); //kolko zostava vyfarbit
+                System.out.println("prestavujem inic 3.1 na " + num);
+                start.pole_hodnot[num][i][0] = list.get(0) - u;
+                start.pole_hodnot[num][i][1] = list.get(0) +zadanie.get(num).get(i);
             }
         }
     }
@@ -266,17 +316,25 @@ public class Logical_rules {
         int dlzka;
         for (int i = 0; i < zadanie.get(num).size(); i++) {
             list = segmenty(num, i);
-            for (int x = 0; x < list.size(); x++) {
+
+            for (int x = 0; x < list.size(); x++) {//pozerame zlava
                 dlzka = list.get(x).get(1) - list.get(x).get(0) + 1;
-                start.pole_hodnot[num][i][0] = list.get(x).get(0);//ak nam to pretecie, tak je chyba v krizovke
+                if (start.pole_hodnot[num][i][0] != list.get(x).get(0)) { //nastavujeme na zaciatok potencionalnej sekvencie
+                    System.out.println("rule 3.2a " + num);
+                    start.pole_hodnot[num][i][0] = list.get(x).get(0);//ak nam to pretecie, tak je chyba v krizovke
+                }
                 if (dlzka >= zadanie.get(num).get(i)) {
                     break;
                 }
+
             }
 
-            for (int x = list.size() - 1; x > 0; x--) {
+            for (int x = list.size() - 1; x >= 0; x--) { //pozerame sprava
                 dlzka = list.get(x).get(1) - list.get(x).get(0) + 1;
-                start.pole_hodnot[num][i][1] = list.get(x).get(1);//ak nam to pretecie, tak je chyba v krizovke
+                if (start.pole_hodnot[num][i][1] != list.get(x).get(1)) {
+                    System.out.println("rule 3.2b " + num);
+                    start.pole_hodnot[num][i][1] = list.get(x).get(1);//ak nam to pretecie, tak je chyba v krizovke
+                }
                 if (dlzka >= zadanie.get(num).get(i)) {
                     break;
                 }
@@ -300,7 +358,7 @@ public class Logical_rules {
                             riesenie.get(num).get(x + zac).value = 1;
                         }
                     }
-                    if (i != 0) {//len nastavime predchadzajuce policko prazdne
+                    if (i != 0 && riesenie.get(num).get(zac - 1).value != 0) {//len nastavime predchadzajuce policko prazdne
                         System.out.println("riadok: " + num + "rule 3.3.1b , policko: " + (zac - 1));
                         riesenie.get(num).get(zac - 1).value = 0;
                     }
@@ -308,13 +366,17 @@ public class Logical_rules {
                         riesenie.get(num).get(dlzka + zac).value = 0;
 
                     }
+                    //System.out.println("rule 3.3a " + num);
                     start.pole_hodnot[num][i][1] = zac + dlzka - 1;
-                    if (i + 1 != pocet && start.pole_hodnot[num][i + 1][0] < start.pole_hodnot[num][i][1] + 1) {
-                        start.pole_hodnot[num][i + 1][0] = start.pole_hodnot[num][i][1] + 2;
-                    }
-                    if (i != 0 && start.pole_hodnot[num][i - 1][1] > zac - 1) {
-                        start.pole_hodnot[num][i - 1][1] = zac - 2;
-                    }
+                    
+//                    if (i + 1 != pocet && start.pole_hodnot[num][i + 1][0] < start.pole_hodnot[num][i][1] + 1) {
+//                        System.out.println("rule 3.3b " + num);
+//                        start.pole_hodnot[num][i + 1][0] = start.pole_hodnot[num][i][1] + 2;
+//                    }
+//                    if (i != 0 && start.pole_hodnot[num][i - 1][1] > zac - 1) {
+//                        System.out.println("rule 3.3c " + num);                   //riesi sa v update1
+//                        start.pole_hodnot[num][i - 1][1] = zac - 2;
+//                    }
                 }
 
                 boolean bola_cierna = false;
@@ -323,6 +385,7 @@ public class Logical_rules {
                         bola_cierna = true;
                     }
                     if (bola_cierna == true && riesenie.get(num).get(y).value == 0) {
+                        System.out.println("rule 3.3d " + num);
                         start.pole_hodnot[num][i][1] = y - 1;
                         break;
                     }
@@ -333,6 +396,7 @@ public class Logical_rules {
 
                 for (int p = 1; p < seg.size(); p++) {//case 3
                     if (seg.get(p).get(1) - seg.get(0).get(0) + 1 > dlzka) {
+                        System.out.println("rule 3.3e " + num);
                         start.pole_hodnot[num][i][1] = seg.get(p).get(0) - 2;
                         break;
                     }
@@ -349,7 +413,7 @@ public class Logical_rules {
             return 0;
         }
         int pom = from - 1;
-        while (pom != 0 && riesenie.get(num).get(pom).value == 1) {//ak su nejake cierne este pred tymto polickom
+        while (pom > 0 && riesenie.get(num).get(pom).value == 1) {//ak su nejake cierne este pred tymto polickom
             dlzka++;
             pom--;
         }
@@ -410,7 +474,7 @@ public class Logical_rules {
         return zoznam;
     }
 
-    ArrayList<ArrayList<Integer>> seg_cierne(int num, int cislo) {//pozor, ak je len jedno cierne policko na 1. pozicii, dostaneme hodnotu [0,0] ale dlzka je 1
+    private ArrayList<ArrayList<Integer>> seg_cierne(int num, int cislo) {//pozor, ak je len jedno cierne policko na 1. pozicii, dostaneme hodnotu [0,0] ale dlzka je 1
         ArrayList<ArrayList<Integer>> zoznam = new ArrayList<>();
         ArrayList<Integer> a;
 

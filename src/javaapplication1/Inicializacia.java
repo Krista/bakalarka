@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class Inicializacia {
 
-    int[][][] pole_hodnot;
-    int p_stlpcov;
-    ArrayList<ArrayList<Integer>> zadanie;
-    ArrayList<ArrayList<MyInt>> riesenie = new ArrayList<>();
+    public int[][][] pole_hodnot;
+    public int p_stlpcov;
+    public ArrayList<ArrayList<Integer>> zadanie;
+    public ArrayList<ArrayList<MyInt>> riesenie = new ArrayList<>();
 
     public Inicializacia(ArrayList<ArrayList<Integer>> zadanie, int p_stlpcov) {
         this.zadanie = zadanie;
@@ -98,7 +98,7 @@ public class Inicializacia {
         return j;
     }
 
-    public void set(int[][] list, int i) {
+    public void set_hranice(int[][] list, int i) {
         this.pole_hodnot[i] = list;
     }
 

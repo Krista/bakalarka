@@ -12,27 +12,26 @@ import java.util.ArrayList;
  * @author User
  */
 public class MyInt {
-      int value;
+
+    public int value;
 
     MyInt() {
         this(0);
     }
 
-        MyInt(int val) {
+    public MyInt(int val) {
         value = val;
     }
 
-   
     int value() {
         return value;
     }
 
-  
     void setValue(int val) {
         value = val;
     }
-    
-   static void toString(ArrayList<ArrayList<MyInt>> list) {
+
+    public static void toString(ArrayList<ArrayList<MyInt>> list) {
         for (ArrayList<MyInt> a : list) {
             for (MyInt m : a) {
                 System.out.print(m.value + " ");
@@ -41,9 +40,28 @@ public class MyInt {
         }
     }
 
-    static void jeden_toString(ArrayList<MyInt> list) {
+    public static void jeden_toString(ArrayList<MyInt> list) {
         for (MyInt m : list) {
             System.out.print(m.value + " ");
         }
+    }
+    
+       
+    public static ArrayList<MyInt> asList(int[] list){
+        ArrayList<MyInt> pom = new ArrayList<>();
+        for(int i = 0; i<list.length; i++){
+            pom.add(new MyInt(list[i]));
+        }
+        return pom;
+    }
+    
+  
+    @Override
+    public boolean equals (Object list){
+        MyInt pom = (MyInt)(list);
+        //System.out.println(this.value);
+       if (pom.value != this.value)return false;
+        
+       return true;
     }
 }

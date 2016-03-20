@@ -22,14 +22,14 @@ public class Read_nono {
     Path file;
     int number_nono;
 
-    Read_nono(int number) {
+    public Read_nono(int number) {
         this.number_nono = number;
-        //file = Paths.get("nonograms/" + this.number_nono + ".txt");
-        file = Paths.get("" + this.number_nono + ".txt");
+        file = Paths.get("nonograms/" + this.number_nono + ".txt");
+       // file = Paths.get("" + this.number_nono + ".txt");
         System.out.println(file);
     }
 
-    Inicializacia zrob_stlpce() throws IOException {
+    public Inicializacia zrob_stlpce() throws IOException {
 
         int width;
         int heigh;
@@ -65,7 +65,7 @@ public class Read_nono {
 
     }
 
-    Inicializacia zrob_riadky(ArrayList<ArrayList<MyInt>> rr) throws IOException {
+   public  Inicializacia zrob_riadky(ArrayList<ArrayList<MyInt>> rr) throws IOException {
 
         int width;
         int heigh;
