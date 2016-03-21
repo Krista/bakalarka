@@ -46,7 +46,7 @@ public class Logical_rules {
                 farbi = rozdiel - act_cislo;
                 for (int x = 0; x < (act_cislo * 2 - rozdiel); x++, farbi++) {
                     if (riesenie.get(num).get(zaciatok + farbi).value != 1) {
-                       // System.out.println("riadok: " + num + " rule 1.1 , policko: " + (zaciatok + farbi));
+                        // System.out.println("riadok: " + num + " rule 1.1 , policko: " + (zaciatok + farbi));
                         riesenie.get(num).get(zaciatok + farbi).value = 1;
                     }
                 }
@@ -228,11 +228,11 @@ public class Logical_rules {
 
     public void update0(int num) {
         for (int i = 0; i < zadanie.get(num).size() - 1; i++) {
-            if (start.pole_hodnot[num][i][0] + zadanie.get(num).get(i) > start.pole_hodnot[num][i + 1][0]) {
+            if (start.pole_hodnot[num][i][0] + zadanie.get(num).get(i) >= start.pole_hodnot[num][i + 1][0]) {
                 System.out.println("update0a riadok" + num + "policko " + i);
                 start.pole_hodnot[num][i + 1][0] = start.pole_hodnot[num][i][0] + zadanie.get(num).get(i) + 1;
             }
-            if (start.pole_hodnot[num][i][1] > start.pole_hodnot[num][i + 1][1] - zadanie.get(num).get(i+1)) {
+            if (start.pole_hodnot[num][i][1] >= start.pole_hodnot[num][i + 1][1] - zadanie.get(num).get(i + 1)) {
                 System.out.println("update0b riadok" + num + "policko " + i);
                 start.pole_hodnot[num][i][1] = start.pole_hodnot[num][i + 1][1] - zadanie.get(num).get(i + 1) - 1;
             }
@@ -264,34 +264,62 @@ public class Logical_rules {
         }
     }
 
-    public void update2(int num) {// treba predtym spravit predchadzajuce updaty
+//    public void update2(int num) {// treba predtym spravit predchadzajuce updaty
+//        int indicia, dlzka_seg;
+//        int x = 0;
+//        ArrayList<ArrayList<Integer>> sek;
+//        for (int i = 0; i < zadanie.get(num).size(); i++) {
+//            indicia = zadanie.get(num).get(i);
+//            sek = seg_cierne(num, i);
+//            int pocet = zadanie.get(num).size() - 1;
+//            for (int j = 0; j < sek.size(); j++) {
+//                dlzka_seg = sek.get(j).get(1) - sek.get(j).get(0) + 1;
+//                if (dlzka_seg > indicia) { // toto sa robi v RULE 3.2 - blbost, tam sa updatuju prilis kratke segmenty
+//                    if (sek.get(j).get(0) - start.pole_hodnot[num][i][0] - 1 < indicia) {//cize sa indicia dopredu nezmesti
+//                        System.out.println("update2a riadok" + num);
+//                        start.pole_hodnot[num][i][0] = sek.get(j).get(1) + 2;
+//                    } else if(start.pole_hodnot[num][i][1] - sek.get(j).get(1) - 1 < indicia){
+//                        System.out.println("update2b riadok" + num);
+//                        start.pole_hodnot[num][i][1] = sek.get(j).get(0) - 2;
+//                        break;//vdaka tomu nemusime prechadzat z oboch stran, pri prvom nastaveni E koncime
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+     public void update2(int num) {// treba predtym spravit predchadzajuce updaty
         int indicia, dlzka_seg;
         int x = 0;
         ArrayList<ArrayList<Integer>> sek;
         for (int i = 0; i < zadanie.get(num).size(); i++) {
             indicia = zadanie.get(num).get(i);
             sek = seg_cierne(num, i);
+            int pocet = zadanie.get(num).size() - 1;
             for (int j = 0; j < sek.size(); j++) {
                 dlzka_seg = sek.get(j).get(1) - sek.get(j).get(0) + 1;
                 if (dlzka_seg > indicia) { // toto sa robi v RULE 3.2 - blbost, tam sa updatuju prilis kratke segmenty
-                    if (sek.get(j).get(0) - start.pole_hodnot[num][i][0] - 1 < indicia) {//cize sa indicia dopredu nezmesti
-                        System.out.println("update2a riadok" + num);
+                    ArrayList<Integer> cisla = najdi_cisla(num, sek.get(j).get(0));
+                    if (sek.get(j).get(0) - start.pole_hodnot[num][i][0] - 1 < indicia
+                            || (cisla.size() == 2 && (i == 0 || cisla.get(1).equals(zadanie.get(num).get(i - 1))))) {//cize sa indicia dopredu nezmesti
+                        System.out.println("update2a riadok " + num + " indicia "+ i);
                         start.pole_hodnot[num][i][0] = sek.get(j).get(1) + 2;
-                    } else if(start.pole_hodnot[num][i][1] - sek.get(j).get(1) - 1 < indicia){
-                        System.out.println("update2b riadok" + num);
+                    } else if (start.pole_hodnot[num][i][1] - sek.get(j).get(1) - 1 < indicia
+                            || (cisla.size() == 2 && (i == pocet || cisla.get(1).equals(zadanie.get(num).get(i + 1))))) {
+                        System.out.println("update2b riadok " + num+ " indicia "+ i);
                         start.pole_hodnot[num][i][1] = sek.get(j).get(0) - 2;
                         break;//vdaka tomu nemusime prechadzat z oboch stran, pri prvom nastaveni E koncime
                     }
-                } 
+                }
             }
         }
     }
 
     public void medzivypln(int num) {// rule 3.1
         int zac, kon;           //pred tymto pravidloom NUTNE aplikovat UPDATE 1
-        ArrayList<Integer> list;        
-        
-                for (int i = 1; i < zadanie.get(num).size() - 1; i++) {
+        ArrayList<Integer> list;
+
+        for (int i = 1; i < zadanie.get(num).size() - 1; i++) {
             zac = Math.max(start.pole_hodnot[num][i - 1][1], start.pole_hodnot[num][i][0]);
             kon = Math.min(start.pole_hodnot[num][i + 1][0], start.pole_hodnot[num][i][1]);
             list = najdi_cierne(num, zac, kon);//zac a kon zabezpecuju, ze najdene cierne budu patrit len 1 indicii
@@ -302,11 +330,11 @@ public class Logical_rules {
                         riesenie.get(num).get(x).value = 1;
                     }
                 }
-               
-                int u = zadanie.get(num).get(i) - dlzka_sek(num,list.get(0)); //kolko zostava vyfarbit
+
+                int u = zadanie.get(num).get(i) - dlzka_sek(num, list.get(0)); //kolko zostava vyfarbit
                 System.out.println("prestavujem inic 3.1 na " + num);
                 start.pole_hodnot[num][i][0] = list.get(0) - u;
-                start.pole_hodnot[num][i][1] = list.get(0) +zadanie.get(num).get(i);
+                start.pole_hodnot[num][i][1] = list.get(0) + zadanie.get(num).get(i);
             }
         }
     }
@@ -368,7 +396,7 @@ public class Logical_rules {
                     }
                     //System.out.println("rule 3.3a " + num);
                     start.pole_hodnot[num][i][1] = zac + dlzka - 1;
-                    
+
 //                    if (i + 1 != pocet && start.pole_hodnot[num][i + 1][0] < start.pole_hodnot[num][i][1] + 1) {
 //                        System.out.println("rule 3.3b " + num);
 //                        start.pole_hodnot[num][i + 1][0] = start.pole_hodnot[num][i][1] + 2;
