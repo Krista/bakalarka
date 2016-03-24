@@ -14,15 +14,13 @@ public class Porucha extends Exception {
     String pravidlo;
     int riadok, indicia;
    
-    public Porucha() {
-    }
-
-    /**
-     * Constructs an instance of <code>Porucha</code> with the specified detail
-     * message.
-     *
-     * @param msg the detail message.
-     */
+   
+ /**
+  * 
+  * @param pravidlo nazov pravidla, v ktorom nastala chyba
+  * @param riadok na ktorom riadku problem vznikol
+  * @param indicia na ktorej indicii to bolo
+  */
     public Porucha(String pravidlo, int riadok, int indicia) {
         this.indicia = indicia;
         this.pravidlo = pravidlo;

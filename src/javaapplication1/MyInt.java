@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  *
  * @author User
+ * vlastna trieda uchovavajuca hodnoty int
  */
 public class MyInt {
 
@@ -31,6 +32,11 @@ public class MyInt {
         value = val;
     }
 
+    /**
+     * 
+     * @param list dvojrozmerny ArrayList
+     * vypise hodnoty v liste naformatovane ako dvojrozmernu maticu
+     */
     public static void toString(ArrayList<ArrayList<MyInt>> list) {
         for (ArrayList<MyInt> a : list) {
             for (MyInt m : a) {
@@ -40,13 +46,23 @@ public class MyInt {
         }
     }
 
+    /**
+     * 
+     * @param list 
+     * vypise hodnoty nachadzajuce sa v tomto ArrayListe za sebou
+     */
     public static void jeden_toString(ArrayList<MyInt> list) {
         for (MyInt m : list) {
             System.out.print(m.value + " ");
         }
+        System.out.println("");
     }
     
-       
+       /**
+        * 
+        * @param list dvojrozmerne klasicke pole
+        * @return list prerobeny na ArrayList<MyInt>
+        */
     public static ArrayList<MyInt> asList(int[] list){
         ArrayList<MyInt> pom = new ArrayList<>();
         for(int i = 0; i<list.length; i++){
@@ -55,7 +71,11 @@ public class MyInt {
         return pom;
     }
     
-  
+  /**
+   * 
+   * @param list
+   * @return true ak sa hodnoty rovnaju, inak vrati false
+   */
     @Override
     public boolean equals (Object list){
         MyInt pom = (MyInt)(list);

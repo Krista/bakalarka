@@ -32,6 +32,15 @@ import org.omg.CORBA.IntHolder;
  */
 public class JavaApplication1 {
 
+    /**
+     * 
+     * @param id krizovky
+     * @param writer odkaz na otvoreny subor
+     * @throws FileNotFoundException
+     * @throws UnsupportedEncodingException
+     * @throws IOException 
+     * z portalu griddlers.txt nam stiahne zadanie krizovky a ulozi do suboru id.txt
+     */
     public static void spracuj(String id, PrintWriter writer) throws FileNotFoundException, UnsupportedEncodingException, IOException {
         //PrintWriter writer = new PrintWriter("filexy.txt", "UTF-8");
         String addr = "http://www.griddlers.net/griddlers?p_p_id=griddlers_WAR_puzzles&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=html&p_p_cacheability=cacheLevelPage&p_p_col_id=column-2&p_p_col_count=1&_griddlers_WAR_puzzles_view=detail&_griddlers_WAR_puzzles_id=";
@@ -147,6 +156,13 @@ public class JavaApplication1 {
         writer.close();
     }
 
+    /**
+     * 
+     * @param file informacie o krizovkach
+     * @throws IOException 
+     * z databazy pre krizovky ktore su 2 farebne, jednoduche vytiahne informacie o pocte riesitelov, strednom case..
+     * vytvori subor obsahujuci id krizovky a takto rozpracovany subor posle funcii spracuj
+     */
     public static void tahaj(Path file) throws IOException {
         Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
@@ -181,6 +197,12 @@ public class JavaApplication1 {
         }
     }
 
+    /**
+     * 
+     * @param file
+     * @throws IOException 
+     * vytiahne nam cisla krizoviek, ktore su dvojfarebne a ulozi ich do suboru classic.txt alebo do trojuholnikove2.txt 
+     */
     public static void zisti(Path file) throws IOException {
         //PrintWriter writer = new PrintWriter("trojuholnikove2", "UTF-8");
         //  PrintWriter writer2 = new PrintWriter("classic", "UTF-8");
@@ -301,7 +323,7 @@ public class JavaApplication1 {
     
     
     public static void main(String[] args) throws IOException, Porucha {
-        Read_nono krizovka = new Read_nono(420);        
+        Read_nono krizovka = new Read_nono(322);        
         Inicializacia inic = krizovka.zrob_stlpce();
         //inic.riesenie.get(0).get(2).value = 1;
         
@@ -406,6 +428,7 @@ public class JavaApplication1 {
          p.prienik(i);
          p.jednotky_za(i);
          p.prienik(i);
+         p.update1(i);
          p.medzivypln(i);
          p.prienik(i);
          p.jed_medzery(i);
@@ -443,6 +466,7 @@ r.prienik(i);
          r.prienik(i);
          r.jednotky_za(i);
          r.prienik(i);
+         r.update1(i);
          r.medzivypln(i);
          r.prienik(i);
          r.jed_medzery(i);
@@ -463,10 +487,10 @@ r.prienik(i);
      System.out.println("stlpce2");
     for(int i = 0; i<inic2.p_stlpcov ;i++){
             
-            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
-                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
-            }
-            System.out.println("");
+//            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
+//                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
+//            }
+//            System.out.println("");
        
         p.prienik(i);
          p.update0(i);
@@ -481,6 +505,7 @@ r.prienik(i);
          p.prienik(i);
          p.jednotky_za(i);
          p.prienik(i);
+         p.update1(i);
          p.medzivypln(i);
          p.prienik(i);
          p.jed_medzery(i);
@@ -490,18 +515,18 @@ r.prienik(i);
         // p.nekryjuce(i);
          p.vynutenie(i);
          p.prienik(i);   
-            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
-                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
-            }
-            System.out.println("");
+//            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
+//                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
+//            }
+//            System.out.println("");
        
      }
         
         System.out.println("riadky3");
     for(int i = 0; i<inic.p_stlpcov ;i++){
-           for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-            }
+//           for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
+//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
+//            }
         r.prienik(i);
          r.update0(i);
           r.update1(i);
@@ -509,14 +534,16 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
         // r.nekryjuce(i);
          r.vynutenie(i);
-            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-            }
+//            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
+//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
+//            }
+//     }
      }
       MyInt.toString(inic2.riesenie);  
      System.out.println("stlpce3");
@@ -527,6 +554,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -544,6 +572,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -560,6 +589,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -577,6 +607,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -592,6 +623,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -608,6 +640,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -623,6 +656,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -639,6 +673,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -654,6 +689,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -671,6 +707,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -686,6 +723,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -703,6 +741,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -718,6 +757,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -735,6 +775,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -750,6 +791,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -767,6 +809,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -782,6 +825,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);
@@ -799,6 +843,7 @@ r.prienik(i);
          r.lepidlo(i);
          r.jednotky(i);
          r.jednotky_za(i);
+         r.update1(i);
          r.medzivypln(i);
          r.jed_medzery(i);
          r.okliestenie(i);
@@ -814,6 +859,7 @@ r.prienik(i);
          p.lepidlo(i);
          p.jednotky(i);
          p.jednotky_za(i);
+         p.update1(i);
          p.medzivypln(i);
          p.jed_medzery(i);
          p.okliestenie(i);

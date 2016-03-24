@@ -16,6 +16,8 @@ import java.util.List;
 /**
  *
  * @author User
+ * rozparsuje subor, v ktorom mame ulozene zadanie krizovky a vytvori Inicializaciu, s ktorou mozeme dalej pracovat
+ * 
  */
 public class Read_nono {
 
@@ -24,8 +26,8 @@ public class Read_nono {
 
     public Read_nono(int number) {
         this.number_nono = number;
-        file = Paths.get("nonograms/" + this.number_nono + ".txt");
-       // file = Paths.get("" + this.number_nono + ".txt");
+        //file = Paths.get("nonograms/" + this.number_nono + ".txt");
+       file = Paths.get("" + this.number_nono + ".txt");
         System.out.println(file);
     }
 
