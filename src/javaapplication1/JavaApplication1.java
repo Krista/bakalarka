@@ -323,7 +323,7 @@ public class JavaApplication1 {
     
     
     public static void main(String[] args) throws IOException, Porucha {
-        Read_nono krizovka = new Read_nono(322);        
+        Read_nono krizovka = new Read_nono(305);        
         Inicializacia inic = krizovka.zrob_stlpce();
         //inic.riesenie.get(0).get(2).value = 1;
         
@@ -393,479 +393,515 @@ public class JavaApplication1 {
        MyInt.toString(inic2.riesenie); 
 }
      */ 
-  
-    System.out.println("riadky1");
-    for(int i = 0; i<inic.p_stlpcov ;i++){  
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i); 
-         r.medzivypln(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-        
-         r.jed_medzery(i);
-         r.okliestenie(i);
-        // r.nekryjuce(i);
-         r.vynutenie(i);}
-         
-    MyInt.toString(inic2.riesenie); 
-    
-        System.out.println("stlpce1");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-       
-        p.prienik(i);
-         p.update0(i);
-         p.prienik(i);
-         p.update1(i);
-         p.prienik(i);
-         p.update2(i);
-         p.prienik(i);
-         p.lepidlo(i);
-         p.prienik(i);
-         p.jednotky(i);
-         p.prienik(i);
-         p.jednotky_za(i);
-         p.prienik(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.prienik(i);
-         p.jed_medzery(i);
-         p.prienik(i);
-         p.okliestenie(i);
-         p.prienik(i);
-        //p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-       System.out.println("");
-           
-       MyInt.toString(inic2.riesenie);        
-       
-    System.out.println("");
-        System.out.println("riadky2");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-          
-            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-            }
-            System.out.println("");
-        
-   //MyInt.jeden_toString(inic2.riesenie.get(i));
-        System.out.println("");
-        r.prienik(i);
-         r.update0(i);
-         r.prienik(i);
-          r.update1(i);
-          r.prienik(i);
-         r.update2(i); 
-r.prienik(i);         
-         r.lepidlo(i);
-         r.prienik(i);
-         r.jednotky(i);
-         r.prienik(i);
-         r.jednotky_za(i);
-         r.prienik(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.prienik(i);
-         r.jed_medzery(i);
-         r.prienik(i);
-         r.okliestenie(i);
-         r.prienik(i);
-        r.nekryjuce(i);
-        r.prienik(i);
-         r.vynutenie(i);
-         r.prienik(i);
-          for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-            }
-     } 
-    
-    
-       MyInt.toString(inic2.riesenie);  
-     System.out.println("stlpce2");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-            
-//            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
-//                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
-//            }
-//            System.out.println("");
-       
-        p.prienik(i);
-         p.update0(i);
-         p.prienik(i);
-         p.update1(i);
-         p.prienik(i);
-         p.update2(i);
-         p.prienik(i);
-         p.lepidlo(i);
-         p.prienik(i);
-         p.jednotky(i);
-         p.prienik(i);
-         p.jednotky_za(i);
-         p.prienik(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.prienik(i);
-         p.jed_medzery(i);
-         p.prienik(i);
-         p.okliestenie(i);
-         p.prienik(i);
-        // p.nekryjuce(i);
-         p.vynutenie(i);
-         p.prienik(i);   
-//            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
-//                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
-//            }
-//            System.out.println("");
-       
-     }
-        
-        System.out.println("riadky3");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-//           for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-//            }
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-        // r.nekryjuce(i);
-         r.vynutenie(i);
+  //r.prienik(0);
+                                for (int w=0; w<12; w++){
+                                    System.out.println("    riadky");
+                                    for (int i = 0; i <inic.p_stlpcov; i++){
+                                        r.prienik(i); 
+                                        r.jed_medzery(i);
+                                        r.jednotky(i);
+                                        
+                                        r.lepidlo(i);
+                                        r.update0(i);
+                                        r.vynutenie(i);
+                                        r.update1(i);
+                                        r.update2(i);
+                                        r.medzivypln(i);
+                                       r.nekryjuce(i);
+                                        r.okliestenie(i);
+                                             }
+                                    System.out.println("   stlpce");
+                                     for (int i = 0; i <inic2.p_stlpcov; i++){
+                                        p.prienik(i); 
+                                        p.jed_medzery(i);
+                                        p.jednotky(i);
+                                       
+                                        p.lepidlo(i);
+                                        p.update0(i); 
+                                        p.vynutenie(i);
+                                        p.update1(i);
+                                        p.update2(i);
+                                        p.medzivypln(i);
+                                      p.nekryjuce(i);
+                                        p.okliestenie(i);
+                                             }
+                                     MyInt.toString(inic2.riesenie);
+
+                                }
+   
+   
+//    System.out.println("riadky1");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){  
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i); 
+//         r.medzivypln(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//        
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//        // r.nekryjuce(i);
+//         r.vynutenie(i);}
+//         
+//    MyInt.toString(inic2.riesenie); 
+//    
+//        System.out.println("stlpce1");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//       
+//        p.prienik(i);
+//         p.update0(i);
+//         p.prienik(i);
+//         p.update1(i);
+//         p.prienik(i);
+//         p.update2(i);
+//         p.prienik(i);
+//         p.lepidlo(i);
+//         p.prienik(i);
+//         p.jednotky(i);
+//         p.prienik(i);
+//         p.jednotky_za(i);
+//         p.prienik(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.prienik(i);
+//         p.jed_medzery(i);
+//         p.prienik(i);
+//         p.okliestenie(i);
+//         p.prienik(i);
+//        //p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//       System.out.println("");
+//           
+//       MyInt.toString(inic2.riesenie);        
+//       
+//    System.out.println("");
+//        System.out.println("riadky2");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//          
 //            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
 //                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
 //            }
+//            System.out.println("");
+//        
+//   //MyInt.jeden_toString(inic2.riesenie.get(i));
+//        System.out.println("");
+//        r.prienik(i);
+//         r.update0(i);
+//         r.prienik(i);
+//          r.update1(i);
+//          r.prienik(i);
+//         r.update2(i); 
+//r.prienik(i);         
+//         r.lepidlo(i);
+//         r.prienik(i);
+//         r.jednotky(i);
+//         r.prienik(i);
+//         r.jednotky_za(i);
+//         r.prienik(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.prienik(i);
+//         r.jed_medzery(i);
+//         r.prienik(i);
+//         r.okliestenie(i);
+//         r.prienik(i);
+//        r.nekryjuce(i);
+//        r.prienik(i);
+//         r.vynutenie(i);
+//         r.prienik(i);
+//          for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
+//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
+//            }
+//     } 
+//    
+//    
+//       MyInt.toString(inic2.riesenie);  
+//     System.out.println("stlpce2");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//            
+////            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
+////                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
+////            }
+////            System.out.println("");
+//       
+//        p.prienik(i);
+//         p.update0(i);
+//         p.prienik(i);
+//         p.update1(i);
+//         p.prienik(i);
+//         p.update2(i);
+//         p.prienik(i);
+//         p.lepidlo(i);
+//         p.prienik(i);
+//         p.jednotky(i);
+//         p.prienik(i);
+//         p.jednotky_za(i);
+//         p.prienik(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.prienik(i);
+//         p.jed_medzery(i);
+//         p.prienik(i);
+//         p.okliestenie(i);
+//         p.prienik(i);
+//        // p.nekryjuce(i);
+//         p.vynutenie(i);
+//         p.prienik(i);   
+////            for( int j = 0; j < inic.zadanie.get(i).size(); j++){
+////                System.out.print(Arrays.toString(inic.pole_hodnot[i][j]));
+////            }
+////            System.out.println("");
+//       
 //     }
-     }
-      MyInt.toString(inic2.riesenie);  
-     System.out.println("stlpce3");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-       //  p.nekryjuce(i);
-         p.vynutenie(i);
-           
-     }
-        System.out.println("");
-        System.out.println("riadky4");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-         r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-   
-       System.out.println("stlpce4");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-        p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-    
-     System.out.println("");
-        System.out.println("riadky5");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-        r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce5");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-     System.out.println("");
-        System.out.println("riadky6");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-         r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce6");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-     System.out.println("");
-        System.out.println("riadky7");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-       r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce8");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-
-     System.out.println("");
-        System.out.println("riadky8");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-       r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce7");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-    
-     System.out.println("");
-        System.out.println("riadky9");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-       r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce9");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-    
-     System.out.println("");
-        System.out.println("riadky10");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-       r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce10");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-    
-     System.out.println("");
-        System.out.println("riadky11");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-       r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce11");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
-    
-     System.out.println("");
-        System.out.println("riadky12");
-    for(int i = 0; i<inic.p_stlpcov ;i++){
-        r.prienik(i);
-         r.update0(i);
-          r.update1(i);
-         r.update2(i);          
-         r.lepidlo(i);
-         r.jednotky(i);
-         r.jednotky_za(i);
-         r.update1(i);
-         r.medzivypln(i);
-         r.jed_medzery(i);
-         r.okliestenie(i);
-       r.nekryjuce(i);
-         r.vynutenie(i);
-     }
-     System.out.println("stlpce12");
-    for(int i = 0; i<inic2.p_stlpcov ;i++){
-        p.prienik(i);
-         p.update0(i);
-         p.update1(i);
-         p.update2(i);
-         p.lepidlo(i);
-         p.jednotky(i);
-         p.jednotky_za(i);
-         p.update1(i);
-         p.medzivypln(i);
-         p.jed_medzery(i);
-         p.okliestenie(i);
-         p.nekryjuce(i);
-         p.vynutenie(i);
-     }
+//        
+//        System.out.println("riadky3");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+////           for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
+////                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
+////            }
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//        // r.nekryjuce(i);
+//         r.vynutenie(i);
+////            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
+////                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
+////            }
+////     }
+//     }
+//      MyInt.toString(inic2.riesenie);  
+//     System.out.println("stlpce3");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//       //  p.nekryjuce(i);
+//         p.vynutenie(i);
+//           
+//     }
+//        System.out.println("");
+//        System.out.println("riadky4");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//         r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//   
+//       System.out.println("stlpce4");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//        p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//    
+//     System.out.println("");
+//        System.out.println("riadky5");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//        r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce5");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//     System.out.println("");
+//        System.out.println("riadky6");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//         r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce6");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//     System.out.println("");
+//        System.out.println("riadky7");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//       r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce8");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//
+//     System.out.println("");
+//        System.out.println("riadky8");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//       r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce7");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//    
+//     System.out.println("");
+//        System.out.println("riadky9");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//       r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce9");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//    
+//     System.out.println("");
+//        System.out.println("riadky10");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//       r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce10");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//    
+//     System.out.println("");
+//        System.out.println("riadky11");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//       r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce11");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
+//    
+//     System.out.println("");
+//        System.out.println("riadky12");
+//    for(int i = 0; i<inic.p_stlpcov ;i++){
+//        r.prienik(i);
+//         r.update0(i);
+//          r.update1(i);
+//         r.update2(i);          
+//         r.lepidlo(i);
+//         r.jednotky(i);
+//         r.jednotky_za(i);
+//         r.update1(i);
+//         r.medzivypln(i);
+//         r.jed_medzery(i);
+//         r.okliestenie(i);
+//       r.nekryjuce(i);
+//         r.vynutenie(i);
+//     }
+//     System.out.println("stlpce12");
+//    for(int i = 0; i<inic2.p_stlpcov ;i++){
+//        p.prienik(i);
+//         p.update0(i);
+//         p.update1(i);
+//         p.update2(i);
+//         p.lepidlo(i);
+//         p.jednotky(i);
+//         p.jednotky_za(i);
+//         p.update1(i);
+//         p.medzivypln(i);
+//         p.jed_medzery(i);
+//         p.okliestenie(i);
+//         p.nekryjuce(i);
+//         p.vynutenie(i);
+//     }
    /*
    r.riesenie.get(7).get(2).value=1;
      r.riesenie.get(7).get(4).value=1;
@@ -902,15 +938,16 @@ r.prienik(i);
          p.okliestenie(i);
          p.nekryjuce(i);
          p.vynutenie(i);*/
+        System.out.println("     vysledne riesenie");
        MyInt.toString(inic2.riesenie);
        //System.out.println(inic.zadanie.get(0).toString());
      // System.out.println(Arrays.toString(inic.pole_hodnot[0][0]));
-//        for (int i = 0 ; i < inic.p_stlpcov; i++){
-//            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-//            }
-//            System.out.println("");
-//        }
+        for (int i = 0 ; i < inic.p_stlpcov; i++){
+            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
+                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
+            }
+            System.out.println("");
+        }
 //        
 //        System.out.println("");
 //        System.out.println("stlpce");
