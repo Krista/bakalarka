@@ -124,9 +124,9 @@ public class Logical_rules {
                 //riesenie.get(num).get(i + 1).value = 1; //skusame zafarbit
                 int d1 = dlzka_sek(num, i);
                 int d2 = dlzka_sek(num, i+2);
-                ArrayList<Integer> pom = najdi_cisla(num, i-d1+1);
-                ArrayList<Integer> pom2 = najdi_cisla(num, i+d2+1);
-                pom.retainAll(pom2);//v pom necha len tie indicie, ktore su v oboch arraylistoch
+                ArrayList<Integer> pom = najdi_cisla(num, i-d1+1, i+d2+1);
+                //ArrayList<Integer> pom2 = najdi_cisla(num, i+d2+1);
+               // pom.retainAll(pom2);//v pom necha len tie indicie, ktore su v oboch arraylistoch
         //System.out.println(pom.toString());
                 if (pom.isEmpty() || d1+d2+1 > maximum(num, pom)) {
                     System.out.println("riadok: " + num + " rule 1.4 , policko: " + (i + 1));
@@ -211,6 +211,11 @@ public class Logical_rules {
         }
 
     }
+    /**
+     * 
+     * @param num cislo riadka
+     * specialny pripad pravidla 1.5 - LEPIDLO, ked je prvé políčko v riadku čierne
+     */
     public void lep_zac(int num){
          if (riesenie.get(num).get(0).value == 1) {
             int cislo = start.zadanie.get(num).get(0);
@@ -228,6 +233,11 @@ public class Logical_rules {
         }
     }
     
+    /**
+     * 
+     * @param num cislo riadka
+     * specialny pripad pravidla 1.5 - LEPIDLO, ked je posledné políčko v riadku čierne
+     */
     public void lep_kon(int num){
          if (riesenie.get(num).get(start.p_stlpcov - 1).value == 1) { 
             int posledne = start.zadanie.get(num).size() - 1;
@@ -313,9 +323,7 @@ public class Logical_rules {
         ArrayList<ArrayList<Integer>> sek;
         for (int i = 0; i < zadanie.get(num).size(); i++) {
             indicia = zadanie.get(num).get(i);
-            sek = seg_cierne(num, i);
-
-            int pocet = zadanie.get(num).size() - 1;
+            sek = seg_cierne(num, i);            
             for (int j = 0; j < sek.size(); j++) {
                 dlzka_seg = sek.get(j).get(1) - sek.get(j).get(0) + 1;
                 if (dlzka_seg > indicia) { // toto sa robi v RULE 3.2 - blbost, tam sa updatuju prilis kratke segmenty
@@ -336,7 +344,7 @@ public class Logical_rules {
     }
 
     public void medzivypln(int num) throws Porucha {// rule 3.1
-        int zac, kon;           //pred tymto pravidloom NUTNE aplikovat UPDATE 1
+        int zac, kon;           //pred tymto pravidloom NUTNE aplikovat UPDATE 1---urcite??
         ArrayList<Integer> list;
 
         for (int i = 1; i < zadanie.get(num).size() - 1; i++) {
