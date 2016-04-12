@@ -26,9 +26,9 @@ public class Read_nono {
 
     public Read_nono(int number) {
         this.number_nono = number;
-        //file = Paths.get("nonograms/" + this.number_nono + ".txt");
-       file = Paths.get("" + this.number_nono + ".txt");
-        System.out.println(file);
+       file = Paths.get("nonograms/" + this.number_nono + ".txt");
+     // file = Paths.get("" + this.number_nono + ".txt");
+        //System.out.println(file);
     }
 
     public Inicializacia zrob_stlpce() throws IOException {
@@ -38,8 +38,9 @@ public class Read_nono {
         ArrayList<ArrayList<Integer>> zadanie = new ArrayList<>();
         ArrayList<Integer> line;
         Charset charset = Charset.forName("ISO-8859-1");
+        try{
         List<String> riadky = Files.readAllLines(this.file, charset);
-
+       
         String[] sirka = riadky.get(1).split(":");
         width = Integer.parseInt(sirka[1].trim());
 
@@ -55,7 +56,8 @@ public class Read_nono {
             pom = bez_zatv.split(",");
             line = new ArrayList<>();
             for (String a : pom) {
-                line.add(Integer.parseInt(a.trim()));
+                if (a.equals(""))line.add(0);
+                else line.add(Integer.parseInt(a.trim()));
             }
             zadanie.add(line);
         }
@@ -64,11 +66,13 @@ public class Read_nono {
         }*/
         //System.out.println(Arrays.toString(riadok));
         return new Inicializacia(zadanie, heigh);
-
+ }catch(IOException e){
+            System.out.println("Krizovku " + this.number_nono + " sa nepodarilo najst");
+        }return null;
     }
 
-   public  Inicializacia zrob_riadky(ArrayList<ArrayList<MyInt>> rr) throws IOException {
-
+   public Inicializacia zrob_riadky(ArrayList<ArrayList<MyInt>> rr) throws IOException {
+try{
         int width;
         int heigh;
         ArrayList<ArrayList<Integer>> zadanie = new ArrayList<>();
@@ -91,7 +95,8 @@ public class Read_nono {
             pom = bez_zatv.split(",");
             line = new ArrayList<>();
             for (String a : pom) {
-                line.add(Integer.parseInt(a.trim()));
+                if (a.equals(""))line.add(0);
+                else line.add(Integer.parseInt(a.trim()));
             }
             zadanie.add(line);
         }
@@ -100,6 +105,8 @@ public class Read_nono {
         }*/
         //System.out.println(Arrays.toString(riadok));
         return new Inicializacia(zadanie, width, rr);
-
+ }catch(IOException e){
+            System.out.println("Krizovku " + this.number_nono + " sa nepodarilo najst");
+        }return null;
     }
 }

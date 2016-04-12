@@ -25,14 +25,19 @@ public class MostPossible extends Logical_rules {
         //Start(0);
     }
 
-    public void Start(int num) {
+    public boolean CoToDa(int num) throws Porucha {
         this.step_1 = new boolean[inic.zadanie.get(num).size()+1][inic.p_stlpcov+1];
         this.step_2 = new boolean[inic.zadanie.get(num).size()+1][inic.p_stlpcov+1];
         this.c_white = new boolean[inic.p_stlpcov];
         Arrays.fill(c_white, true);
         this.c_black = new boolean[inic.p_stlpcov];
         Arrays.fill(c_black, false);
-        
+     step1(num);
+     step2(num);
+     step3(num);
+     step4(num);
+     if (step5(num)) return true;     
+     return false;
     }
 
     /**
@@ -43,20 +48,22 @@ public class MostPossible extends Logical_rules {
      */
     public void step1(int num) {
         for (int i=0; i< inic.zadanie.get(num).size()+1; i++){
-            for(int j = 0; j< inic.p_stlpcov; j++){//j je posledne policko ktore berieme v uvahu
+            for(int j = 0; j<= inic.p_stlpcov; j++){//j je pocet policok ktore berieme v uvahu
                        
         if (i == 0) {
-            if (super.najdi_cierne(num, 0, j).isEmpty()) {
+            if (super.najdi_cierne(num, 0, j-1).isEmpty()) {
                 step_1[i][j] = true;continue;
             } else {
                 step_1[i][j] = false;continue;
             }
         }
-        if (j==0) {step_1[i][j] = false;continue;}
-        if (inic.riesenie.get(num).get(j).value == 0) {
+        if (j==0) {
+            if (inic.zadanie.get(num).get(i - 1) != 0) {step_1[i][j] = false;continue;}
+            else {step_1[i][j] = true;continue;}}
+        if (inic.riesenie.get(num).get(j-1).value == 0) {
             step_1[i][j] = step_1[i][j - 1];continue;
         }
-        if (inic.riesenie.get(num).get(j).value == 1) {
+        if (inic.riesenie.get(num).get(j-1).value == 1) {
            step_1[i][j] = uloz_indiciu(num, i, j);continue;
         }
         
@@ -66,8 +73,8 @@ public class MostPossible extends Logical_rules {
 
     public boolean uloz_indiciu(int num, int i, int j) {
         int indicia = inic.zadanie.get(num).get(i - 1);
-        if (indicia > j + 1 || (j-indicia-1 <0 && i>1)) return false;//indicia je dlhsia ako pocet policok ktore tam mame k disp.
-        return super.najdi_biele(num, j - indicia +1, j).isEmpty()
+        if (indicia > j|| (j-indicia-1 <0 && i>1)) return false;//indicia je dlhsia ako pocet policok ktore tam mame k disp.
+        return super.najdi_biele(num, j - indicia, j-1).isEmpty()
                 && ((j - indicia - 1 < 0  && i == 1)
                 || ((inic.riesenie.get(num).get(j - indicia - 1).value != 1) && step_1[i - 1][j - 1 - indicia]));
     }
@@ -82,9 +89,9 @@ public class MostPossible extends Logical_rules {
      */
     public void step2(int num) {
             for (int i=0; i< inic.zadanie.get(num).size()+1; i++){
-            for(int j = 0; j< inic.p_stlpcov; j++){//j je posledne policko ktore berieme v uvahu
+            for(int j = 0; j<= inic.p_stlpcov; j++){//j je posledne policko ktore berieme v uvahu
         
-        int from = inic.p_stlpcov - j - 1;
+        int from = inic.p_stlpcov - j;
         int to = inic.p_stlpcov - 1;             
         if (i == 0) {
             if (super.najdi_cierne(num, from, to).isEmpty()) {
@@ -93,7 +100,9 @@ public class MostPossible extends Logical_rules {
                 step_2[i][j] = false;continue;
             }
         }
-        if (j==0) {step_2[i][j] = false;continue;}
+        if (j==0) {if (inic.zadanie.get(num).get(inic.zadanie.get(num).size()-i) != 0) {step_1[i][j] = false;continue;}
+            else {step_1[i][j] = true;continue;}}
+        
         if (inic.riesenie.get(num).get(from).value == 0) {
             step_2[i][j] = step_2[i][j-1];continue;
         }
@@ -110,8 +119,8 @@ public class MostPossible extends Logical_rules {
     public boolean uloz_indiciu2(int num, int i, int j) {
         int p_indi = inic.zadanie.get(num).size();
         int indicia = inic.zadanie.get(num).get(p_indi - i);
-         if (indicia > j + 1 || (j-indicia-1 <0 && i>1)) return false;
-        int from = inic.p_stlpcov - j - 1;
+         if (indicia > j || (j-indicia-1 <0 && i>1)) return false;
+        int from = inic.p_stlpcov - j;
         int to = inic.p_stlpcov - 1;     
         return super.najdi_biele(num, from, from + indicia - 1).isEmpty()
                 && ((j - indicia - 1 < 0  && i == 1)
@@ -122,11 +131,11 @@ public class MostPossible extends Logical_rules {
     public void step3(int num) {
         for (int w = 0; w < inic.p_stlpcov; w++) {
             if (inic.riesenie.get(num).get(w).value == 3) {
-                for (int i = 0; i < inic.zadanie.size(); i++) {
-                    if ((w==0 || step_1[i][w-1]) && (w==inic.p_stlpcov-1||step_2[inic.zadanie.get(num).size() - i][inic.p_stlpcov - w - 1])) {
+                for (int i = 0; i <= inic.zadanie.get(num).size(); i++) {
+                    if (step_1[i][w] && step_2[inic.zadanie.get(num).size()- i][inic.p_stlpcov - w - 1]) {
                         break;                        
                     }
-                    if (i == inic.zadanie.size()-1) c_white[w] = false;//toto policko nemoze byt biele
+                    if (i == inic.zadanie.get(num).size()) c_white[w] = false;//toto policko nemoze byt biele
                 }
             }
         }
@@ -134,29 +143,36 @@ public class MostPossible extends Logical_rules {
 
     public void step4(int num) {
 
-        for (int w = 0; w < inic.zadanie.get(num).size(); w++) {
+        for (int w = 0; w < inic.zadanie.get(num).size(); w++) {//w==ktoru indiciu spracuvavame
             int indi = inic.zadanie.get(num).get(w);
             for (int i = 0; i < inic.p_stlpcov; i++) {
-                if (!(i - 1 == 0 || inic.riesenie.get(num).get(i - 1).value != 1 || i + indi > inic.p_stlpcov || inic.riesenie.get(num).get(i + indi).value != 1)) {
-                    break;
-                }
-                if (!(super.najdi_biele(num, i, i + indi).isEmpty())) {
-                    break;
-                }
-                if (step_1[w + 1][i] && step_2[inic.zadanie.size() - w][inic.p_stlpcov - w - i]);
-                Arrays.fill(c_black, i, i + indi, true);
-            }
+                
+                if (i + indi > inic.p_stlpcov)break; //indicia sa tam ani nezmesti
+                if (!(i == 0 || inic.riesenie.get(num).get(i - 1).value != 1 )){
+                    continue;}                
+                if (!(i + indi >= inic.p_stlpcov || inic.riesenie.get(num).get(i + indi).value != 1)) {
+                    continue;}                //za ulozenou indiciou mozme dat biele policko
+                if (!(super.najdi_biele(num, i, i + indi-1).isEmpty())) {
+                    continue;}
+                
+                if (step_1[w][Math.max(0, i-1)] 
+                        && step_2[inic.zadanie.get(num).size()-w-1][Math.max(0, inic.p_stlpcov-indi-i-1)])
+                 Arrays.fill(c_black, i, i + indi, true);
+//               
         }
+      }
     }
     
-    public void step5(int num) throws Porucha{
-        for (int i = 0; i< inic.p_stlpcov; i++){
+
+    public boolean step5(int num) throws Porucha{
+        boolean check = false;
+            for (int i = 0; i< inic.p_stlpcov; i++){
             if(inic.riesenie.get(num).get(i).value == 3){
-                if (c_black[i] && !c_white[i])inic.riesenie.get(num).get(i).value = 1;
-                if (!c_black[i] && c_white[i])inic.riesenie.get(num).get(i).value = 0;
+                if (c_black[i] && !c_white[i]){inic.riesenie.get(num).get(i).value = 1; check= true;}
+                if (!c_black[i] && c_white[i]){inic.riesenie.get(num).get(i).value = 0; check= true;}
+                if (!c_black[i] && !c_white[i])throw new Porucha("MostPOSSIBLE", num, i);
             }
-            else throw new Porucha("MostPOSSIBLE", num, i);
-        }
+        }return check;
     }
 
 }

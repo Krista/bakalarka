@@ -16,20 +16,31 @@ public class Memento {
     int por_cislo;
     Inicializacia stlpce;
     Inicializacia riadky;
+    //int[] statistika;
 
     public Memento(Inicializacia stlpce, Inicializacia riadky) {
         this.por_cislo = id;
         this.stlpce = stlpce;
         this.riadky = riadky;
+        //this.statistika = statistika;
     }
 
-    public void uloz_stav(String krizovka) throws FileNotFoundException, UnsupportedEncodingException {
+    public void uloz_stav(int krizovka, int[] statistika, int pocet) throws FileNotFoundException, UnsupportedEncodingException {
+        por_cislo++;
         PrintWriter writer = new PrintWriter("MEM" + por_cislo + krizovka, "UTF-8");
         writer.println("Puzzle number: " + krizovka);
         writer.println("width: " + riadky.p_stlpcov);
         writer.println("height: " + stlpce.p_stlpcov);
         writer.println();
 
+        writer.println("Statistiky");
+        writer.println(Arrays.toString(statistika));
+        writer.println();
+        
+        writer.println("Pocet cyklov");
+        writer.println(pocet);
+        writer.println();
+        
         writer.println("riesenie");
         for (ArrayList<MyInt> a : riadky.riesenie) {
             for (MyInt m : a) {

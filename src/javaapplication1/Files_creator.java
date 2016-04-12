@@ -13,6 +13,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -164,7 +165,7 @@ public class Files_creator {
                 String[] riadok = line.split(",");
                 //System.out.println(Arrays.toString(riadok));
                 int dote = Integer.parseInt(riadok[0]);
-                if ((dote > 155386) && riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
+                if ((dote == 15442) && riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
                     PrintWriter writer = new PrintWriter(riadok[0], "UTF-8");
                     writer.println("Puzzle number: " + riadok[0]);
                     writer.println("width: " + riadok[1]);
@@ -173,7 +174,7 @@ public class Files_creator {
                     writer.println("AVE_TIME: " + riadok[7]);
                     writer.println("ave_time_count: " + riadok[8]);
                     writer.println("");
-
+                    System.out.println("mam to ");
                     spracuj(riadok[0], writer);
                     //nepodarilo sa : 143177,143330,143516,154753,154875,155386
                     /*System.out.println("puzzle number: " + riadok[0]);
@@ -187,6 +188,15 @@ public class Files_creator {
             }
         }
     }
+    
+    public static void tieto_ries(Path file) throws IOException, Porucha{
+       Charset charset = Charset.forName("ISO-8859-1");
+        List<String> databaza = Files.readAllLines(file, charset);
+        for (String num: databaza){
+           if (Integer.parseInt(num)>154711){
+            Vyries v= new Vyries(Integer.parseInt(num));}
+       }
+    }
 
     /**
      * 
@@ -195,8 +205,8 @@ public class Files_creator {
      * vytiahne nam cisla krizoviek, ktore su dvojfarebne a ulozi ich do suboru classic.txt alebo do trojuholnikove2.txt 
      */
     public static void zisti(Path file) throws IOException {
-        //PrintWriter writer = new PrintWriter("trojuholnikove2", "UTF-8");
-        //  PrintWriter writer2 = new PrintWriter("classic", "UTF-8");
+      //  PrintWriter writer = new PrintWriter("trojuholnikove2", "UTF-8");
+          PrintWriter writer2 = new PrintWriter("zoznam.txt", "UTF-8");
         Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String line : databaza) {
@@ -204,21 +214,21 @@ public class Files_creator {
             } else {
                 line = line.replaceAll("[()]", "");
                 String[] riadok = line.split(",");
-                //System.out.println(Arrays.toString(riadok));
+               // System.out.println(Arrays.toString(riadok));
                 if (riadok[4].equals(" 2")) {
                     if (riadok[3].equals(" 't'")) { //dvojfarebne trojuholnikove
-
-                        //writer.print(riadok[0]);
-                        //writer.print(", ");
+//
+//                        writer.print(riadok[0]);
+//                        writer.print(", ");
+                    } else {
+                    writer2.println(riadok[0]);
+                   // writer2.print(", ");
                     }
                 }
-                /* else {
-                    writer2.print(riadok[0]);
-                    writer2.print(", ");
-                    }*/
+                
             }
         }
         // writer.close();
-        //writer2.close();
+        writer2.close();
     }
 }

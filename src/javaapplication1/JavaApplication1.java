@@ -5,26 +5,11 @@
  */
 package javaapplication1;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.omg.CORBA.IntHolder;
 
 /**
  *
@@ -126,55 +111,25 @@ public class JavaApplication1 {
     
     
     public static void main(String[] args) throws IOException, Porucha {
-        Read_nono krizovka = new Read_nono(305);        
+//        PrintWriter writer = new PrintWriter("filexy.txt", "UTF-8");
+//        Files_creator.spracuj("15442", writer);
+        int cislo = 15442;//337(364)365,(379)
+        //Vyries v = new Vyries(cislo);
+       
+        Path data = Paths.get("puzzles.sql");
+       // Files_creator.tahaj(data);
+//        Files_creator.zisti(data);
+         Path file = Paths.get("zoznam.txt");
+ Files_creator.tieto_ries(file);
+//        
+       /*Read_nono krizovka = new Read_nono(cislo);        
         Inicializacia inic = krizovka.zrob_stlpce();
         //inic.riesenie.get(0).get(2).value = 1;
         
-        //System.out.println(inic.p_stlpcov);
+        System.out.println(cislo);
         Inicializacia inic2 = krizovka.zrob_riadky(inic.riesenie);
         Logical_rules p = new Logical_rules(inic);
-        Logical_rules r = new Logical_rules(inic2);
-        
-       
-                                for (int w=0; w<12; w++){
-                                    System.out.println("    riadky");
-                                    for (int i = 0; i <inic.p_stlpcov; i++){
-                                        r.prienik(i); 
-                                        r.jed_medzery(i);
-                                        r.jednotky(i);
-                                        
-                                        r.lepidlo(i);
-                                        r.update0(i);
-                                        r.vynutenie(i);
-                                        r.update1(i);
-                                        r.update2(i);
-                                        r.medzivypln(i);
-                                       r.nekryjuce(i);
-                                        r.okliestenie(i);
-                                             }
-                                    System.out.println("   stlpce");
-                                     for (int i = 0; i <inic2.p_stlpcov; i++){
-                                        p.prienik(i); 
-                                        p.jed_medzery(i);
-                                        p.jednotky(i);
-                                       
-                                        p.lepidlo(i);
-                                        p.update0(i); 
-                                        p.vynutenie(i);
-                                        p.update1(i);
-                                        p.update2(i);
-                                        p.medzivypln(i);
-                                      p.nekryjuce(i);
-                                        p.okliestenie(i);
-                                             }
-                                     MyInt.toString(inic2.riesenie);
-
-                                }
-                                
-                                Memento mem = new Memento(inic, inic2);
-                                mem.uloz_stav("305");
-   
-   
+        Logical_rules r = new Logical_rules(inic2);*/
 //    System.out.println("riadky1");
 //    for(int i = 0; i<inic.p_stlpcov ;i++){  
 //        r.prienik(i);
@@ -194,6 +149,7 @@ public class JavaApplication1 {
 //    MyInt.toString(inic2.riesenie); 
 //    
 //        System.out.println("stlpce1");
+//while(true){
 //    for(int i = 0; i<inic2.p_stlpcov ;i++){
 //       
 //        p.prienik(i);
@@ -207,8 +163,6 @@ public class JavaApplication1 {
 //         p.prienik(i);
 //         p.jednotky(i);
 //         p.prienik(i);
-//         p.jednotky_za(i);
-//         p.prienik(i);
 //         p.update1(i);
 //         p.medzivypln(i);
 //         p.prienik(i);
@@ -216,22 +170,14 @@ public class JavaApplication1 {
 //         p.prienik(i);
 //         p.okliestenie(i);
 //         p.prienik(i);
-//        //p.nekryjuce(i);
+//         p.nekryjuce(i);
 //         p.vynutenie(i);
 //     }
 //       System.out.println("");
 //           
-//       MyInt.toString(inic2.riesenie);        
-//       
-//    System.out.println("");
 //        System.out.println("riadky2");
 //    for(int i = 0; i<inic.p_stlpcov ;i++){
-//          
-//            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-//            }
-//            System.out.println("");
-//        
+//                
 //   //MyInt.jeden_toString(inic2.riesenie.get(i));
 //        System.out.println("");
 //        r.prienik(i);
@@ -245,8 +191,6 @@ public class JavaApplication1 {
 //         r.prienik(i);
 //         r.jednotky(i);
 //         r.prienik(i);
-//         r.jednotky_za(i);
-//         r.prienik(i);
 //         r.update1(i);
 //         r.medzivypln(i);
 //         r.prienik(i);
@@ -258,11 +202,9 @@ public class JavaApplication1 {
 //        r.prienik(i);
 //         r.vynutenie(i);
 //         r.prienik(i);
-//          for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-//            }
+//         
 //     } 
-//    
+//}
 //    
 //       MyInt.toString(inic2.riesenie);  
 //     System.out.println("stlpce2");
@@ -683,16 +625,20 @@ public class JavaApplication1 {
          p.okliestenie(i);
          p.nekryjuce(i);
          p.vynutenie(i);*/
-        System.out.println("     vysledne riesenie");
-       MyInt.toString(inic2.riesenie);
-       //System.out.println(inic.zadanie.get(0).toString());
-     // System.out.println(Arrays.toString(inic.pole_hodnot[0][0]));
-        for (int i = 0 ; i < inic.p_stlpcov; i++){
-            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
-                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
-            }
-            System.out.println("");
-        }
+   
+   
+//        System.out.println("     vysledne riesenie");
+//       MyInt.toString(inic2.riesenie);
+//       //System.out.println(inic.zadanie.get(0).toString());
+//     // System.out.println(Arrays.toString(inic.pole_hodnot[0][0]));
+//        for (int i = 0 ; i < inic.p_stlpcov; i++){
+//            for( int j = 0; j < inic2.zadanie.get(i).size(); j++){
+//                System.out.print(Arrays.toString(inic2.pole_hodnot[i][j]));
+//            }
+//            System.out.println("");
+//        }
+        
+        
 //        
 //        System.out.println("");
 //        System.out.println("stlpce");
