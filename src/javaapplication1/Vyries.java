@@ -71,20 +71,20 @@ public class Vyries {
                     //r.update0(i);r.update1(i);r.update2(i);
                  //   r.prienik(i);
                     // if(n.CoToDa(i)) {statistika[11]++; sum++;}
-                    if(r.prienik(i)) {statistika[0]++; sum++;  r.update0(i);r.update1(i);r.update2(i);}
-                    if(r.jed_medzery(i)) {statistika[1]++; sum++;  r.update0(i);r.update1(i);r.update2(i);}
-                    if(r.jednotky(i)) {statistika[2]++; sum++;  r.update0(i);r.update1(i);r.update2(i);}
-                   if(r.lepidlo(i)) {statistika[3]++; sum++;  r.update0(i);r.update1(i);r.update2(i);}
-                   // if(r.update0(i)) {statistika[4]++; sum++;}
-                   if(r.vynutenie(i)) {statistika[5]++; sum++; r.update0(i);r.update1(i);r.update2(i);}
-                   // if(r.update1(i)) {statistika[6]++; sum++;}
-                   // if(r.update2(i)) {statistika[7]++; sum++;}
-                    if(r.medzivypln(i)) {statistika[8]++;sum++; r.update0(i);r.update1(i);r.update2(i);}
+                    if(r.prienik(i)) {statistika[0]++; sum++;  }//r.update0(i);r.update1(i);r.update2(i);}
+                    if(r.jed_medzery(i)) {statistika[1]++; sum++; }//  r.update0(i);r.update1(i);r.update2(i);}
+                    if(r.jednotky(i)) {statistika[2]++; sum++;  }// r.update0(i);r.update1(i);r.update2(i);}
+                   if(r.lepidlo(i)) {statistika[3]++; sum++;  }// r.update0(i);r.update1(i);r.update2(i);}
+                    if(r.update0(i)) {statistika[4]++; sum++;}
+                   if(r.vynutenie(i)) {statistika[5]++; sum++; }// r.update0(i);r.update1(i);r.update2(i);}
+                   if(r.update1(i)) {statistika[6]++; sum++;}
+                    if(r.update2(i)) {statistika[7]++; sum++;}
+                    if(r.medzivypln(i)) {statistika[8]++;sum++;  }//r.update0(i);r.update1(i);r.update2(i);}
                    // if(r.nekryjuce(i)){statistika[9]++;sum++; r.update0(i);r.update1(i);r.update2(i);}
-                  if(r.prve_cierne(i)){statistika[9]++;sum++; r.update0(i);r.update1(i);r.update2(i);}
-                  if(r.prekazka(i)){statistika[7]++;sum++; r.update0(i);r.update1(i);r.update2(i);}
-                  if(r.rozdelenie(i)){statistika[6]++;sum++; r.update0(i);r.update1(i);r.update2(i);}
-                    if(r.okliestenie(i)){statistika[10]++;sum++; r.update0(i);r.update1(i);r.update2(i);}
+                  if(r.prve_cierne(i)){statistika[9]++;sum++; }// r.update0(i);r.update1(i);r.update2(i);}
+                  if(r.prekazka(i)){statistika[7]++;sum++; }// r.update0(i);r.update1(i);r.update2(i);}
+                  if(r.rozdelenie(i)){statistika[6]++;sum++; }// r.update0(i);r.update1(i);r.update2(i);}
+                    if(r.okliestenie(i)){statistika[10]++;sum++;  }//r.update0(i);r.update1(i);r.update2(i);}
                     
                     if(check_r(inic2.riesenie.get(i))) us_r[i]=true;
                          } System.out.println(Arrays.toString(statistika));
@@ -95,21 +95,21 @@ public class Vyries {
                      // p.prienik(i);
                   //    if(m.CoToDa(i)) {statistika[11]++; sum++;}
                     //  p.update0(i);  p.update1(i); p.update2(i);
-                    if(p.prienik(i)) {statistika[0]++; sum++; p.update0(i);  p.update1(i); p.update2(i);}
-                    if(p.jed_medzery(i)) {statistika[1]++; sum++; p.update0(i);  p.update1(i); p.update2(i);}
-                   if(p.jednotky(i)) {statistika[2]++; sum++; p.update0(i);  p.update1(i); p.update2(i);}
-                  if(p.lepidlo(i)) {statistika[3]++; sum++; p.update0(i);  p.update1(i); p.update2(i);}
+                    if(p.prienik(i)) {statistika[0]++; sum++; }// p.update0(i);  p.update1(i); p.update2(i);}
+                    if(p.jed_medzery(i)) {statistika[1]++; sum++;  }//p.update0(i);  p.update1(i); p.update2(i);}
+                   if(p.jednotky(i)) {statistika[2]++; sum++;  }//p.update0(i);  p.update1(i); p.update2(i);}
+                  if(p.lepidlo(i)) {statistika[3]++; sum++;  }//p.update0(i);  p.update1(i); p.update2(i);}
 
-                   // if(p.update0(i)) {statistika[4]++; sum++;}
-                    if(p.vynutenie(i)) {statistika[5]++; sum++; p.update0(i);  p.update1(i); p.update2(i);}
-//                    if(p.update1(i)) {statistika[6]++; sum++;}
-//                    if(p.update2(i)) {statistika[7]++; sum++;}
-                  if(p.medzivypln(i)) {statistika[8]++;sum++; p.update0(i);  p.update1(i); p.update2(i);}
+                    if(p.update0(i)) {statistika[4]++; sum++;}
+                    if(p.vynutenie(i)) {statistika[5]++; sum++; }// p.update0(i);  p.update1(i); p.update2(i);}
+                   if(p.update1(i)) {statistika[6]++; sum++;}
+            if(p.update2(i)) {statistika[7]++; sum++;}
+                  if(p.medzivypln(i)) {statistika[8]++;sum++; }// p.update0(i);  p.update1(i); p.update2(i);}
                   //if(p.nekryjuce(i)){statistika[9]++;sum++; p.update0(i);  p.update1(i); p.update2(i);}
-                if(p.prve_cierne(i)){statistika[9]++;sum++; p.update0(i);  p.update1(i); p.update2(i);}
-                if(p.prekazka(i)){statistika[7]++;sum++; p.update0(i);  p.update1(i); p.update2(i);}
-                 if(p.rozdelenie(i)){statistika[6]++;sum++; p.update0(i);  p.update1(i); p.update2(i);}
-                   if(p.okliestenie(i)){statistika[10]++;sum++; p.update0(i);  p.update1(i); p.update2(i);}
+                if(p.prve_cierne(i)){statistika[9]++;sum++;  }//p.update0(i);  p.update1(i); p.update2(i);}
+                if(p.prekazka(i)){statistika[7]++;sum++; }// p.update0(i);  p.update1(i); p.update2(i);}
+                 if(p.rozdelenie(i)){statistika[6]++;sum++; }// p.update0(i);  p.update1(i); p.update2(i);}
+                   if(p.okliestenie(i)){statistika[10]++;sum++;  }//p.update0(i);  p.update1(i); p.update2(i);}
                   if(check_r(inic.riesenie.get(i))) us_s[i]=true;
                          }
                //  MyInt.toString(inic2.riesenie);
@@ -118,8 +118,9 @@ public class Vyries {
                 }while(sum!=0);
 
          
-            //  mem.uloz_stav(cislo, statistika, pocet_cyklov);
+             // mem.uloz_stav(cislo, statistika, pocet_cyklov);
                 boolean dokoncena = check(inic2.riesenie);
+                
     }
     
     public boolean check(ArrayList<ArrayList<MyInt>> riesenie){

@@ -117,7 +117,7 @@ public class JavaApplication1 {
         //Vyries v = new Vyries(cislo);
        
         Path data = Paths.get("puzzles.sql");
-       // Files_creator.tahaj(data);
+     //  Files_creator.tahaj(data);
 //        Files_creator.zisti(data);
          Path file = Paths.get("zoznam.txt");
  Files_creator.tieto_ries(file);

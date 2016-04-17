@@ -5,6 +5,7 @@
  */
 package javaapplication1;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -165,8 +166,12 @@ public class Files_creator {
                 String[] riadok = line.split(",");
                 //System.out.println(Arrays.toString(riadok));
                 int dote = Integer.parseInt(riadok[0]);
-                if ((dote == 15442) && riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
-                    PrintWriter writer = new PrintWriter(riadok[0], "UTF-8");
+                if (dote > 153419 && riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
+                    //String nazov = riadok[0] + ".txt";
+                    String nazov = "nonograms/" + riadok[0] + ".txt";
+                     File f = new File(nazov);
+                     if (!f.exists()){
+                    PrintWriter writer = new PrintWriter(nazov, "UTF-8");
                     writer.println("Puzzle number: " + riadok[0]);
                     writer.println("width: " + riadok[1]);
                     writer.println("height: " + riadok[2]);
@@ -174,7 +179,7 @@ public class Files_creator {
                     writer.println("AVE_TIME: " + riadok[7]);
                     writer.println("ave_time_count: " + riadok[8]);
                     writer.println("");
-                    System.out.println("mam to ");
+                    System.out.println("mam to " + dote);
                     spracuj(riadok[0], writer);
                     //nepodarilo sa : 143177,143330,143516,154753,154875,155386
                     /*System.out.println("puzzle number: " + riadok[0]);
@@ -184,6 +189,7 @@ public class Files_creator {
                 System.out.println("AVE_TIME: " + riadok[7]);
                 System.out.println("ave_time_count: " + riadok[8]);
                System.out.println("");*/
+                }else System.out.println("nevytvorili sme duplikat  " + dote);
                 }
             }
         }
@@ -193,9 +199,9 @@ public class Files_creator {
        Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num: databaza){
-           if (Integer.parseInt(num)>154711){
+         //  if (Integer.parseInt(num)>154711){
             Vyries v= new Vyries(Integer.parseInt(num));}
-       }
+       //}
     }
 
     /**
