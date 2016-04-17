@@ -1,0 +1,29 @@
+Puzzle number: 158999
+width:  10
+height:  9
+solved_count:  1116
+AVE_TIME:  '00:00:46'
+ave_time_count:  357
+
+top_values
+[5]
+[5]
+[5]
+[2, 1]
+[8]
+[1, 5]
+[1, 5]
+[1, 5]
+[2]
+[3]
+
+left_values
+[4]
+[1, 2]
+[1, 1]
+[1, 1]
+[8]
+[8]
+[3, 4]
+[3, 4]
+[8]

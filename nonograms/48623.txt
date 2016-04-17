@@ -1,0 +1,20 @@
+Puzzle number: 48623
+width:  5
+height:  5
+solved_count:  5177
+AVE_TIME:  '00:00:05'
+ave_time_count:  2620
+
+top_values
+[5]
+[2]
+[1]
+[2]
+[5]
+
+left_values
+[1, 1]
+[1, 1]
+[1, 1]
+[2, 2]
+[5]

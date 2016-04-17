@@ -1,0 +1,20 @@
+Puzzle number: 48111
+width:  5
+height:  5
+solved_count:  3628
+AVE_TIME:  '00:00:10'
+ave_time_count:  1956
+
+top_values
+[1]
+[1, 2]
+[1, 2]
+[2]
+[4]
+
+left_values
+[1]
+[5]
+[1]
+[2, 1]
+[2, 1]

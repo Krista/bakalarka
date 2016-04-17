@@ -1,0 +1,20 @@
+Puzzle number: 69001
+width:  5
+height:  5
+solved_count:  4918
+AVE_TIME:  '00:00:06'
+ave_time_count:  1144
+
+top_values
+[]
+[4]
+[2, 1]
+[4]
+[]
+
+left_values
+[3]
+[3]
+[1, 1]
+[3]
+[]

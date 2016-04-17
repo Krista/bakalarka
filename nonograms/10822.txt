@@ -1,0 +1,20 @@
+Puzzle number: 10822
+width:  5
+height:  5
+solved_count:  8900
+AVE_TIME:  '00:00:24'
+ave_time_count:  5357
+
+top_values
+[2]
+[3, 1]
+[2]
+[2]
+[2, 1]
+
+left_values
+[2]
+[2, 1]
+[4]
+[2]
+[1, 1]

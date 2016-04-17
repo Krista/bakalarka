@@ -1,0 +1,20 @@
+Puzzle number: 28331
+width:  5
+height:  5
+solved_count:  8139
+AVE_TIME:  '00:00:06'
+ave_time_count:  4653
+
+top_values
+[5]
+[4]
+[5]
+[4]
+[5]
+
+left_values
+[1, 1, 1]
+[5]
+[5]
+[5]
+[5]

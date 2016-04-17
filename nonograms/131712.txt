@@ -1,0 +1,30 @@
+Puzzle number: 131712
+width:  10
+height:  10
+solved_count:  1988
+AVE_TIME:  '00:01:27'
+ave_time_count:  288
+
+top_values
+[2]
+[5]
+[5, 1]
+[5, 1]
+[5, 1]
+[4, 1]
+[2, 2, 1]
+[7]
+[1, 2]
+[1]
+
+left_values
+[4]
+[6]
+[8]
+[6, 1]
+[4, 1]
+[1, 3]
+[6]
+[1]
+[3]
+[2]

@@ -1,0 +1,20 @@
+Puzzle number: 34614
+width:  5
+height:  5
+solved_count:  4397
+AVE_TIME:  '00:00:08'
+ave_time_count:  2344
+
+top_values
+[5]
+[5]
+[2]
+[1, 3]
+[4]
+
+left_values
+[5]
+[3, 1]
+[2, 2]
+[2, 2]
+[2, 1]

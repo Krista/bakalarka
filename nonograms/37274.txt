@@ -1,0 +1,20 @@
+Puzzle number: 37274
+width:  5
+height:  5
+solved_count:  6105
+AVE_TIME:  '00:00:05'
+ave_time_count:  3129
+
+top_values
+[]
+[2]
+[2]
+[2]
+[]
+
+left_values
+[]
+[1, 1]
+[3]
+[1]
+[]

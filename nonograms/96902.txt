@@ -1,0 +1,28 @@
+Puzzle number: 96902
+width:  10
+height:  8
+solved_count:  5982
+AVE_TIME:  '00:01:15'
+ave_time_count:  743
+
+top_values
+[1]
+[1, 2]
+[2, 3]
+[3, 2]
+[5]
+[5]
+[2, 1]
+[3]
+[2]
+[1]
+
+left_values
+[5]
+[4]
+[3, 2]
+[6]
+[6]
+[3, 1]
+[2, 1]
+[]

@@ -1,0 +1,20 @@
+Puzzle number: 30773
+width:  5
+height:  5
+solved_count:  7920
+AVE_TIME:  '00:00:05'
+ave_time_count:  4203
+
+top_values
+[]
+[1, 1]
+[1]
+[1, 1]
+[]
+
+left_values
+[]
+[1, 1]
+[1]
+[1, 1]
+[]

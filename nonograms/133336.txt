@@ -1,0 +1,20 @@
+Puzzle number: 133336
+width:  5
+height:  5
+solved_count:  1825
+AVE_TIME:  '00:00:42'
+ave_time_count:  405
+
+top_values
+[1]
+[1, 1]
+[1, 1, 1, 1]
+[1, 1, 1]
+[1, 1, 1]
+
+left_values
+[1, 1, 1]
+[1, 1, 1, 1]
+[1, 2, 1]
+[1, 1]
+[]

@@ -1,0 +1,20 @@
+Puzzle number: 33330
+width:  5
+height:  5
+solved_count:  9510
+AVE_TIME:  '00:00:04'
+ave_time_count:  4582
+
+top_values
+[1]
+[1]
+[1]
+[2]
+[3]
+
+left_values
+[]
+[]
+[5]
+[2]
+[1]

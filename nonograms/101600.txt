@@ -1,0 +1,20 @@
+Puzzle number: 101600
+width:  5
+height:  5
+solved_count:  3797
+AVE_TIME:  '00:00:39'
+ave_time_count:  384
+
+top_values
+[1]
+[5]
+[1, 1, 1]
+[1, 1, 1]
+[1, 1, 1]
+
+left_values
+[1]
+[1, 1, 1]
+[1, 1, 1, 1]
+[1, 2, 1, 1]
+[1, 1]

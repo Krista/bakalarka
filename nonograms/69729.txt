@@ -1,0 +1,20 @@
+Puzzle number: 69729
+width:  5
+height:  5
+solved_count:  4456
+AVE_TIME:  '00:00:12'
+ave_time_count:  363
+
+top_values
+[1]
+[3]
+[1, 1]
+[1]
+[1, 3]
+
+left_values
+[3, 1]
+[1, 1]
+[1, 1]
+[1, 1]
+[1]

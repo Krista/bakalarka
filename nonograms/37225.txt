@@ -1,0 +1,20 @@
+Puzzle number: 37225
+width:  5
+height:  5
+solved_count:  3431
+AVE_TIME:  '00:00:22'
+ave_time_count:  1870
+
+top_values
+[1]
+[2]
+[3]
+[2, 1]
+[1, 1]
+
+left_values
+[1]
+[2]
+[4]
+[2]
+[1, 1]

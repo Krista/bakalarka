@@ -1,0 +1,26 @@
+Puzzle number: 81149
+width:  8
+height:  8
+solved_count:  5059
+AVE_TIME:  '00:00:27'
+ave_time_count:  523
+
+top_values
+[3]
+[1, 2]
+[1, 1]
+[1, 2]
+[4, 2]
+[1, 1]
+[1, 2]
+[8]
+
+left_values
+[4]
+[1, 1]
+[1, 1]
+[2, 1]
+[2, 1]
+[1, 1]
+[8]
+[2, 2, 2]

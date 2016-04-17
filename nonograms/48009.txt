@@ -1,0 +1,20 @@
+Puzzle number: 48009
+width:  5
+height:  5
+solved_count:  3401
+AVE_TIME:  '00:00:14'
+ave_time_count:  1856
+
+top_values
+[1, 3]
+[1, 2]
+[1, 1, 1]
+[2, 1]
+[3, 1]
+
+left_values
+[1, 3]
+[1, 2]
+[1, 1, 1]
+[2, 1]
+[3, 1]

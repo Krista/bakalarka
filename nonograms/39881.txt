@@ -1,0 +1,20 @@
+Puzzle number: 39881
+width:  5
+height:  5
+solved_count:  3808
+AVE_TIME:  '00:00:10'
+ave_time_count:  2219
+
+top_values
+[5]
+[]
+[4]
+[1, 1]
+[]
+
+left_values
+[1, 1]
+[1, 1]
+[1, 1]
+[1, 2]
+[1, 1]

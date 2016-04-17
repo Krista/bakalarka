@@ -1,0 +1,20 @@
+Puzzle number: 25030
+width:  5
+height:  5
+solved_count:  7938
+AVE_TIME:  '00:00:09'
+ave_time_count:  4717
+
+top_values
+[1]
+[2, 1]
+[5]
+[2, 1]
+[1]
+
+left_values
+[1]
+[3]
+[5]
+[1]
+[3]

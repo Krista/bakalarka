@@ -1,0 +1,20 @@
+Puzzle number: 33823
+width:  5
+height:  5
+solved_count:  4266
+AVE_TIME:  '00:00:09'
+ave_time_count:  2247
+
+top_values
+[1, 3]
+[2]
+[2, 2]
+[1, 3]
+[]
+
+left_values
+[4]
+[2]
+[1, 1]
+[1, 2]
+[1, 2]

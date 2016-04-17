@@ -1,0 +1,20 @@
+Puzzle number: 37709
+width:  5
+height:  5
+solved_count:  3353
+AVE_TIME:  '00:00:19'
+ave_time_count:  1819
+
+top_values
+[1]
+[1]
+[1, 1]
+[4]
+[1, 2]
+
+left_values
+[1, 1]
+[1, 1]
+[4]
+[2]
+[1]

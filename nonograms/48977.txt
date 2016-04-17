@@ -1,0 +1,20 @@
+Puzzle number: 48977
+width:  5
+height:  5
+solved_count:  3895
+AVE_TIME:  '00:00:09'
+ave_time_count:  2120
+
+top_values
+[5]
+[2, 2]
+[1, 1]
+[1, 3]
+[1, 3]
+
+left_values
+[5]
+[2]
+[1, 3]
+[2, 2]
+[2, 2]

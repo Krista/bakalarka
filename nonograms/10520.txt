@@ -1,0 +1,30 @@
+Puzzle number: 10520
+width:  10
+height:  10
+solved_count:  10429
+AVE_TIME:  '00:01:19'
+ave_time_count:  6036
+
+top_values
+[1]
+[2]
+[3]
+[3]
+[5]
+[5]
+[6]
+[1, 6]
+[2]
+[1]
+
+left_values
+[]
+[3]
+[5]
+[7]
+[8]
+[4]
+[1, 3]
+[3]
+[1]
+[]

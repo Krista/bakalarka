@@ -1,0 +1,20 @@
+Puzzle number: 47813
+width:  5
+height:  5
+solved_count:  3711
+AVE_TIME:  '00:00:13'
+ave_time_count:  2012
+
+top_values
+[1]
+[1, 1]
+[1]
+[2]
+[1]
+
+left_values
+[]
+[]
+[1]
+[1, 2]
+[1, 2]

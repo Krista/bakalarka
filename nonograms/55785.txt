@@ -1,0 +1,20 @@
+Puzzle number: 55785
+width:  5
+height:  5
+solved_count:  3712
+AVE_TIME:  '00:00:26'
+ave_time_count:  1892
+
+top_values
+[2]
+[2]
+[1, 1]
+[2, 1]
+[2]
+
+left_values
+[1]
+[1, 2]
+[1, 1]
+[2, 1]
+[2]

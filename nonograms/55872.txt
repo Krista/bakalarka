@@ -1,0 +1,20 @@
+Puzzle number: 55872
+width:  5
+height:  5
+solved_count:  4525
+AVE_TIME:  '00:00:07'
+ave_time_count:  2312
+
+top_values
+[4]
+[1]
+[3]
+[4]
+[2]
+
+left_values
+[]
+[1, 1]
+[1, 2]
+[1, 3]
+[5]

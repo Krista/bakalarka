@@ -1,0 +1,20 @@
+Puzzle number: 50229
+width:  5
+height:  5
+solved_count:  4048
+AVE_TIME:  '00:00:10'
+ave_time_count:  2268
+
+top_values
+[1]
+[2, 2]
+[5]
+[2]
+[1, 3]
+
+left_values
+[5]
+[3]
+[1, 1]
+[2, 1]
+[2, 1]

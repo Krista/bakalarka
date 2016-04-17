@@ -1,0 +1,20 @@
+Puzzle number: 36826
+width:  5
+height:  5
+solved_count:  7721
+AVE_TIME:  '00:00:04'
+ave_time_count:  3840
+
+top_values
+[3]
+[3]
+[3]
+[3]
+[5]
+
+left_values
+[5]
+[5]
+[5]
+[1]
+[1]

@@ -1,0 +1,20 @@
+Puzzle number: 28039
+width:  5
+height:  5
+solved_count:  8142
+AVE_TIME:  '00:00:07'
+ave_time_count:  4831
+
+top_values
+[3]
+[5]
+[1, 3]
+[5]
+[3]
+
+left_values
+[3]
+[1, 1]
+[5]
+[5]
+[5]

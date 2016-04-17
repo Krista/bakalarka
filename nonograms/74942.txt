@@ -1,0 +1,20 @@
+Puzzle number: 74942
+width:  5
+height:  5
+solved_count:  5109
+AVE_TIME:  '00:00:08'
+ave_time_count:  622
+
+top_values
+[5]
+[4]
+[4]
+[3]
+[1]
+
+left_values
+[5]
+[4]
+[4]
+[3]
+[1]

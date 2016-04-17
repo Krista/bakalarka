@@ -1,0 +1,23 @@
+Puzzle number: 100931
+width:  6
+height:  7
+solved_count:  6612
+AVE_TIME:  '00:00:36'
+ave_time_count:  613
+
+top_values
+[2]
+[3]
+[1, 4]
+[6]
+[2]
+[5]
+
+left_values
+[1]
+[3]
+[2, 1, 1]
+[4, 1]
+[4]
+[4]
+[1, 1]

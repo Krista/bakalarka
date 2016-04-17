@@ -1,0 +1,20 @@
+Puzzle number: 121672
+width:  5
+height:  5
+solved_count:  3278
+AVE_TIME:  '00:00:06'
+ave_time_count:  510
+
+top_values
+[5]
+[4]
+[4]
+[4]
+[4]
+
+left_values
+[5]
+[5]
+[5]
+[5]
+[1]

@@ -1,0 +1,20 @@
+Puzzle number: 25082
+width:  5
+height:  5
+solved_count:  7495
+AVE_TIME:  '00:00:14'
+ave_time_count:  4455
+
+top_values
+[1, 1]
+[5]
+[3]
+[4]
+[2, 2]
+
+left_values
+[2, 2]
+[4]
+[3]
+[5]
+[1, 1]

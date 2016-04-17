@@ -1,0 +1,20 @@
+Puzzle number: 62842
+width:  5
+height:  5
+solved_count:  3705
+AVE_TIME:  '00:00:16'
+ave_time_count:  1868
+
+top_values
+[5]
+[2]
+[1, 1]
+[1, 1]
+[4]
+
+left_values
+[2, 1]
+[3, 1]
+[1, 1]
+[1, 1, 1]
+[1, 2]

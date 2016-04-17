@@ -1,0 +1,20 @@
+Puzzle number: 70961
+width:  5
+height:  5
+solved_count:  4733
+AVE_TIME:  '00:00:07'
+ave_time_count:  501
+
+top_values
+[5]
+[1, 2]
+[1]
+[1, 2]
+[5]
+
+left_values
+[5]
+[1, 1]
+[1, 1]
+[2, 2]
+[2, 2]

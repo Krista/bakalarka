@@ -1,0 +1,20 @@
+Puzzle number: 49139
+width:  5
+height:  5
+solved_count:  4660
+AVE_TIME:  '00:00:07'
+ave_time_count:  2534
+
+top_values
+[1]
+[3]
+[1]
+[3]
+[1]
+
+left_values
+[]
+[3]
+[2, 2]
+[1, 1]
+[]

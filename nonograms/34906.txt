@@ -1,0 +1,20 @@
+Puzzle number: 34906
+width:  5
+height:  5
+solved_count:  3573
+AVE_TIME:  '00:00:16'
+ave_time_count:  1905
+
+top_values
+[3]
+[2]
+[3]
+[2]
+[1]
+
+left_values
+[]
+[1, 2]
+[4]
+[1, 1]
+[1, 1]

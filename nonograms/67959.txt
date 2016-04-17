@@ -1,0 +1,20 @@
+Puzzle number: 67959
+width:  5
+height:  5
+solved_count:  3524
+AVE_TIME:  '00:00:11'
+ave_time_count:  1243
+
+top_values
+[2]
+[1, 2]
+[1, 1]
+[1, 2]
+[2]
+
+left_values
+[5]
+[1, 1]
+[1, 1]
+[1, 1]
+[1]

@@ -1,0 +1,20 @@
+Puzzle number: 52701
+width:  5
+height:  5
+solved_count:  4871
+AVE_TIME:  '00:00:09'
+ave_time_count:  2297
+
+top_values
+[1]
+[1, 2]
+[3]
+[1, 2]
+[1]
+
+left_values
+[]
+[3]
+[1]
+[5]
+[1, 1]

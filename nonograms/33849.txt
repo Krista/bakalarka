@@ -1,0 +1,20 @@
+Puzzle number: 33849
+width:  5
+height:  5
+solved_count:  8271
+AVE_TIME:  '00:00:04'
+ave_time_count:  4006
+
+top_values
+[4]
+[1]
+[1]
+[]
+[]
+
+left_values
+[]
+[2]
+[1, 1]
+[1]
+[1]

@@ -1,0 +1,20 @@
+Puzzle number: 91509
+width:  5
+height:  5
+solved_count:  4189
+AVE_TIME:  '00:00:20'
+ave_time_count:  562
+
+top_values
+[1]
+[1, 1]
+[1, 1, 1]
+[1, 1]
+[3]
+
+left_values
+[2]
+[1, 1]
+[1, 1, 1]
+[1, 1]
+[2]

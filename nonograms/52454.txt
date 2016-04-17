@@ -1,0 +1,20 @@
+Puzzle number: 52454
+width:  5
+height:  5
+solved_count:  3704
+AVE_TIME:  '00:00:21'
+ave_time_count:  2053
+
+top_values
+[4]
+[1]
+[2]
+[3]
+[1, 1]
+
+left_values
+[1]
+[4]
+[1, 2]
+[1, 2]
+[1]

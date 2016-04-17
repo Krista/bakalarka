@@ -1,0 +1,20 @@
+Puzzle number: 48696
+width:  5
+height:  5
+solved_count:  3636
+AVE_TIME:  '00:00:18'
+ave_time_count:  1979
+
+top_values
+[2]
+[1, 3]
+[1, 1]
+[1]
+[1, 1]
+
+left_values
+[1, 1]
+[1]
+[1, 1]
+[3, 1]
+[2]

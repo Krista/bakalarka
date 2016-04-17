@@ -1,0 +1,20 @@
+Puzzle number: 65176
+width:  5
+height:  5
+solved_count:  3552
+AVE_TIME:  '00:00:20'
+ave_time_count:  1568
+
+top_values
+[3]
+[2, 1]
+[1, 2]
+[1, 1, 1]
+[3]
+
+left_values
+[3]
+[2, 1]
+[1, 2]
+[1, 1, 1]
+[3]

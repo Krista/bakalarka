@@ -1,0 +1,20 @@
+Puzzle number: 75892
+width:  5
+height:  5
+solved_count:  4107
+AVE_TIME:  '00:00:15'
+ave_time_count:  481
+
+top_values
+[1, 2]
+[3]
+[2, 2]
+[1, 1]
+[2]
+
+left_values
+[2]
+[3]
+[1]
+[5]
+[1, 1, 1]

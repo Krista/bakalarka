@@ -1,0 +1,30 @@
+Puzzle number: 133776
+width:  10
+height:  10
+solved_count:  2934
+AVE_TIME:  '00:01:08'
+ave_time_count:  609
+
+top_values
+[2]
+[4]
+[5, 3]
+[3, 2, 2]
+[2, 2, 4]
+[9]
+[1, 3]
+[5]
+[3]
+[]
+
+left_values
+[6]
+[5, 2]
+[4, 4]
+[3, 5]
+[7]
+[1, 1]
+[1, 2]
+[1, 2]
+[4]
+[2]

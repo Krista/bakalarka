@@ -1,0 +1,20 @@
+Puzzle number: 128275
+width:  5
+height:  5
+solved_count:  3481
+AVE_TIME:  '00:00:12'
+ave_time_count:  636
+
+top_values
+[1, 1]
+[1, 2]
+[4]
+[3]
+[5]
+
+left_values
+[5]
+[3]
+[4]
+[2, 1]
+[1, 1]

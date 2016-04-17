@@ -1,0 +1,20 @@
+Puzzle number: 72916
+width:  5
+height:  5
+solved_count:  4059
+AVE_TIME:  '00:00:11'
+ave_time_count:  538
+
+top_values
+[1, 1]
+[4]
+[1, 2]
+[4]
+[1, 1]
+
+left_values
+[1]
+[2, 2]
+[3]
+[3]
+[2, 2]

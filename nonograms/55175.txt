@@ -1,0 +1,26 @@
+Puzzle number: 55175
+width:  8
+height:  8
+solved_count:  5953
+AVE_TIME:  '00:00:48'
+ave_time_count:  2831
+
+top_values
+[5]
+[1, 5]
+[2, 4]
+[3, 2]
+[3, 2]
+[2, 4]
+[1, 5]
+[5]
+
+left_values
+[1, 1]
+[1, 1, 1, 1]
+[8]
+[2, 2, 2]
+[8]
+[3, 3]
+[6]
+[4]

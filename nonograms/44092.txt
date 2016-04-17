@@ -1,0 +1,20 @@
+Puzzle number: 44092
+width:  5
+height:  5
+solved_count:  3970
+AVE_TIME:  '00:00:09'
+ave_time_count:  2268
+
+top_values
+[2]
+[1, 3]
+[1, 1, 1]
+[1, 1, 1]
+[5]
+
+left_values
+[4]
+[1, 1]
+[5]
+[1, 1]
+[4]

@@ -1,0 +1,20 @@
+Puzzle number: 135823
+width:  5
+height:  5
+solved_count:  2542
+AVE_TIME:  '00:00:14'
+ave_time_count:  502
+
+top_values
+[3, 1]
+[2, 2]
+[1, 1]
+[2]
+[2, 2]
+
+left_values
+[3, 1]
+[2, 1]
+[1, 1]
+[1, 2]
+[3, 1]

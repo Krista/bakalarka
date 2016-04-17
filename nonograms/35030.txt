@@ -1,0 +1,20 @@
+Puzzle number: 35030
+width:  5
+height:  5
+solved_count:  4426
+AVE_TIME:  '00:00:07'
+ave_time_count:  2297
+
+top_values
+[1, 1]
+[2, 2]
+[]
+[2, 2]
+[1, 1]
+
+left_values
+[1, 1]
+[2, 2]
+[]
+[2, 2]
+[1, 1]

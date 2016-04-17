@@ -1,0 +1,20 @@
+Puzzle number: 136382
+width:  5
+height:  5
+solved_count:  2975
+AVE_TIME:  '00:00:06'
+ave_time_count:  442
+
+top_values
+[5]
+[2]
+[1]
+[2]
+[5]
+
+left_values
+[5]
+[2, 2]
+[1, 1]
+[1, 1]
+[1, 1]

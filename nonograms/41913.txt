@@ -1,0 +1,20 @@
+Puzzle number: 41913
+width:  5
+height:  5
+solved_count:  4481
+AVE_TIME:  '00:00:07'
+ave_time_count:  2477
+
+top_values
+[1]
+[1, 2]
+[4]
+[2]
+[]
+
+left_values
+[1]
+[1]
+[1]
+[3]
+[4]

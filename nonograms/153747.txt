@@ -1,0 +1,21 @@
+Puzzle number: 153747
+width:  6
+height:  5
+solved_count:  1124
+AVE_TIME:  '00:00:36'
+ave_time_count:  281
+
+top_values
+[1, 1, 1, 2]
+[1, 1, 1]
+[1, 1]
+[1, 1]
+[1, 1, 1]
+[1, 1, 1, 2]
+
+left_values
+[1, 1, 1, 1, 1, 1]
+[1, 1]
+[1, 1]
+[1, 1, 1, 1]
+[2, 1, 1, 2]

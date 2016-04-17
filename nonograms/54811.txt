@@ -1,0 +1,20 @@
+Puzzle number: 54811
+width:  5
+height:  5
+solved_count:  4198
+AVE_TIME:  '00:00:12'
+ave_time_count:  2456
+
+top_values
+[3]
+[1]
+[1, 1]
+[5]
+[1]
+
+left_values
+[1]
+[1, 2]
+[2, 2]
+[1, 2]
+[1]

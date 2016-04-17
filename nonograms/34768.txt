@@ -1,0 +1,20 @@
+Puzzle number: 34768
+width:  5
+height:  5
+solved_count:  4429
+AVE_TIME:  '00:00:18'
+ave_time_count:  2108
+
+top_values
+[1, 1, 1]
+[2]
+[4]
+[2]
+[1]
+
+left_values
+[1]
+[2]
+[4]
+[3]
+[1, 1]

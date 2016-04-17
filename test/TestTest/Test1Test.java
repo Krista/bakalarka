@@ -37,11 +37,13 @@ public class Test1Test {
         list.add(new ArrayList(Arrays.asList(3, 3, 3, 1)));
         list.add(new ArrayList(Arrays.asList(5, 5)));
         list.add(new ArrayList(Arrays.asList(6, 4)));
+        
         list.add(new ArrayList(Arrays.asList(8, 16)));
         list.add(new ArrayList(Arrays.asList(8, 6)));
         list.add(new ArrayList(Arrays.asList(9, 5)));
         list.add(new ArrayList(Arrays.asList(10, 5)));
         list.add(new ArrayList(Arrays.asList(3, 3, 1, 5, 3)));
+        
         list.add(new ArrayList(Arrays.asList(3, 3, 1, 5, 3)));
         list.add(new ArrayList(Arrays.asList(1, 1, 3, 5, 1)));
         list.add(new ArrayList(Arrays.asList(1, 1, 2, 2, 5, 1, 3)));
@@ -347,6 +349,7 @@ public class Test1Test {
         int[] l = {3,3,3,3,3, 0,1,3,3,3, 3,3,3,0,3, 3,3,3,3,3, 3,3,1,0,3};
         moje_riesenie.add(new ArrayList(MyInt.asList(l)));
         rules.jednotky(11);
+     //   MyInt.jeden_toString(inic.riesenie.get(11));
         assertTrue(moje_riesenie.get(11).equals(inic.riesenie.get(11)));
        
         
@@ -391,7 +394,7 @@ public class Test1Test {
        int[] b = {3,1,3,3,3, 3,3,3,3,3, 3,3,3,3,3, 3,3,3,3,3, 3,3,3,1,3};
           moje_riesenie.add(new ArrayList(MyInt.asList(b)));
        rules.jednotky(13);
-       rules.jednotky_za(13);
+      
        rules.medzivypln(13);
        rules.nekryjuce(0);
        rules.okliestenie(0);

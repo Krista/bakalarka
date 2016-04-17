@@ -1,0 +1,20 @@
+Puzzle number: 58704
+width:  5
+height:  5
+solved_count:  4891
+AVE_TIME:  '00:00:06'
+ave_time_count:  2376
+
+top_values
+[1]
+[5]
+[3, 1]
+[5]
+[1]
+
+left_values
+[3]
+[3]
+[3]
+[1, 1]
+[5]

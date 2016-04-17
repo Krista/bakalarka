@@ -1,0 +1,30 @@
+Puzzle number: 57664
+width:  10
+height:  10
+solved_count:  6312
+AVE_TIME:  '00:01:21'
+ave_time_count:  2664
+
+top_values
+[4]
+[4]
+[4]
+[4]
+[4]
+[4]
+[10]
+[1, 7]
+[2]
+[1]
+
+left_values
+[2]
+[1, 1]
+[4]
+[2]
+[1, 2]
+[2, 2]
+[8]
+[8]
+[7]
+[5]

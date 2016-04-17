@@ -1,0 +1,20 @@
+Puzzle number: 46260
+width:  5
+height:  5
+solved_count:  4355
+AVE_TIME:  '00:00:08'
+ave_time_count:  2532
+
+top_values
+[1, 1]
+[1, 1]
+[1, 2]
+[1, 1]
+[1, 1]
+
+left_values
+[5]
+[]
+[3]
+[1, 1, 1]
+[]

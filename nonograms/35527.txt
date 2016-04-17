@@ -1,0 +1,20 @@
+Puzzle number: 35527
+width:  5
+height:  5
+solved_count:  3577
+AVE_TIME:  '00:00:25'
+ave_time_count:  1891
+
+top_values
+[2]
+[1, 1]
+[2, 1]
+[1, 2]
+[1]
+
+left_values
+[3]
+[2]
+[1, 1]
+[1, 1]
+[2]

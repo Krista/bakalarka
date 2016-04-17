@@ -1,0 +1,27 @@
+Puzzle number: 159073
+width:  7
+height:  10
+solved_count:  1266
+AVE_TIME:  '00:00:23'
+ave_time_count:  311
+
+top_values
+[6, 1]
+[4, 1]
+[4, 1]
+[7]
+[4, 1]
+[4, 1]
+[6, 1]
+
+left_values
+[1, 1]
+[1, 1]
+[1, 1]
+[7]
+[7]
+[7]
+[5]
+[1]
+[1]
+[7]

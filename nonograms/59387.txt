@@ -1,0 +1,20 @@
+Puzzle number: 59387
+width:  5
+height:  5
+solved_count:  6269
+AVE_TIME:  '00:00:04'
+ave_time_count:  2320
+
+top_values
+[2]
+[3]
+[2]
+[3]
+[2]
+
+left_values
+[]
+[1, 1]
+[5]
+[5]
+[]

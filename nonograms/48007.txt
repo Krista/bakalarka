@@ -1,0 +1,20 @@
+Puzzle number: 48007
+width:  5
+height:  5
+solved_count:  3556
+AVE_TIME:  '00:00:12'
+ave_time_count:  1902
+
+top_values
+[1, 2]
+[1, 1]
+[2]
+[1, 1]
+[1, 2]
+
+left_values
+[1, 1]
+[1, 1]
+[1, 1, 1]
+[1, 1, 1]
+[1, 1]

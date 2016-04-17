@@ -1,0 +1,20 @@
+Puzzle number: 42291
+width:  5
+height:  5
+solved_count:  3714
+AVE_TIME:  '00:00:12'
+ave_time_count:  2128
+
+top_values
+[1, 2]
+[5]
+[3, 1]
+[4]
+[3, 1]
+
+left_values
+[3, 1]
+[4]
+[5]
+[2, 1]
+[4]

@@ -1,0 +1,20 @@
+Puzzle number: 39309
+width:  5
+height:  5
+solved_count:  3684
+AVE_TIME:  '00:00:11'
+ave_time_count:  2073
+
+top_values
+[3]
+[2, 2]
+[3]
+[2, 2]
+[3]
+
+left_values
+[1, 1]
+[2, 2]
+[1, 1, 1]
+[5]
+[3]

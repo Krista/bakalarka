@@ -1,0 +1,26 @@
+ public void update2(int num) {// treba predtym spravit predchadzajuce updaty
+        int indicia, dlzka_seg;
+        int x = 0;
+        ArrayList<ArrayList<Integer>> sek;
+        for (int i = 0; i < zadanie.get(num).size(); i++) {
+            indicia = zadanie.get(num).get(i);
+            sek = seg_cierne(num, i);
+            int pocet = zadanie.get(num).size() - 1;
+            for (int j = 0; j < sek.size(); j++) {
+                dlzka_seg = sek.get(j).get(1) - sek.get(j).get(0) + 1;
+                if (dlzka_seg > indicia) { // toto sa robi v RULE 3.2 - blbost, tam sa updatuju prilis kratke segmenty
+                    ArrayList<Integer> cisla = najdi_cisla(num, sek.get(j).get(0));
+                    if (sek.get(j).get(0) - start.pole_hodnot[num][i][0] - 1 < indicia
+                            || (cisla.size() == 2 && (i == 0 || cisla.get(1).equals(zadanie.get(num).get(i - 1))))) {//cize sa indicia dopredu nezmesti
+                        System.out.println("update2a riadok " + num + " indicia "+ i);
+                        start.pole_hodnot[num][i][0] = sek.get(j).get(1) + 2;
+                    } else if (start.pole_hodnot[num][i][1] - sek.get(j).get(1) - 1 < indicia
+                            || (cisla.size() == 2 && (i == pocet || cisla.get(1).equals(zadanie.get(num).get(i + 1))))) {
+                        System.out.println("update2b riadok " + num+ " indicia "+ i);
+                        start.pole_hodnot[num][i][1] = sek.get(j).get(0) - 2;
+                        break;//vdaka tomu nemusime prechadzat z oboch stran, pri prvom nastaveni E koncime
+                    }
+                }
+            }
+        }
+    }

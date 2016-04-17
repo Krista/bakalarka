@@ -1,0 +1,20 @@
+Puzzle number: 62096
+width:  5
+height:  5
+solved_count:  3672
+AVE_TIME:  '00:00:10'
+ave_time_count:  1747
+
+top_values
+[5]
+[]
+[2, 1]
+[1, 1]
+[2, 1]
+
+left_values
+[1, 1]
+[1, 1, 1]
+[1, 1, 1]
+[1, 1]
+[1, 1, 1]

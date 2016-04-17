@@ -1,0 +1,20 @@
+Puzzle number: 136208
+width:  5
+height:  5
+solved_count:  2987
+AVE_TIME:  '00:00:07'
+ave_time_count:  476
+
+top_values
+[5]
+[5]
+[3]
+[3]
+[1]
+
+left_values
+[2]
+[4]
+[5]
+[4]
+[2]

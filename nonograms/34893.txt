@@ -1,0 +1,20 @@
+Puzzle number: 34893
+width:  5
+height:  5
+solved_count:  4336
+AVE_TIME:  '00:00:08'
+ave_time_count:  2270
+
+top_values
+[1]
+[2, 1]
+[4]
+[2, 1]
+[1]
+
+left_values
+[3]
+[5]
+[1]
+[1]
+[1, 1]

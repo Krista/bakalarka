@@ -50,7 +50,7 @@ public class UpdateTest {
         list.add(new ArrayList(Arrays.asList(1, 2, 1, 2)));
         
         list.add(new ArrayList(Arrays.asList(2)));
-       
+        list.add(new ArrayList(Arrays.asList(2, 1, 1, 2)));
 
         this.inic = new Inicializacia(list, 20);
 
@@ -137,6 +137,10 @@ public class UpdateTest {
            inic.riesenie.get(15).get(17).value = 1;
             inic.riesenie.get(15).get(18).value = 1;
             inic.riesenie.get(15).get(19).value = 0;
+             
+            
+            inic.riesenie.get(16).get(9).value = 1;
+            inic.riesenie.get(16).get(10).value = 0;
             
     }
     
@@ -149,17 +153,19 @@ public class UpdateTest {
       int[][] pom2 = {{0,7},{6,12},{16,18}};
       int[][] pom3 = {{0,6},{6,9},{9,16}};
       int[][] pom4 = {{1,1},{3,6},{8,8},{10,19}};
+      int[][] pom16 = {{0,12},{3,14},{5,16},{7,19}};
       
       for (int i = 0; i<5; i++){
           rules.update0(i);
       }
+     rules.update0(16);
      
       assertTrue(Arrays.deepEquals(pom0,inic.pole_hodnot[0]));
       assertTrue(Arrays.deepEquals(pom1,inic.pole_hodnot[1]));
       assertTrue(Arrays.deepEquals(pom2,inic.pole_hodnot[2]));
       assertTrue(Arrays.deepEquals(pom3,inic.pole_hodnot[3]));
       assertTrue(Arrays.deepEquals(pom4,inic.pole_hodnot[4]));
-     
+     assertTrue(Arrays.deepEquals(pom16,inic.pole_hodnot[16]));
   }
   
   @Test
@@ -169,12 +175,17 @@ public class UpdateTest {
       int[][] pom7 = {{0,0},{3,7},{8,10},{11,16}};
       int[][] pom8 = {{0,2},{3,15}};
       int[][] pom9 = {{8,12}};
-      //int[][] pom14 = {{1,12}, {3,12}, {6,16},{9,19}};
+      int[][] pom16 = {{0,12},{3,14},{5,16},{7,19}};
       
       for (int i = 5; i<10; i++){
           rules.update1(i);
       }
-      rules.update1(14);
+      rules.update1(16);
+      
+     System.out.print(Arrays.toString(inic.pole_hodnot[16][0]));
+     System.out.print(Arrays.toString(inic.pole_hodnot[16][1]));
+     System.out.print(Arrays.toString(inic.pole_hodnot[16][2]));
+        System.out.print(Arrays.toString(inic.pole_hodnot[16][3]));
 //     System.out.print(Arrays.toString(inic.pole_hodnot[14][0]));
 //     System.out.print(Arrays.toString(inic.pole_hodnot[14][1]));
 //     System.out.print(Arrays.toString(inic.pole_hodnot[14][2]));
@@ -184,7 +195,7 @@ public class UpdateTest {
       assertTrue(Arrays.deepEquals(pom7,inic.pole_hodnot[7]));
       assertTrue(Arrays.deepEquals(pom8,inic.pole_hodnot[8]));
       assertTrue(Arrays.deepEquals(pom9,inic.pole_hodnot[9]));
-     //assertTrue(Arrays.deepEquals(pom14,inic.pole_hodnot[14]));
+     assertTrue(Arrays.deepEquals(pom16,inic.pole_hodnot[16]));
   }
   
   @Test
@@ -195,20 +206,21 @@ public class UpdateTest {
       int[][] pom13 = {{0,9},{4,16},{14,19}};
       int[][] pom14 = {{1,1},{2,12}, {5,9},{9,19}};
       int[][] pom15 = {{0,8},{3,11},{6,15},{10,18}};
+      int[][] pom16 = {{0,12},{3,14},{5,16},{7,19}};
       
       for (int i = 10; i<16; i++){
       rules.update2(i);
       }
-  System.out.print(Arrays.toString(inic.pole_hodnot[14][0]));
-     System.out.print(Arrays.toString(inic.pole_hodnot[14][1]));
-     System.out.print(Arrays.toString(inic.pole_hodnot[14][2]));
-   System.out.print(Arrays.toString(inic.pole_hodnot[14][3]));
+  System.out.print(Arrays.toString(inic.pole_hodnot[16][0]));
+     System.out.print(Arrays.toString(inic.pole_hodnot[16][1]));
+     System.out.print(Arrays.toString(inic.pole_hodnot[16][2]));
+   System.out.print(Arrays.toString(inic.pole_hodnot[16][3]));
      
       assertTrue(Arrays.deepEquals(pom10,inic.pole_hodnot[10]));
       assertTrue(Arrays.deepEquals(pom11,inic.pole_hodnot[11]));
       assertTrue(Arrays.deepEquals(pom12,inic.pole_hodnot[12]));
       assertTrue(Arrays.deepEquals(pom13,inic.pole_hodnot[13]));
-     //assertTrue(Arrays.deepEquals(pom14,inic.pole_hodnot[14]));
+     assertTrue(Arrays.deepEquals(pom16,inic.pole_hodnot[16]));
       assertTrue(Arrays.deepEquals(pom15,inic.pole_hodnot[15]));
      
   }

@@ -1,0 +1,20 @@
+Puzzle number: 10121
+width:  5
+height:  5
+solved_count:  12080
+AVE_TIME:  '00:00:05'
+ave_time_count:  6788
+
+top_values
+[1, 1]
+[5]
+[1, 1]
+[5]
+[1, 1]
+
+left_values
+[5]
+[1, 1]
+[1, 1]
+[1, 1]
+[5]

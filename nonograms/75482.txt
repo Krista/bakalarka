@@ -1,0 +1,20 @@
+Puzzle number: 75482
+width:  5
+height:  5
+solved_count:  4059
+AVE_TIME:  '00:00:15'
+ave_time_count:  458
+
+top_values
+[3]
+[1, 2]
+[1]
+[2]
+[1]
+
+left_values
+[2]
+[1]
+[1, 1, 1]
+[1, 1]
+[1, 1]

@@ -1,0 +1,20 @@
+Puzzle number: 61068
+width:  5
+height:  5
+solved_count:  4512
+AVE_TIME:  '00:00:07'
+ave_time_count:  2099
+
+top_values
+[3]
+[3]
+[1, 1]
+[4]
+[3]
+
+left_values
+[]
+[1]
+[5]
+[2, 2]
+[5]

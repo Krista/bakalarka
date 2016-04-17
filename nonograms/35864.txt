@@ -1,0 +1,20 @@
+Puzzle number: 35864
+width:  5
+height:  5
+solved_count:  6845
+AVE_TIME:  '00:00:05'
+ave_time_count:  3504
+
+top_values
+[2]
+[3]
+[3]
+[2]
+[1]
+
+left_values
+[]
+[]
+[5]
+[4]
+[2]

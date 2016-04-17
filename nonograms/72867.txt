@@ -1,0 +1,27 @@
+Puzzle number: 72867
+width:  8
+height:  9
+solved_count:  4993
+AVE_TIME:  '00:01:02'
+ave_time_count:  584
+
+top_values
+[1, 2, 1]
+[5, 1]
+[3, 4]
+[1, 1]
+[1, 1]
+[3, 4]
+[5, 1]
+[1, 2, 1]
+
+left_values
+[1, 1]
+[2, 2]
+[2, 2]
+[8]
+[2, 2]
+[2, 2]
+[4]
+[1, 1]
+[3, 3]

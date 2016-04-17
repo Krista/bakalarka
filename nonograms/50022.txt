@@ -1,0 +1,20 @@
+Puzzle number: 50022
+width:  5
+height:  5
+solved_count:  3747
+AVE_TIME:  '00:00:18'
+ave_time_count:  2106
+
+top_values
+[4]
+[2]
+[1, 2]
+[3]
+[1, 2]
+
+left_values
+[1]
+[1, 2]
+[4]
+[5]
+[1, 1]

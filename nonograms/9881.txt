@@ -1,0 +1,20 @@
+Puzzle number: 9881
+width:  5
+height:  5
+solved_count:  11355
+AVE_TIME:  '00:00:12'
+ave_time_count:  6596
+
+top_values
+[4]
+[1, 2]
+[5]
+[1, 2]
+[4]
+
+left_values
+[3]
+[1, 1, 1]
+[5]
+[5]
+[1, 1, 1]

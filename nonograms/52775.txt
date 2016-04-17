@@ -1,0 +1,20 @@
+Puzzle number: 52775
+width:  5
+height:  5
+solved_count:  3780
+AVE_TIME:  '00:00:12'
+ave_time_count:  2091
+
+top_values
+[1]
+[1, 1]
+[3]
+[1, 1]
+[1]
+
+left_values
+[1]
+[3]
+[1, 1, 1]
+[1, 1]
+[]

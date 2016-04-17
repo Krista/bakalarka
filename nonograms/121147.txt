@@ -1,0 +1,20 @@
+Puzzle number: 121147
+width:  5
+height:  5
+solved_count:  3727
+AVE_TIME:  '00:00:05'
+ave_time_count:  621
+
+top_values
+[]
+[5]
+[5]
+[4]
+[]
+
+left_values
+[3]
+[3]
+[3]
+[3]
+[2]

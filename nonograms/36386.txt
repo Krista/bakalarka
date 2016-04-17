@@ -1,0 +1,20 @@
+Puzzle number: 36386
+width:  5
+height:  5
+solved_count:  6808
+AVE_TIME:  '00:00:04'
+ave_time_count:  3311
+
+top_values
+[2]
+[1]
+[5]
+[1]
+[2]
+
+left_values
+[1, 1, 1]
+[5]
+[1]
+[1]
+[1]

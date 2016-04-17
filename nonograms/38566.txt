@@ -1,0 +1,20 @@
+Puzzle number: 38566
+width:  5
+height:  5
+solved_count:  7410
+AVE_TIME:  '00:00:04'
+ave_time_count:  3662
+
+top_values
+[5]
+[3]
+[1]
+[1]
+[1]
+
+left_values
+[1]
+[2]
+[5]
+[2]
+[1]

@@ -1,0 +1,30 @@
+Puzzle number: 45601
+width:  10
+height:  10
+solved_count:  7076
+AVE_TIME:  '00:00:51'
+ave_time_count:  3025
+
+top_values
+[2]
+[4]
+[5]
+[1, 7]
+[3, 6]
+[3, 1, 3]
+[1, 4, 2]
+[5]
+[4]
+[2]
+
+left_values
+[4]
+[2]
+[2]
+[1, 1]
+[4]
+[3, 2]
+[4, 3]
+[6, 3]
+[10]
+[8]

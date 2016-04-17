@@ -1,0 +1,20 @@
+Puzzle number: 30896
+width:  5
+height:  5
+solved_count:  5471
+AVE_TIME:  '00:00:14'
+ave_time_count:  3114
+
+top_values
+[1]
+[1, 2]
+[2]
+[4]
+[2, 2]
+
+left_values
+[1]
+[1, 2]
+[2]
+[4]
+[2, 2]

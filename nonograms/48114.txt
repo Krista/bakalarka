@@ -1,0 +1,20 @@
+Puzzle number: 48114
+width:  5
+height:  5
+solved_count:  4245
+AVE_TIME:  '00:00:07'
+ave_time_count:  2249
+
+top_values
+[1]
+[1]
+[4]
+[1]
+[1]
+
+left_values
+[]
+[3]
+[1]
+[1, 1, 1]
+[1]

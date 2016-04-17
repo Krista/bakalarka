@@ -1,0 +1,20 @@
+Puzzle number: 31293
+width:  5
+height:  5
+solved_count:  6105
+AVE_TIME:  '00:00:12'
+ave_time_count:  3017
+
+top_values
+[3]
+[1, 1]
+[]
+[1, 1]
+[4]
+
+left_values
+[1]
+[1, 1]
+[1, 1]
+[1, 1]
+[2, 2]

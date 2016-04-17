@@ -1,0 +1,20 @@
+Puzzle number: 38425
+width:  5
+height:  5
+solved_count:  6072
+AVE_TIME:  '00:00:05'
+ave_time_count:  3193
+
+top_values
+[3]
+[2]
+[2]
+[2]
+[5]
+
+left_values
+[1]
+[1]
+[5]
+[5]
+[1, 1]

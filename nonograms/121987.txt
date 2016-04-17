@@ -1,0 +1,20 @@
+Puzzle number: 121987
+width:  5
+height:  5
+solved_count:  3117
+AVE_TIME:  '00:00:10'
+ave_time_count:  549
+
+top_values
+[1]
+[3]
+[2]
+[2]
+[]
+
+left_values
+[]
+[3]
+[3]
+[2]
+[]

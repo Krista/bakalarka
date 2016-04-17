@@ -1,0 +1,20 @@
+Puzzle number: 42123
+width:  5
+height:  5
+solved_count:  4736
+AVE_TIME:  '00:00:10'
+ave_time_count:  2365
+
+top_values
+[2]
+[1]
+[1]
+[3, 1]
+[5]
+
+left_values
+[2]
+[3]
+[2]
+[2, 1]
+[1, 2]

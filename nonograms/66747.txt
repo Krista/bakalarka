@@ -1,0 +1,20 @@
+Puzzle number: 66747
+width:  5
+height:  5
+solved_count:  3386
+AVE_TIME:  '00:00:12'
+ave_time_count:  1218
+
+top_values
+[4]
+[1]
+[1, 1, 1]
+[1, 1]
+[1, 1, 1]
+
+left_values
+[4]
+[1]
+[1, 1, 1]
+[1, 1]
+[1, 1, 1]

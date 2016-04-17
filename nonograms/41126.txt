@@ -1,0 +1,20 @@
+Puzzle number: 41126
+width:  5
+height:  5
+solved_count:  4887
+AVE_TIME:  '00:00:07'
+ave_time_count:  2711
+
+top_values
+[]
+[3]
+[1, 1]
+[3]
+[2]
+
+left_values
+[]
+[]
+[4]
+[1, 2]
+[3]

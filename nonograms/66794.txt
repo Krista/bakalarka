@@ -1,0 +1,25 @@
+Puzzle number: 66794
+width:  10
+height:  5
+solved_count:  4712
+AVE_TIME:  '00:00:39'
+ave_time_count:  1457
+
+top_values
+[1]
+[3]
+[3]
+[3]
+[1]
+[4]
+[3, 1]
+[4]
+[1, 1]
+[2]
+
+left_values
+[3]
+[1, 3]
+[3, 5]
+[6, 1, 1]
+[1, 1, 1, 1]

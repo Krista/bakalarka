@@ -1,0 +1,20 @@
+Puzzle number: 90341
+width:  5
+height:  5
+solved_count:  4249
+AVE_TIME:  '00:00:19'
+ave_time_count:  617
+
+top_values
+[2]
+[1, 1]
+[1, 1]
+[3]
+[1]
+
+left_values
+[]
+[4]
+[1, 1]
+[1, 1]
+[2]

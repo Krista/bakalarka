@@ -1,0 +1,20 @@
+Puzzle number: 71185
+width:  5
+height:  5
+solved_count:  4121
+AVE_TIME:  '00:00:18'
+ave_time_count:  464
+
+top_values
+[3]
+[1, 2]
+[]
+[1, 2]
+[1]
+
+left_values
+[1, 1]
+[1]
+[1, 2]
+[2, 1]
+[1]

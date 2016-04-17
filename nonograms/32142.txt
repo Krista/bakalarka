@@ -1,0 +1,20 @@
+Puzzle number: 32142
+width:  5
+height:  5
+solved_count:  4703
+AVE_TIME:  '00:00:18'
+ave_time_count:  2622
+
+top_values
+[2]
+[1, 1]
+[5]
+[2]
+[1, 1]
+
+left_values
+[2, 1]
+[1, 2]
+[1, 2]
+[1]
+[2, 1]

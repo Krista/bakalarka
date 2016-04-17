@@ -1,0 +1,20 @@
+Puzzle number: 66213
+width:  5
+height:  5
+solved_count:  3777
+AVE_TIME:  '00:00:08'
+ave_time_count:  1498
+
+top_values
+[5]
+[1, 1]
+[1, 2]
+[1, 1, 1]
+[2, 1]
+
+left_values
+[5]
+[1, 1]
+[1, 1]
+[1, 1]
+[5]

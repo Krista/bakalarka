@@ -1,0 +1,20 @@
+Puzzle number: 29484
+width:  5
+height:  5
+solved_count:  6692
+AVE_TIME:  '00:00:12'
+ave_time_count:  3993
+
+top_values
+[4]
+[5]
+[4]
+[4]
+[3]
+
+left_values
+[3]
+[5]
+[5]
+[5]
+[1, 1]

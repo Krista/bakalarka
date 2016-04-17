@@ -1,0 +1,30 @@
+Puzzle number: 124835
+width:  10
+height:  10
+solved_count:  3145
+AVE_TIME:  '00:01:00'
+ave_time_count:  313
+
+top_values
+[1, 1]
+[7]
+[5]
+[6]
+[3, 5]
+[2, 3]
+[1, 6]
+[2]
+[1]
+[1]
+
+left_values
+[3]
+[3]
+[3]
+[3]
+[7]
+[7]
+[10]
+[1, 1, 1]
+[1, 1, 1]
+[1, 1]

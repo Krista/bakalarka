@@ -1,0 +1,20 @@
+Puzzle number: 58997
+width:  5
+height:  5
+solved_count:  5318
+AVE_TIME:  '00:00:07'
+ave_time_count:  2169
+
+top_values
+[5]
+[1]
+[5]
+[]
+[1, 3]
+
+left_values
+[1, 1, 1]
+[1, 1]
+[3, 1]
+[1, 1, 1]
+[1, 1, 1]

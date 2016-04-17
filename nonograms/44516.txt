@@ -1,0 +1,27 @@
+Puzzle number: 44516
+width:  7
+height:  10
+solved_count:  6194
+AVE_TIME:  '00:00:35'
+ave_time_count:  2892
+
+top_values
+[3]
+[1, 1]
+[2, 7]
+[7]
+[2, 7]
+[1, 1]
+[3]
+
+left_values
+[3]
+[1, 3, 1]
+[1, 1, 1]
+[7]
+[3]
+[3]
+[3]
+[1, 1]
+[1, 1]
+[2, 2]

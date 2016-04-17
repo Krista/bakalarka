@@ -1,0 +1,20 @@
+Puzzle number: 34842
+width:  5
+height:  5
+solved_count:  4608
+AVE_TIME:  '00:00:08'
+ave_time_count:  2495
+
+top_values
+[2]
+[2]
+[3]
+[4]
+[5]
+
+left_values
+[2]
+[3]
+[4]
+[5]
+[1, 1]

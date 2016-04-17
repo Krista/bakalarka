@@ -1,0 +1,20 @@
+Puzzle number: 60104
+width:  5
+height:  5
+solved_count:  3861
+AVE_TIME:  '00:00:12'
+ave_time_count:  1994
+
+top_values
+[1, 2]
+[3]
+[2]
+[3]
+[1, 2]
+
+left_values
+[3]
+[5]
+[1, 1]
+[1, 1]
+[1, 1]

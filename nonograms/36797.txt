@@ -1,0 +1,23 @@
+Puzzle number: 36797
+width:  9
+height:  4
+solved_count:  5107
+AVE_TIME:  '00:00:16'
+ave_time_count:  2618
+
+top_values
+[]
+[1]
+[1]
+[1, 1]
+[1]
+[1, 1]
+[1]
+[1]
+[]
+
+left_values
+[1, 1]
+[1, 1, 1, 1]
+[]
+[3]

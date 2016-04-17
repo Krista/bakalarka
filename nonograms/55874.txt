@@ -1,0 +1,20 @@
+Puzzle number: 55874
+width:  5
+height:  5
+solved_count:  4596
+AVE_TIME:  '00:00:07'
+ave_time_count:  2397
+
+top_values
+[2]
+[3]
+[3]
+[2, 1]
+[2, 2]
+
+left_values
+[5]
+[5]
+[2]
+[2]
+[1]

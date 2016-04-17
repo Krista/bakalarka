@@ -1,0 +1,20 @@
+Puzzle number: 41310
+width:  5
+height:  5
+solved_count:  4706
+AVE_TIME:  '00:00:06'
+ave_time_count:  2520
+
+top_values
+[]
+[5]
+[1]
+[5]
+[2]
+
+left_values
+[1, 1]
+[4]
+[1, 2]
+[1, 1]
+[1, 1]

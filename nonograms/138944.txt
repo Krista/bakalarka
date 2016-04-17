@@ -1,0 +1,30 @@
+Puzzle number: 138944
+width:  10
+height:  10
+solved_count:  3532
+AVE_TIME:  '00:00:50'
+ave_time_count:  507
+
+top_values
+[1]
+[1]
+[3]
+[4]
+[10]
+[4, 1]
+[3, 1]
+[1, 1]
+[1]
+[]
+
+left_values
+[1]
+[3]
+[5]
+[7]
+[1, 5, 1]
+[1]
+[1]
+[1]
+[1, 1]
+[3]

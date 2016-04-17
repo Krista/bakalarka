@@ -1,0 +1,20 @@
+Puzzle number: 29205
+width:  5
+height:  5
+solved_count:  6241
+AVE_TIME:  '00:00:08'
+ave_time_count:  3473
+
+top_values
+[3]
+[1, 1]
+[5]
+[1, 1]
+[3]
+
+left_values
+[3]
+[1, 1, 1]
+[1, 1, 1]
+[1, 1, 1]
+[3]
