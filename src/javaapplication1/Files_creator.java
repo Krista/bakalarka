@@ -194,15 +194,7 @@ public class Files_creator {
             }
         }
     }
-    
-    public static void tieto_ries(Path file) throws IOException, Porucha{
-       Charset charset = Charset.forName("ISO-8859-1");
-        List<String> databaza = Files.readAllLines(file, charset);
-        for (String num: databaza){
-         //  if (Integer.parseInt(num)>154711){
-            Vyries v= new Vyries(Integer.parseInt(num));}
-       //}
-    }
+ 
 
     /**
      * 

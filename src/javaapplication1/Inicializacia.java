@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author User
  */
 public class Inicializacia {
-    public int[] statistika;
+   // public int[] statistika;
     public int[][][] pole_hodnot;
     public int p_stlpcov;
     public ArrayList<ArrayList<Integer>> zadanie;
@@ -23,7 +23,7 @@ public class Inicializacia {
         this.zadanie = zadanie;
         this.pole_hodnot = new int[zadanie.size()][][];
         this.p_stlpcov = p_stlpcov;
-        this.statistika = new int[12];
+     //   this.statistika = new int[15];
         for (int i = 0; i < zadanie.size(); i++) {
             this.pole_hodnot[i] = inic(zadanie.get(i), p_stlpcov);
 
@@ -60,7 +60,7 @@ public class Inicializacia {
         this.zadanie = zadanie;
         this.pole_hodnot = new int[zadanie.size()][][];
         this.p_stlpcov = p_stlpcov;
-        this.statistika = new int[11];
+        //this.statistika = new int[14];
         for (int i = 0; i < zadanie.size(); i++) {
             this.pole_hodnot[i] = inic(zadanie.get(i), p_stlpcov);
             ArrayList<MyInt> pom = new ArrayList<>();

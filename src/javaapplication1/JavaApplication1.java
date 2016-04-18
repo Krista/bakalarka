@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -113,15 +114,17 @@ public class JavaApplication1 {
     public static void main(String[] args) throws IOException, Porucha {
 //        PrintWriter writer = new PrintWriter("filexy.txt", "UTF-8");
 //        Files_creator.spracuj("15442", writer);
-        int cislo = 15442;//337(364)365,(379)
-        //Vyries v = new Vyries(cislo);
+        int cislo = 353;//337(364)365,(379)
+        int[] pravidla = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+     
+       //Vyries v = new Vyries(cislo, pravidla);
        
         Path data = Paths.get("puzzles.sql");
      //  Files_creator.tahaj(data);
-//        Files_creator.zisti(data);
+     //   Files_creator.zisti(data);
          Path file = Paths.get("zoznam.txt");
- Files_creator.tieto_ries(file);
-//        
+        Vyries.tieto_ries(file, pravidla);
+       
        /*Read_nono krizovka = new Read_nono(cislo);        
         Inicializacia inic = krizovka.zrob_stlpce();
         //inic.riesenie.get(0).get(2).value = 1;
