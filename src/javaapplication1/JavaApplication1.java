@@ -5,6 +5,7 @@
  */
 package javaapplication1;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
@@ -112,19 +113,27 @@ public class JavaApplication1 {
     
     
     public static void main(String[] args) throws IOException, Porucha {
-//        PrintWriter writer = new PrintWriter("filexy.txt", "UTF-8");
-//        Files_creator.spracuj("15442", writer);
-        int cislo = 353;//337(364)365,(379)
-        int[] pravidla = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-     
-       //Vyries v = new Vyries(cislo, pravidla);
+       // PrintWriter writer = new PrintWriter("143330.txt", "UTF-8");
+        PrintWriter writer = new PrintWriter(new FileWriter("146080.txt"), true);
+      //  Files_creator.spracuj("146080", writer);
+//       
+    //    int cislo = 146080;//11502;//337(364)365,(379)
+   //int[] pravidla = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+     int[] pravidla = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,14};
+     // Vyries v = new Vyries(cislo, pravidla);
        
         Path data = Paths.get("puzzles.sql");
-     //  Files_creator.tahaj(data);
-     //   Files_creator.zisti(data);
+  // Files_creator.tahaj(data);
+     //   Files_creator.zisti(data);y
          Path file = Paths.get("zoznam.txt");
-        Vyries.tieto_ries(file, pravidla);
+     Vyries.tieto_ries(file, pravidla);
        
+    
+      // int cislo= 317;
+      //   Vyries v = new Vyries(cislo, pravidla);
+      //   v.Ries();
+//         Subset s = new Subset(cislo);
+//         
        /*Read_nono krizovka = new Read_nono(cislo);        
         Inicializacia inic = krizovka.zrob_stlpce();
         //inic.riesenie.get(0).get(2).value = 1;

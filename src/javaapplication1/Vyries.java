@@ -11,7 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javaapplication1.Rules.*;
 
 /**
@@ -22,31 +24,50 @@ public class Vyries {
      
     int cislo;
     ArrayList<Pravidla> pravidla;
+    Inicializacia inic,inic2;
+    int[] statistika;
     
-      
     public Vyries(int cislo, int[] pole) throws IOException, Porucha {
         this.cislo = cislo;
         Read_nono krizovka = new Read_nono(cislo);
-        Inicializacia inic = krizovka.zrob_stlpce(); if (inic == null) {return;}        
-        Inicializacia inic2 = krizovka.zrob_riadky(inic.riesenie);    
+        this.inic = krizovka.zrob_stlpce(); if (inic == null) {return;}        
+        this.inic2 = krizovka.zrob_riadky(inic);    
     
-        ArrayList<Pravidla> pravidla = Vytvor_sadu(pole, inic2, inic);
-        System.out.println(cislo);
+        this.pravidla = Vytvor_sadu(pole, inic2, inic);
+  //      System.out.println(cislo);
 
-        int[] statistika = new int[15];
+        this.statistika = new int[15];
         statistika[0]=-1;
+        Ries();
+     }
+    
+    public Vyries(int cislo, ArrayList<Pravidla> pravidla) throws IOException, Porucha {
+        this.cislo = cislo;
+        Read_nono krizovka = new Read_nono(cislo);
+        this.inic = krizovka.zrob_stlpce(); if (inic == null) {return;}        
+        this.inic2 = krizovka.zrob_riadky(inic);    
+    
+        this.pravidla = pravidla;
+  //      System.out.println(cislo);
+
+        this.statistika = new int[15];
+        statistika[0]=-1;
+     }
+      
+    public boolean Ries() throws IOException, Porucha {    
+        
         int sum;
         int result;
 
         boolean[] us_r = new boolean[inic.p_stlpcov];
         boolean[] us_s = new boolean[inic2.p_stlpcov];
 
-        Memento mem = new Memento(inic, inic2);
+        Memento mem = new Memento(inic, inic2, statistika);
         do {
             sum = 0;
             statistika[0]++;
 
-            System.out.println("    riadky");
+      //      System.out.println("    riadky");
             for (int i = 0; i < inic.p_stlpcov; i++) {
              if (us_r[i]) {continue;}//pokracujeme, len ak uz nemame vyrieseny riadok
                 for (Pravidla pr : pravidla) {
@@ -60,10 +81,10 @@ public class Vyries {
                     us_r[i] = true;
                 }
             }
-            System.out.println(Arrays.toString(statistika));
+         //   System.out.println(Arrays.toString(statistika));
 
             
-            System.out.println("   stlpce");
+   //         System.out.println("   stlpce");
             for (int i = 0; i < inic2.p_stlpcov; i++) {
               if (us_s[i]) {continue;}//pokracujeme, len ak uz nemame vyrieseny stlpec               
                 for (Pravidla pr : pravidla) {
@@ -76,47 +97,80 @@ public class Vyries {
                 if (check_r(inic.riesenie.get(i))) {
                     us_s[i] = true;
                 }
-            }
-            System.out.println(Arrays.toString(statistika));
+            } 
+//           MyInt.toString(inic2.riesenie);
+//           System.out.println(Arrays.toString(statistika));
             //mem.uloz_stav(cislo, statistika, pocet_cyklov);
         } while (sum != 0);
-
+        
+       
         // mem.uloz_stav(cislo, statistika, pocet_cyklov);
         boolean dokoncena = check(inic2.riesenie);
+       
+      // MyInt.toString(inic2.riesenie);
+      System.out.println(cislo);
+      mem.uloz_vysledky();
+      //if (pravidla.size()> 1 && !check_with(inic2.riesenie)) System.out.println("si to DOSRALA!!! "+ cislo);
+        if (!dokoncena){
+            //System.out.println(cislo);
+            return false;
+        }
+        return true;
+        
     }
     
-    public ArrayList<Pravidla> Vytvor_sadu(int[] pravidla, Inicializacia inic_R, Inicializacia inic_S){
+    public static ArrayList<Pravidla> Vytvor_sadu(int[] pravidla, Inicializacia inic_R, Inicializacia inic_S){
         ArrayList<Pravidla> a = new ArrayList<>();
         ArrayList<Pravidla> zoznam = new ArrayList<>();
             Rules r = new Rules();
-            zoznam.add(r.new Prienik(inic_R, inic_S));
-            zoznam.add(r.new Jed_medzery(inic_R, inic_S));
-            zoznam.add(r.new Jednotky(inic_R, inic_S));
-            zoznam.add(r.new Vynutenie(inic_R, inic_S));
-            zoznam.add(r.new Lepidlo(inic_R, inic_S));
-            zoznam.add(r.new Update0(inic_R, inic_S));
-            zoznam.add(r.new Update1(inic_R, inic_S));
-            zoznam.add(r.new Update2(inic_R, inic_S));
-            zoznam.add(r.new Medzivypln(inic_R, inic_S));
-            zoznam.add(r.new Okliestenie(inic_R, inic_S));
-            zoznam.add(r.new Prve_cierne(inic_R, inic_S));
-            zoznam.add(r.new Prekazka(inic_R, inic_S));            
-            zoznam.add(r.new Rozdelenie(inic_R, inic_S));
-            zoznam.add(new MostPossible(inic_R, inic_S));
+            zoznam.add(r.new Prienik(inic_R, inic_S));          //rule 1
+            zoznam.add(r.new Jed_medzery(inic_R, inic_S));      //rule 2
+            zoznam.add(r.new Jednotky(inic_R, inic_S));         //rule 3
+            zoznam.add(r.new Vynutenie(inic_R, inic_S));        //rule 4
+            zoznam.add(r.new Lepidlo(inic_R, inic_S));          //rule 5
+            zoznam.add(r.new Update0(inic_R, inic_S));          //rule 6
+            zoznam.add(r.new Update1(inic_R, inic_S));          //rule 7
+            zoznam.add(r.new Update2(inic_R, inic_S));          //rule 8
+            zoznam.add(r.new Medzivypln(inic_R, inic_S));       //rule 9
+            zoznam.add(r.new Okliestenie(inic_R, inic_S));      //rule 10 
+            zoznam.add(r.new Prve_cierne(inic_R, inic_S));      //rule 11
+            zoznam.add(r.new Prekazka(inic_R, inic_S));         //rule 12    
+            zoznam.add(r.new Rozdelenie(inic_R, inic_S));       //rule 13
+            zoznam.add(new MostPossible(inic_R, inic_S));       //rule 14
             
-        for (int i= 0; i < pravidla.length; i++){  
-            a.add(zoznam.get(pravidla[i]-1));
-        }
+//        for (int i= 0; i < pravidla.length; i++){  
+//            a.add(zoznam.get(pravidla[i]-1));
+//        }
+            
+            for (int i = 0; i<pravidla.length; i++){
+                if (pravidla[i]!=0)a.add(zoznam.get(i));
+            }
         return a;
     }
     
+    public Set povedzSadu(){
+        Set a = new HashSet();
+        for(int i= 0; i< this.pravidla.size(); i++){
+            a.add(this.pravidla.get(i).getID());
+        }
+        return a;
+    }
        
     public static void tieto_ries(Path file, int[] pravidla) throws IOException, Porucha{
        Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num: databaza){
-         //  if (Integer.parseInt(num)>154711){
+          if (Integer.parseInt(num)>149346){
             Vyries v= new Vyries(Integer.parseInt(num), pravidla);}
+       }
+    }
+    
+    public static void tieto_ries(Path file) throws IOException, Porucha{
+       Charset charset = Charset.forName("ISO-8859-1");
+        List<String> databaza = Files.readAllLines(file, charset);
+        for (String num: databaza){
+         //  if (Integer.parseInt(num)>154711){
+            Subset s = new Subset(Integer.parseInt(num));}
        //}
     }
     
@@ -139,5 +193,18 @@ public class Vyries {
         for (MyInt i: riesenie){
             if (i.value==3)return false;
         }return true;
+    }
+    
+    public boolean check_with(ArrayList<ArrayList<MyInt>> riesenie) throws IOException, Porucha{
+        int[] p = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,1};
+        Vyries v = new Vyries(cislo, p);
+         //MostPossible m = new MostPossible(v.inic2, v.inic);
+         ArrayList<ArrayList<MyInt>> mostPossible = v.inic2.riesenie;
+         for (int i= 0 ; i< riesenie.size(); i++){
+             for (int j = 0; j<riesenie.get(i).size(); j++){
+             if( riesenie.get(i).get(j).value == 1 && mostPossible.get(i).get(j).value == 0 )return false;
+             if( riesenie.get(i).get(j).value == 0 && mostPossible.get(i).get(j).value == 1 )return false;
+         }
+         } return true;  
     }
 }

@@ -5,6 +5,7 @@
  */
 package javaapplication1;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -33,20 +34,41 @@ public class Read_nono {
 
     public Inicializacia zrob_stlpce() throws IOException {
 
-        int width;
-        int heigh;
+        int width, heigh, value, p_ciernych;
+        p_ciernych = 0;
+        String time, count;
         ArrayList<ArrayList<Integer>> zadanie = new ArrayList<>();
         ArrayList<Integer> line;
         Charset charset = Charset.forName("ISO-8859-1");
         try{
         List<String> riadky = Files.readAllLines(this.file, charset);
-       
+        
         String[] sirka = riadky.get(1).split(":");
         width = Integer.parseInt(sirka[1].trim());
 
         String[] vyska = riadky.get(2).split(":");
         heigh = Integer.parseInt(vyska[1].trim());
 
+        String[] cas = riadky.get(4).split("  ");
+        time = cas[1].trim();
+        
+        String[] poc = riadky.get(5).split(":");
+        count = poc[1].trim();
+        
+        String oddelovac = " , ";
+        FileWriter fw = new FileWriter("Stats.txt", true);
+        fw.write(Integer.toString(number_nono));
+        fw.write(oddelovac);
+        fw.write(Integer.toString(width));
+        fw.write("x");
+        fw.write(Integer.toString(heigh));
+        fw.write(oddelovac);
+        fw.write(time);
+        fw.write(oddelovac);
+        fw.write(count);
+        fw.write(oddelovac);
+       
+        
         String bez_zatv;
         String[] pom;
         for (int i = 8; i < width + 8; i++) {
@@ -57,21 +79,25 @@ public class Read_nono {
             line = new ArrayList<>();
             for (String a : pom) {
                 if (a.equals(""))line.add(0);
-                else line.add(Integer.parseInt(a.trim()));
+                else {
+                    value = Integer.parseInt(a.trim());
+                    p_ciernych += value;
+                    line.add(value);
+                }
             }
             zadanie.add(line);
-        }
-       /* for (ArrayList<Integer> x : zadanie) {
-            System.out.println(x.toString());
-        }*/
-        //System.out.println(Arrays.toString(riadok));
-        return new Inicializacia(zadanie, heigh);
+        } 
+        
+        fw.write(p_ciernych);
+        fw.write(oddelovac);
+        fw.close();
+        return new Inicializacia(zadanie, heigh, number_nono);
  }catch(IOException e){
             System.out.println("Krizovku " + this.number_nono + " sa nepodarilo najst");
         }return null;
     }
 
-   public Inicializacia zrob_riadky(ArrayList<ArrayList<MyInt>> rr) throws IOException {
+   public Inicializacia zrob_riadky(Inicializacia rr) throws IOException {
 try{
         int width;
         int heigh;

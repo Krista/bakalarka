@@ -17,12 +17,13 @@ public class Inicializacia {
     public int p_stlpcov;
     public ArrayList<ArrayList<Integer>> zadanie;
     public ArrayList<ArrayList<MyInt>> riesenie = new ArrayList<>();
-    
+    public int ID;
 
-    public Inicializacia(ArrayList<ArrayList<Integer>> zadanie, int p_stlpcov) {
+    public Inicializacia(ArrayList<ArrayList<Integer>> zadanie, int p_stlpcov, int ID) {
         this.zadanie = zadanie;
         this.pole_hodnot = new int[zadanie.size()][][];
         this.p_stlpcov = p_stlpcov;
+        this.ID = ID;
      //   this.statistika = new int[15];
         for (int i = 0; i < zadanie.size(); i++) {
             this.pole_hodnot[i] = inic(zadanie.get(i), p_stlpcov);
@@ -56,10 +57,11 @@ public class Inicializacia {
 
     }
 
-    public Inicializacia(ArrayList<ArrayList<Integer>> zadanie, int p_stlpcov, ArrayList<ArrayList<MyInt>> rr) {
+    public Inicializacia(ArrayList<ArrayList<Integer>> zadanie, int p_stlpcov, Inicializacia rr) {
         this.zadanie = zadanie;
         this.pole_hodnot = new int[zadanie.size()][][];
         this.p_stlpcov = p_stlpcov;
+        this.ID = rr.ID;
         //this.statistika = new int[14];
         for (int i = 0; i < zadanie.size(); i++) {
             this.pole_hodnot[i] = inic(zadanie.get(i), p_stlpcov);
@@ -67,8 +69,8 @@ public class Inicializacia {
             this.riesenie.add(pom);
         }
         for (int i = 0; i < zadanie.size(); i++) {
-            for (int j = 0; j < rr.size(); j++) {
-                this.riesenie.get(i).add(rr.get(j).get(i));
+            for (int j = 0; j < rr.riesenie.size(); j++) {
+                this.riesenie.get(i).add(rr.riesenie.get(j).get(i));
                 // this.riesenie.get(i).add(new MyInt());
             }
         }

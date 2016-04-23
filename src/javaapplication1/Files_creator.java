@@ -7,6 +7,7 @@ package javaapplication1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -15,7 +16,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,7 +30,13 @@ import org.jsoup.nodes.Element;
  * @author krista
  */
 public class Files_creator {
-    /**
+   
+    static Integer[] array = {143330,154154,154875,145550,155386,147207,154754,143177,153419,80145,145419,146080,143720,148884,143516,
+                    145114,145449,145450,145482,145598,147233,147669,148136,149384,150946,151133,151185,153379,153592,153811,153815,
+                    153855,153858,154873,154876,155387,155390,155391,155870,156810,156901,157009,157468,157481,157582,157736,159018,160608};
+     static Set<Integer> esteTieto = new HashSet<> (Arrays.asList(array));
+    
+     /**
      * 
      * @param id krizovky
      * @param writer odkaz na otvoreny subor
@@ -38,7 +49,7 @@ public class Files_creator {
         //PrintWriter writer = new PrintWriter("filexy.txt", "UTF-8");
         String addr = "http://www.griddlers.net/griddlers?p_p_id=griddlers_WAR_puzzles&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=html&p_p_cacheability=cacheLevelPage&p_p_col_id=column-2&p_p_col_count=1&_griddlers_WAR_puzzles_view=detail&_griddlers_WAR_puzzles_id=";
         addr += id;
-        Document doc = Jsoup.connect(addr).get();
+        Document doc = Jsoup.connect(addr).timeout(10000).maxBodySize(1024*1024*20).get();
 
         Element link = doc.select("link").first();
 
@@ -143,7 +154,7 @@ public class Files_creator {
             i = 0;
             //System.out.println(Arrays.toString(left_values.get(j - 1)));
             writer.println(left.get(j - 1).toString());
-
+           // writer.flush();
         } while (tr != null);
 
         writer.close();
@@ -166,12 +177,12 @@ public class Files_creator {
                 String[] riadok = line.split(",");
                 //System.out.println(Arrays.toString(riadok));
                 int dote = Integer.parseInt(riadok[0]);
-                if (dote > 153419 && riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
+                if (dote >= 147207 && esteTieto.contains(dote) && riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
                     //String nazov = riadok[0] + ".txt";
                     String nazov = "nonograms/" + riadok[0] + ".txt";
                      File f = new File(nazov);
-                     if (!f.exists()){
-                    PrintWriter writer = new PrintWriter(nazov, "UTF-8");
+                     //if (!f.exists()){
+                    PrintWriter writer = new PrintWriter(new FileWriter(nazov), true);
                     writer.println("Puzzle number: " + riadok[0]);
                     writer.println("width: " + riadok[1]);
                     writer.println("height: " + riadok[2]);
@@ -189,12 +200,20 @@ public class Files_creator {
                 System.out.println("AVE_TIME: " + riadok[7]);
                 System.out.println("ave_time_count: " + riadok[8]);
                System.out.println("");*/
-                }else System.out.println("nevytvorili sme duplikat  " + dote);
+               // }else System.out.println("nevytvorili sme duplikat  " + dote);
                 }
             }
         }
     }
  
+    public static void skuska(){
+        Scanner s = new Scanner(System.in);
+        for (int i =0; i<5; i++){
+            int a = s.nextInt();
+            if (esteTieto.contains(a))System.out.println("ano");
+            else System.out.println("nie");
+        }
+    }
 
     /**
      * 

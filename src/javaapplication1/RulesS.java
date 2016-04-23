@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author krista
  */
-public class Rules {
+public class RulesS {
     
     class Prienik extends Pravidla{
 
@@ -42,7 +42,7 @@ public class Rules {
                 for (int x = 0; x < (act_cislo * 2 - rozdiel); x++, farbi++) {
                     if (start.riesenie.get(num).get(zaciatok + farbi).value != 1) {
                             if (start.riesenie.get(num).get(zaciatok + farbi).value == 0) throw new Porucha("prienik", num, i, start.ID);
- //                           System.out.println("riadok: " + num + " rule 1.1 , policko: " + (zaciatok + farbi));
+                            System.out.println("riadok: " + num + " rule 1.1 , policko: " + (zaciatok + farbi));
                             start.riesenie.get(num).get(zaciatok + farbi).value = 1;
                             check = true;
                     }
@@ -71,7 +71,7 @@ public class Rules {
         for (int i = 0; i < start.pole_hodnot[num][0][0]; i++) { //rule 1.2 (1)
             if (start.riesenie.get(num).get(i).value != 0) {
                 if (start.riesenie.get(num).get(i).value == 1) throw new Porucha("jed_medzery0", num, i, start.ID);
-  //              System.out.println("riadok: " + num + " rule 1.2.1 , policko: " + i);
+                System.out.println("riadok: " + num + " rule 1.2.1 , policko: " + i);
                 start.riesenie.get(num).get(i).value = 0;
                 check = true;
             }
@@ -79,7 +79,7 @@ public class Rules {
         for (int i = start.pole_hodnot[num][poc_indicii][1] + 1; i < start.p_stlpcov; i++) { //rule 1.2 (2)
             if (start.riesenie.get(num).get(i).value != 0) {
                 if (start.riesenie.get(num).get(i).value == 1) throw new Porucha("jed_medzery1", num, i, start.ID);
-//                System.out.println("riadok: " + num + " rule 1.2.2 , policko: " + i);
+                System.out.println("riadok: " + num + " rule 1.2.2 , policko: " + i);
                 start.riesenie.get(num).get(i).value = 0;
                 check = true;
             }
@@ -89,7 +89,7 @@ public class Rules {
             for (int x = start.pole_hodnot[num][i][1] + 1; x < start.pole_hodnot[num][i + 1][0]; x++) {
                 if (start.riesenie.get(num).get(x).value != 0) {
                     if (start.riesenie.get(num).get(x).value == 1) throw new Porucha("jed_medzery2", num, i, start.ID);
- //                   System.out.println("riadok: " + num + " rule 1.2.3 , policko: " + x);
+                    System.out.println("riadok: " + num + " rule 1.2.3 , policko: " + x);
                     start.riesenie.get(num).get(x).value = 0;
                     check = true;
                 }
@@ -120,7 +120,7 @@ public class Rules {
                 pom.remove(Integer.valueOf(i));
                 if (maximum(num, pom, start) == 1) {
                     if (start.riesenie.get(num).get(s_pozicia - 1).value == 1) throw new Porucha("jednotky", num, i, start.ID);
-//                    System.out.println("riadok: " + num + " rule 1.3.1 , policko: " + (s_pozicia - 1));
+                    System.out.println("riadok: " + num + " rule 1.3.1 , policko: " + (s_pozicia - 1));
                     start.riesenie.get(num).get(s_pozicia - 1).value = 0;
                     check = true;
                 }
@@ -140,7 +140,7 @@ public class Rules {
                 pom.remove(Integer.valueOf(i));
                 if (maximum(num, pom, start) == 1 && start.riesenie.get(num).get(e_pozicia + 1).value == 3) {
                     if (start.riesenie.get(num).get(e_pozicia + 1).value == 1) throw new Porucha("jednotky_za", num, i, start.ID);
- //                   System.out.println("riadok: " + num + " rule 1.3.2 , policko: " + (e_pozicia + 1));
+                    System.out.println("riadok: " + num + " rule 1.3.2 , policko: " + (e_pozicia + 1));
                     start.riesenie.get(num).get(e_pozicia + 1).value = 0;
                     check = true;
                 }
@@ -172,7 +172,7 @@ public class Rules {
                // pom.retainAll(pom2);//v pom necha len tie indicie, ktore su v oboch arraylistoch
         //System.out.println(pom.toString());
                 if (pom.isEmpty() || d1+d2+1 > maximum(num, pom, start)) {
-//                    System.out.println("riadok: " + num + " rule 1.4 , policko: " + (i + 1));
+                    System.out.println("riadok: " + num + " rule 1.4 , policko: " + (i + 1));
                     start.riesenie.get(num).get(i + 1).value = 0;
                     check = true;
                 }
@@ -213,7 +213,7 @@ public class Rules {
                 if (biele != -1 || (i - min + 1) < 0) {//ak sa naslo, alebo je to na zaciatku
                     for (int x = i + 1; x <= biele + min; x++) { //nemusime sa bat pretecenia, keby sa stalo, je problem v krizovke
                         if (start.riesenie.get(num).get(x).value != 1) {
-//                            System.out.println("riadok: " + num + "rule 1.5.2 , policko: " + x);
+                            System.out.println("riadok: " + num + "rule 1.5.2 , policko: " + x);
                             start.riesenie.get(num).get(x).value = 1;
                             check = true;}   } }
                 
@@ -228,7 +228,7 @@ public class Rules {
                 if (biele2 != start.p_stlpcov || (i + min) > start.p_stlpcov) {
                     for (int x = i - 1; x >= biele2 - min; x--) {
                         if (start.riesenie.get(num).get(x).value != 1) {
-//                            System.out.println("riadok: " + num + "rule 1.5.3 , policko: " + x);
+                            System.out.println("riadok: " + num + "rule 1.5.3 , policko: " + x);
                             start.riesenie.get(num).get(x).value = 1;
                             check = true;
                         }
@@ -239,24 +239,24 @@ public class Rules {
                 int[] w=hranice_sek(num,i,start);
                 if (min == max && min == w[1]-w[0]+1) {
                     if (w[0]-1>=0 && start.riesenie.get(num).get(w[0]-1).value != 0) {
-//                        System.out.println("riadok: " + num + "rule 1.5.4 , policko: " + (w[0]- 1));
+                        System.out.println("riadok: " + num + "rule 1.5.4 , policko: " + (w[0]- 1));
                         start.riesenie.get(num).get(w[0] - 1).value = 0;
                         check = true;
                     }
                     if (w[1]+1 < start.p_stlpcov && start.riesenie.get(num).get(w[1]+1).value != 0) {
- //                       System.out.println("riadok: " + num + "rule 1.5.5 , policko: " + (w[1]+1));
+                        System.out.println("riadok: " + num + "rule 1.5.5 , policko: " + (w[1]+1));
                         start.riesenie.get(num).get(w[1]+1).value = 0;
                         check = true;
                     }
                     if (sek.size() == 1) {// sekvencia patri len jednej indicii
                         if (start.pole_hodnot[num][sek.get(0)][0] != w[0]) {
-//                            System.out.println("update1.5+ " + num);
+                            System.out.println("update1.5+ " + num);
                             start.pole_hodnot[num][sek.get(0)][0] = w[0];
                             check = true;
                         }
                         if (start.pole_hodnot[num][sek.get(0)][1] != w[1]) {
                             start.pole_hodnot[num][sek.get(0)][1] = w[1];
-//                            System.out.println("update1.5- " + num);
+                            System.out.println("update1.5- " + num);
                             check = true;
                             //System.out.println(Arrays.toString(start.pole_hodnot[num][sek.get(0)]));
                         }
@@ -279,13 +279,13 @@ public class Rules {
             int cislo = start.zadanie.get(num).get(0);
             for (int x = 1; x < cislo; x++) { //nemusime sa bat pretecenia, keby sa stalo, je problem v krizovke
                 if (start.riesenie.get(num).get(x).value != 1) {
- //                   System.out.println("riadok: " + num + "rule 1.5.2f , policko: " + x);
+                    System.out.println("riadok: " + num + "rule 1.5.2f , policko: " + x);
                     start.riesenie.get(num).get(x).value = 1;
                     check = true;
                 }
             }
             if (cislo < start.p_stlpcov && start.riesenie.get(num).get(cislo).value != 0) {
- //               System.out.println("riadok: " + num + "rule 1.5.0f , policko: " + cislo);
+                System.out.println("riadok: " + num + "rule 1.5.0f , policko: " + cislo);
                 start.riesenie.get(num).get(cislo).value = 0;
                 start.pole_hodnot[num][0][1] = cislo-1; //upravime koncovu hranicu
                 check = true;
@@ -303,14 +303,14 @@ public class Rules {
             int posledne = start.zadanie.get(num).size() - 1;
             int cislo = start.zadanie.get(num).get(posledne);
             if (start.p_stlpcov - cislo > 0 && start.riesenie.get(num).get(start.p_stlpcov - cislo - 1).value != 0) {
- //               System.out.println("riadok: " + num + "rule 1.5.0l , policko: " + (start.p_stlpcov - cislo - 1));
+                System.out.println("riadok: " + num + "rule 1.5.0l , policko: " + (start.p_stlpcov - cislo - 1));
                 start.riesenie.get(num).get(start.p_stlpcov - cislo - 1).value = 0;
                 start.pole_hodnot[num][posledne][0] = start.p_stlpcov - cislo - 1;
                 check = true;
             }
             for (int x = start.p_stlpcov - cislo; x < start.p_stlpcov; x++) {
                 if (start.riesenie.get(num).get(x).value != 1) {
-//                    System.out.println("riadok: " + num + "rule 1.5.2l , policko: " + x);
+                    System.out.println("riadok: " + num + "rule 1.5.2l , policko: " + x);
                     start.riesenie.get(num).get(x).value = 1;
                     check = true;
                 }
@@ -334,12 +334,12 @@ public class Rules {
               boolean check = false;
         for (int i = 0; i < start.zadanie.get(num).size() - 1; i++) {
             if (start.pole_hodnot[num][i][0] + start.zadanie.get(num).get(i) >= start.pole_hodnot[num][i + 1][0]) {
- //               System.out.println("update0a riadok" + num + "indicia " + (i+1) + " na policko " + (start.pole_hodnot[num][i][0] + start.zadanie.get(num).get(i) + 1));
+                System.out.println("update0a riadok" + num + "indicia " + (i+1) + " na policko " + (start.pole_hodnot[num][i][0] + start.zadanie.get(num).get(i) + 1));
                 start.pole_hodnot[num][i + 1][0] = start.pole_hodnot[num][i][0] + start.zadanie.get(num).get(i) + 1;
                 check = true;
             }
             if (start.pole_hodnot[num][i][1] >= start.pole_hodnot[num][i + 1][1] - start.zadanie.get(num).get(i + 1)) {
-   //             System.out.println("update0b riadok" + num + "indicia " + i +" na policko " + (start.pole_hodnot[num][i + 1][1] - start.zadanie.get(num).get(i + 1) - 1));
+                System.out.println("update0b riadok" + num + "indicia " + i +" na policko " + (start.pole_hodnot[num][i + 1][1] - start.zadanie.get(num).get(i + 1) - 1));
                 start.pole_hodnot[num][i][1] = start.pole_hodnot[num][i + 1][1] - start.zadanie.get(num).get(i + 1) - 1;
                 check = true;
             }
@@ -368,7 +368,7 @@ public class Rules {
                 while (start.riesenie.get(num).get(x).value == 1) {
                     x--;
                 }
-//                System.out.println("update1a riadok" + num + "indicia: " + i);
+                System.out.println("update1a riadok" + num + "indicia: " + i);
                 start.pole_hodnot[num][i][1] = x - 1;
                 check = true;
             }
@@ -377,7 +377,7 @@ public class Rules {
                 while (start.riesenie.get(num).get(x).value == 1) {
                     x++;
                 }
-//                System.out.println("update1b riadok" + num + "indicia: " + (i + 1));
+                System.out.println("update1b riadok" + num + "indicia: " + (i + 1));
                 start.pole_hodnot[num][i + 1][0] = x + 1;
                 check = true;
             }
@@ -408,12 +408,12 @@ public class Rules {
                     ArrayList<Integer> cisla = najdi_cisla(num, sek.get(j).get(0), start);
                     if (sek.get(j).get(0) - start.pole_hodnot[num][i][0] - 1 < indicia //cize sa indicia dopredu nezmesti
                             || (cisla.size() == 2 && cisla.get(1).equals(i))) {
-//                        System.out.println("    update2a riadok " + num + " indicia " + i + "["+ (sek.get(j).get(1) + 2)+"]");
+                        System.out.println("    update2a riadok " + num + " indicia " + i + "["+ (sek.get(j).get(1) + 2)+"]");
                         start.pole_hodnot[num][i][0] = sek.get(j).get(1) + 2;
                         check = true;
                     } else if (start.pole_hodnot[num][i][1] - sek.get(j).get(1) - 1 < indicia
                             || (cisla.size() == 2  && cisla.get(0).equals(i))) {
-//                        System.out.println("    update2b riadok " + num + " indicia " + i + "["+(sek.get(j).get(0) - 2)+"]");
+                        System.out.println("    update2b riadok " + num + " indicia " + i + "["+(sek.get(j).get(0) - 2)+"]");
                         start.pole_hodnot[num][i][1] = sek.get(j).get(0) - 2;
                         check = true;
                         break;//vdaka tomu nemusime prechadzat z oboch stran, pri prvom nastaveni E koncime
@@ -444,7 +444,7 @@ public class Rules {
             if (list.size() > 1) {
                 for (int x = list.get(0); x < list.get(list.size()-1); x++) {//spaja vsetky cierne sekvencie dokopy
                     if (start.riesenie.get(num).get(x).value == 3) {
-//                        System.out.println("riadok: " + num + "rule 3.1 , policko: " + x);
+                        System.out.println("riadok: " + num + "rule 3.1 , policko: " + x);
                         start.riesenie.get(num).get(x).value = 1;
                         check = true;
                     }else if (start.riesenie.get(num).get(x).value==0) throw new Porucha("Medzivypln", num, i, start.ID);
@@ -455,7 +455,7 @@ public class Rules {
                // System.out.println("prestavujem inic 3.1 na " + num );
                 start.pole_hodnot[num][i][0] = Math.max(hr[0] - u, start.pole_hodnot[num][i][0]);
                 start.pole_hodnot[num][i][1] = Math.min(hr[1] + u, start.pole_hodnot[num][i][1]);
- //                  System.out.println("prestavujem inic 3.1 na " + num + " ["+  start.pole_hodnot[num][i][0]+ start.pole_hodnot[num][i][1] +"]");
+                   System.out.println("prestavujem inic 3.1 na " + num + " ["+  start.pole_hodnot[num][i][0]+ start.pole_hodnot[num][i][1] +"]");
                 check = true;
             }
         }return check ?  9 : 0;}
@@ -482,7 +482,7 @@ public class Rules {
             for (int x = 0; x < list.size(); x++) {//pozerame zlava
                 dlzka = list.get(x).get(1) - list.get(x).get(0) + 1;
                 if (start.pole_hodnot[num][i][0] != list.get(x).get(0)) { //nastavujeme na zaciatok potencionalnej sekvencie
- //                   System.out.println("rule 3.2a " + num);
+                    System.out.println("rule 3.2a " + num);
                     start.pole_hodnot[num][i][0] = list.get(x).get(0);//ak nam to pretecie, tak je chyba v krizovke
                 check = true;
                 }
@@ -495,7 +495,7 @@ public class Rules {
             for (int x = list.size() - 1; x >= 0; x--) { //pozerame sprava
                 dlzka = list.get(x).get(1) - list.get(x).get(0) + 1;
                 if (start.pole_hodnot[num][i][1] != list.get(x).get(1)) {
-//                    System.out.println("rule 3.2b " + num);
+                    System.out.println("rule 3.2b " + num);
                     start.pole_hodnot[num][i][1] = list.get(x).get(1);//ak nam to pretecie, tak je chyba v krizovke
                 check = true;
                 }
@@ -530,13 +530,13 @@ public class Rules {
                 if (start.riesenie.get(num).get(zac).value == 1) {//case 1//nepotrebuje i==0
                     for (int x = 1; x < dlzka; x++) {
                         if (start.riesenie.get(num).get(x + zac).value == 3) {
-//                            System.out.println("riadok: " + num + "rule 3.3.1 , policko: " + (x + zac));
+                            System.out.println("riadok: " + num + "rule 3.3.1 , policko: " + (x + zac));
                             start.riesenie.get(num).get(x + zac).value = 1;
                             check = true;
                         }
                     }
                     if (start.riesenie.get(num).get(zac - 1).value != 0) {//len nastavime predchadzajuce policko prazdne
- //                       System.out.println("riadok: " + num + "rule 3.3.1b , policko: " + (zac - 1));
+                        System.out.println("riadok: " + num + "rule 3.3.1b , policko: " + (zac - 1));
                         start.riesenie.get(num).get(zac - 1).value = 0;
                         check = true;
                     }
@@ -576,7 +576,7 @@ public class Rules {
                         bola_cierna = true;
                     }
                     if (bola_cierna == true && start.riesenie.get(num).get(y).value == 0) {
- //                       System.out.println("rule 3.3d " + num);
+                        System.out.println("rule 3.3d " + num);
                         start.pole_hodnot[num][i][1] = y - 1;
                         check = true;
                         break;
@@ -611,7 +611,7 @@ public class Rules {
                  for (int p = 1; p < seg.size(); p++) {//case 3
                     if (seg.get(p).get(1) - seg.get(0).get(0) + 1 > dlzka) {
                       //  MyInt.jeden_toString(riesenie.get(num));
-//                        System.out.println("    rule 3.3e " + num + "indi "+ i + "na" + (seg.get(p).get(0) - 2));
+                        System.out.println("    rule 3.3e " + num + "indi "+ i + "na" + (seg.get(p).get(0) - 2));
                         start.pole_hodnot[num][i][1] = seg.get(p).get(0) - 2;//toto ide aj tesnejsie obkolesit
                         check = true;
                         break;

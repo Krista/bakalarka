@@ -12,7 +12,7 @@ package javaapplication1;
 public class Porucha extends Exception {
 
     String pravidlo;
-    int riadok, indicia;
+    int riadok, indicia, krizovka;
    
    
  /**
@@ -21,15 +21,16 @@ public class Porucha extends Exception {
   * @param riadok na ktorom riadku problem vznikol
   * @param indicia na ktorej indicii to bolo
   */
-    public Porucha(String pravidlo, int riadok, int indicia) {
+    public Porucha(String pravidlo, int riadok, int indicia, int krizovka) {
         this.indicia = indicia;
         this.pravidlo = pravidlo;
         this.riadok = riadok;
+        this.krizovka = krizovka;
     }
     
      @Override
         public String getMessage() {
-            return "chyba pri pravidle " + pravidlo + " na riadku " + riadok + " v indicii " +  indicia;
+            return "chyba na krizovke " + krizovka + " v pravidle "+ pravidlo + " na riadku " + riadok + " v indicii " +  indicia;
         }
 }
 //

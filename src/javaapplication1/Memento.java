@@ -1,6 +1,8 @@
 package javaapplication1;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -16,14 +18,15 @@ public class Memento {
     int por_cislo;
     Inicializacia stlpce;
     Inicializacia riadky;
-    //int[] statistika;
+    int[] statistika;
 
-    public Memento(Inicializacia stlpce, Inicializacia riadky) {
+    public Memento(Inicializacia stlpce, Inicializacia riadky, int[] statistika) {
         this.por_cislo = id;
         this.stlpce = stlpce;
         this.riadky = riadky;
-        //this.statistika = statistika;
+        this.statistika = statistika;
     }
+   
 
     public void uloz_stav(int krizovka, int[] statistika, int pocet) throws FileNotFoundException, UnsupportedEncodingException {
         por_cislo++;
@@ -67,6 +70,16 @@ public class Memento {
         } writer.println();
         
         writer.close();
+    }
+    
+    public void uloz_vysledky() throws IOException{
+     FileWriter fw = new FileWriter("Stats.txt", true);
+//      fw.write(Integer.toString(riadky.ID));
+//        fw.write(" : ");
+        fw.write(Integer.toString(statistika[0]));
+        fw.write(" , ");
+        fw.write(statistika[14]+"\n");
+        fw.close();
     }
     
     public void import_stav(String name){

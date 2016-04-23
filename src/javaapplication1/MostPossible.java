@@ -181,7 +181,7 @@ public class MostPossible extends Pravidla {
             if(inic.riesenie.get(num).get(i).value == 3){
                 if (c_black[i] && !c_white[i]){inic.riesenie.get(num).get(i).value = 1; check= true;}
                 if (!c_black[i] && c_white[i]){inic.riesenie.get(num).get(i).value = 0; check= true;}
-                if (!c_black[i] && !c_white[i])throw new Porucha("MostPOSSIBLE", num, i);
+                if (!c_black[i] && !c_white[i])throw new Porucha("MostPOSSIBLE", num, i, inic.ID);
             }
         }return check;
     }
