@@ -40,10 +40,10 @@ public class Subset {
         Vyries v = new Vyries(cislo_krizovky,pom );
         for (int i = 1; i <= N; i++) {
             zoznam = combinations(i);
-            for (int[] t : zoznam) {
-                 MyInt.reset(v.inic2.riesenie);                  
+            for (int[] t : zoznam) {                              
                  v.pravidla = Vyries.Vytvor_sadu(t, v.inic2, v.inic);
                  v.statistika = new int[15];
+                 Inicializacia.reset(v.inic, v.inic2);                
                  v.Ries();
               if (v.Ries()) {
                     Set s = v.povedzSadu();

@@ -103,6 +103,23 @@ public class Inicializacia {
         return j;
     }
 
+    public static void resetI(Inicializacia start){
+        for (int i =0; i< start.pole_hodnot.length; i++){
+            start.pole_hodnot[i] = inic(start.zadanie.get(i), start.p_stlpcov);
+        }
+    }
+    
+     public static void reset(Inicializacia start, Inicializacia start2){
+        for (int i =0; i< start.pole_hodnot.length; i++){
+            start.pole_hodnot[i] = inic(start.zadanie.get(i), start.p_stlpcov);
+        }
+         for (int i =0; i< start2.pole_hodnot.length; i++){
+            start2.pole_hodnot[i] = inic(start2.zadanie.get(i), start2.p_stlpcov);
+        }
+         
+          MyInt.reset(start.riesenie);    
+    }
+    
     public void set_hranice(int[][] list, int i) {
         this.pole_hodnot[i] = list;
     }

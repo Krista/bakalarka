@@ -112,7 +112,7 @@ public class Vyries {
 //if (pravidla.size()==1) mem.uloz_vysledky();
 //else
     // mem.uloz_vysledky(dokoncena);
-//mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
+        //mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
     //  if (pravidla.size()> 1 && !check_with(inic2.riesenie)) System.out.println("si to DOSRALA!!! "+ cislo);
         if (!dokoncena){
          // mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
