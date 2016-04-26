@@ -65,7 +65,7 @@ public class Rules {
         public int getID() {return  2;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Porucha {                                                                                                                                                                                                                                                                   // beyuzova babka
             boolean check = false;
         int poc_indicii = start.zadanie.get(num).size() - 1;
         for (int i = 0; i < start.pole_hodnot[num][0][0]; i++) { //rule 1.2 (1)
@@ -125,7 +125,7 @@ public class Rules {
                     check = true;
                 }
                 }
-            }
+            }                                                                                                                                                                                                                                                                                                                                                   // "poser sa" - majaneza         
             boolean check2 = jednotky_za(num, check, start);
             return (check || check2) ? 3 : 0;
         }

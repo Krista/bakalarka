@@ -86,4 +86,12 @@ public class MyInt {
         
        return true;
     }
+    
+    public static void reset(ArrayList<ArrayList<MyInt>> riesenie){
+        for (int i = 0; i < riesenie.size(); i++){
+            for(int j=0; j<riesenie.get(i).size(); j++){
+                riesenie.get(i).get(j).setValue(3);
+            }
+        }
+    }
 }

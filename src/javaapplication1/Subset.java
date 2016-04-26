@@ -29,7 +29,9 @@ public class Subset {
         this.cislo_krizovky = cislo_krizovky;
         this.mnozina = new ArrayList<>();
    //     otvorDoc();
-        vytvor();
+        if(cislo_krizovky >154154){
+        vytvor();}
+        else return;
     }
 
     public void vytvor() throws IOException, Porucha {
@@ -41,7 +43,7 @@ public class Subset {
                 v = new Vyries(cislo_krizovky, t);
                 if (v.Ries()) {
                     Set s = v.povedzSadu();
-                    System.out.println("nasla som " + s.toString());
+                    //System.out.println("nasla som " + s.toString());
                     pridajSadu(s);
                     
                 }
@@ -119,7 +121,7 @@ public class Subset {
         FileWriter fw = new FileWriter("Sets.txt", true);
 //        BufferedWriter bw = new BufferedWriter(out);
 //        PrintWriter fw = new PrintWriter(bw);
-        String oddelovac = "    ";
+        String oddelovac = " ";
         fw.write(Integer.toString(i));
         fw.write(oddelovac);
         for(Set s: mnozina){

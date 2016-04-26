@@ -34,7 +34,7 @@ public class Read_nono {
 
     public Inicializacia zrob_stlpce() throws IOException {
 
-        int width, heigh, value, p_ciernych;
+        int width, heigh, value, p_ciernych, sekundy;
         p_ciernych = 0;
         String time, count;
         ArrayList<ArrayList<Integer>> zadanie = new ArrayList<>();
@@ -50,25 +50,14 @@ public class Read_nono {
         heigh = Integer.parseInt(vyska[1].trim());
 
         String[] cas = riadky.get(4).split("  ");
-        time = cas[1].trim();
+        time = cas[1].trim().replaceAll("'","");
+        cas = time.split(":");
+        if(time.equals("NULL"))sekundy=0;
+        else sekundy = (Integer.parseInt(cas[0].trim())*3600) + (Integer.parseInt(cas[1].trim())*60)+ Integer.parseInt(cas[2].trim());
         
         String[] poc = riadky.get(5).split(":");
         count = poc[1].trim();
-        
-        String oddelovac = " , ";
-        FileWriter fw = new FileWriter("Stats.txt", true);
-        fw.write(Integer.toString(number_nono));
-        fw.write(oddelovac);
-        fw.write(Integer.toString(width));
-        fw.write("x");
-        fw.write(Integer.toString(heigh));
-        fw.write(oddelovac);
-        fw.write(time);
-        fw.write(oddelovac);
-        fw.write(count);
-        fw.write(oddelovac);
-       
-        
+                
         String bez_zatv;
         String[] pom;
         for (int i = 8; i < width + 8; i++) {
@@ -88,11 +77,27 @@ public class Read_nono {
             zadanie.add(line);
         } 
         
-        fw.write(p_ciernych);
+        
+        String oddelovac = Memento.oddelovac;
+        FileWriter fw = new FileWriter(Memento.file_name, true);
+        fw.write(Integer.toString(number_nono));
+        fw.write(oddelovac);
+        fw.write(Integer.toString(width));
+        fw.write(oddelovac);
+        fw.write(Integer.toString(heigh));
+        fw.write(oddelovac);
+        fw.write(Integer.toString(heigh * width));
+        fw.write(oddelovac);
+        fw.write(Integer.toString(p_ciernych));
+        fw.write(oddelovac);  
+        fw.write(Integer.toString(sekundy));
+        fw.write(oddelovac);
+        fw.write(count);
         fw.write(oddelovac);
         fw.close();
+        
         return new Inicializacia(zadanie, heigh, number_nono);
- }catch(IOException e){
+            }catch(IOException e){
             System.out.println("Krizovku " + this.number_nono + " sa nepodarilo najst");
         }return null;
     }

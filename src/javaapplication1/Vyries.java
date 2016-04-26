@@ -37,25 +37,25 @@ public class Vyries {
   //      System.out.println(cislo);
 
         this.statistika = new int[15];
-        statistika[0]=-1;
+       
         Ries();
      }
     
-    public Vyries(int cislo, ArrayList<Pravidla> pravidla) throws IOException, Porucha {
-        this.cislo = cislo;
-        Read_nono krizovka = new Read_nono(cislo);
-        this.inic = krizovka.zrob_stlpce(); if (inic == null) {return;}        
-        this.inic2 = krizovka.zrob_riadky(inic);    
-    
-        this.pravidla = pravidla;
-  //      System.out.println(cislo);
-
-        this.statistika = new int[15];
-        statistika[0]=-1;
-     }
+//    public Vyries(int cislo, ArrayList<Pravidla> pravidla) throws IOException, Porucha {
+//        this.cislo = cislo;
+//        Read_nono krizovka = new Read_nono(cislo);
+//        this.inic = krizovka.zrob_stlpce(); if (inic == null) {return;}        
+//        this.inic2 = krizovka.zrob_riadky(inic);    
+//    
+//        this.pravidla = pravidla;
+//  //      System.out.println(cislo);
+//
+//        this.statistika = new int[15];
+//        statistika[0]=-1;
+//     }
       
     public boolean Ries() throws IOException, Porucha {    
-        
+        statistika[0]=-1;
         int sum;
         int result;
 
@@ -108,8 +108,10 @@ public class Vyries {
         boolean dokoncena = check(inic2.riesenie);
        
       // MyInt.toString(inic2.riesenie);
-      System.out.println(cislo);
-      mem.uloz_vysledky();
+    //  System.out.println(cislo);
+//if (pravidla.size()==1) mem.uloz_vysledky();
+//else mem.uloz_vysledky(dokoncena);
+mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
       //if (pravidla.size()> 1 && !check_with(inic2.riesenie)) System.out.println("si to DOSRALA!!! "+ cislo);
         if (!dokoncena){
             //System.out.println(cislo);
@@ -174,6 +176,23 @@ public class Vyries {
        //}
     }
     
+     public static void ries_dvojako(Path file) throws IOException, Porucha{
+         int[] LG = {1,2,3,4,5, 6,7,8,9,10, 11,12,13};
+         int[] MP = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,14};
+        Charset charset = Charset.forName("ISO-8859-1");
+        List<String> databaza = Files.readAllLines(file, charset);
+        for (String num : databaza) {
+           // if (Integer.parseInt(num)==163481){
+            Vyries v1 = new Vyries(Integer.parseInt(num), MP);
+           
+            MyInt.reset(v1.inic2.riesenie);                  
+            v1.pravidla = Vytvor_sadu(LG, v1.inic2, v1.inic);
+            v1.statistika = new int[15];
+            v1.Ries();
+            //Vyries v2 = new Vyries(Integer.parseInt(num), LG);
+        }
+     //}
+    }
     public static void roznymi_sposobmi(int num, ArrayList<int[]> zoznam) throws IOException, Porucha{
         for(int [] takto: zoznam){
             Vyries v = new Vyries(num, takto);

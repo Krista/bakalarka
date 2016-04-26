@@ -114,20 +114,20 @@ public class JavaApplication1 {
     
     public static void main(String[] args) throws IOException, Porucha {
        // PrintWriter writer = new PrintWriter("143330.txt", "UTF-8");
-        PrintWriter writer = new PrintWriter(new FileWriter("146080.txt"), true);
-      //  Files_creator.spracuj("146080", writer);
-//       
-    //    int cislo = 146080;//11502;//337(364)365,(379)
-   //int[] pravidla = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-     int[] pravidla = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,14};
-     // Vyries v = new Vyries(cislo, pravidla);
+//        PrintWriter writer = new PrintWriter(new FileWriter("4938.txt"), true);
+//        Files_creator.spracuj("4938", writer);
+////       
+       int cislo = 317;//11502;//337(364)365,(379)
+   int[] pravidla = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+     //int[] pravidla = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,14};
+     Vyries v = new Vyries(cislo, pravidla);
        
         Path data = Paths.get("puzzles.sql");
   // Files_creator.tahaj(data);
      //   Files_creator.zisti(data);y
          Path file = Paths.get("zoznam.txt");
-     Vyries.tieto_ries(file, pravidla);
-       
+    //Vyries.ries_dvojako(file);//, pravidla);
+     //  Vyries.tieto_ries(file);//, pravidla);
     
       // int cislo= 317;
       //   Vyries v = new Vyries(cislo, pravidla);
