@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public abstract class Pravidla {
     private final Inicializacia start_R; //obsahuje hranice jednotlivych cisel zadani
     private final Inicializacia start_S; //obsahuje hranice jednotlivych cisel zadani
- 
+   // protected Memento mem;
+    
     public Pravidla(Inicializacia start_R, Inicializacia start_S) {
     this.start_R = start_R;
     this.start_S = start_S;
+    //this.mem = new Memento(start_R, start_S, new int[2]);
     }
 
     public void set_r(ArrayList<MyInt> list, int i, Inicializacia inic) {
@@ -119,6 +121,25 @@ public abstract class Pravidla {
         ArrayList<Integer> zoznam = new ArrayList<>();
         for (int i = 0; i < pocet; i++) {
             if (start.pole_hodnot[num][i][0] <= from && start.pole_hodnot[num][i][1] >= to) {
+                zoznam.add(i);
+            }
+        }
+        return zoznam;
+    }
+    
+    
+       /**
+     * 
+     * @param num cislo riadka
+     * @param from zaciatocne policko intevalu
+     * @param to posledne policko z intevalu
+     * @return zoznam indicii, ktore sa akokolvek dotykaju intervalu from-to, vracia poradove cisla z riadka
+     */
+    protected ArrayList<Integer> najdi_cisla_vsetky(int num, int from, int to, Inicializacia start) { 
+        int pocet = start.zadanie.get(num).size();
+        ArrayList<Integer> zoznam = new ArrayList<>();
+        for (int i = 0; i < pocet; i++) {
+            if (!(start.pole_hodnot[num][i][1] < from || start.pole_hodnot[num][i][0] > to)) {
                 zoznam.add(i);
             }
         }

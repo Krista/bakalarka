@@ -6,6 +6,7 @@
 package javaapplication1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -437,9 +438,10 @@ public class Rules {
             int zac, kon;           //pred tymto pravidloom NUTNE aplikovat UPDATE 1---urcite??
         ArrayList<Integer> list;
         boolean check = false;
-        for (int i = 1; i < start.zadanie.get(num).size() - 1; i++) {
-            zac = Math.max(start.pole_hodnot[num][i - 1][1]+1, start.pole_hodnot[num][i][0]);
-            kon = Math.min(start.pole_hodnot[num][i + 1][0]-1, start.pole_hodnot[num][i][1]);
+        int poc =start.zadanie.get(num).size();
+        for (int i = 0; i < poc; i++) {
+            zac =  (i==0) ?  start.pole_hodnot[num][i][0] : Math.max(start.pole_hodnot[num][i-1][1]+1, start.pole_hodnot[num][i][0]);
+            kon = (i==poc-1) ? start.pole_hodnot[num][i][1] :Math.min(start.pole_hodnot[num][i+1][0]-1, start.pole_hodnot[num][i][1]);
             list = najdi_cierne(num, zac, kon, start);//zac a kon zabezpecuju, ze najdene cierne budu patrit len 1 indicii
             if (list.size() > 1) {
                 for (int x = list.get(0); x < list.get(list.size()-1); x++) {//spaja vsetky cierne sekvencie dokopy
@@ -449,15 +451,18 @@ public class Rules {
                         check = true;
                     }else if (start.riesenie.get(num).get(x).value==0) throw new Porucha("Medzivypln", num, i, start.ID);
                     
-                }
+                }}
+            if(list.size()>0){//aby sme pokryli moznosti, ked tam je len 1 cierna sekvencia
                 int[] hr = hranice_sek(num, list.get(0), start);
+                int a = start.pole_hodnot[num][i][0];
+                int b = start.pole_hodnot[num][i][1];
                 int u = start.zadanie.get(num).get(i) - (hr[1]-hr[0]+1); //kolko zostava vyfarbit
                // System.out.println("prestavujem inic 3.1 na " + num );
                 start.pole_hodnot[num][i][0] = Math.max(hr[0] - u, start.pole_hodnot[num][i][0]);
                 start.pole_hodnot[num][i][1] = Math.min(hr[1] + u, start.pole_hodnot[num][i][1]);
  //                  System.out.println("prestavujem inic 3.1 na " + num + " ["+  start.pole_hodnot[num][i][0]+ start.pole_hodnot[num][i][1] +"]");
-                check = true;
-            }
+               if(a!=start.pole_hodnot[num][i][0] || b!=start.pole_hodnot[num][i][1]) check = true;
+          }
         }return check ?  9 : 0;}
         
     }
@@ -478,8 +483,8 @@ public class Rules {
         boolean check = false;
         for (int i = 0; i < start.zadanie.get(num).size(); i++) {
             list = segmenty(num, i, start);
-
-            for (int x = 0; x < list.size(); x++) {//pozerame zlava
+int x,y;
+            for (x = 0; x < list.size(); x++) {//pozerame zlava
                 dlzka = list.get(x).get(1) - list.get(x).get(0) + 1;
                 if (start.pole_hodnot[num][i][0] != list.get(x).get(0)) { //nastavujeme na zaciatok potencionalnej sekvencie
  //                   System.out.println("rule 3.2a " + num);
@@ -492,17 +497,35 @@ public class Rules {
 
             }
 
-            for (int x = list.size() - 1; x >= 0; x--) { //pozerame sprava
-                dlzka = list.get(x).get(1) - list.get(x).get(0) + 1;
-                if (start.pole_hodnot[num][i][1] != list.get(x).get(1)) {
+            for (y = list.size() - 1; y >= 0; y--) { //pozerame sprava
+                dlzka = list.get(y).get(1) - list.get(y).get(0) + 1;
+                if (start.pole_hodnot[num][i][1] != list.get(y).get(1)) {
 //                    System.out.println("rule 3.2b " + num);
-                    start.pole_hodnot[num][i][1] = list.get(x).get(1);//ak nam to pretecie, tak je chyba v krizovke
+                    start.pole_hodnot[num][i][1] = list.get(y).get(1);//ak nam to pretecie, tak je chyba v krizovke
                 check = true;
                 }
                 if (dlzka >= start.zadanie.get(num).get(i)) {
                     break;
                 }
             }
+            
+           for (int w = x+1; w<y; w++){//step5
+                int zac=list.get(w).get(0);
+                int kon =list.get(w).get(1);
+               dlzka = kon-zac+1;
+               ArrayList<Integer> zoz = najdi_cisla_vsetky(num, zac, kon, start);
+               int naj =minimum(num, zoz, start);
+               if (dlzka < naj){
+                //  MyInt.jeden_toString(start.riesenie.get(num));
+                   for (int z=zac; z<=kon; z++){
+                       start.riesenie.get(num).get(z).value=0;
+                   }
+                   
+                 // System.out.println("prestavila som na num:"+ num + " v indicii:"+ i + "nuly na " + zac+ "-"+ kon);
+                   check =true;
+               }
+            }
+            
         }return check ? 10 : 0; }
         
     }

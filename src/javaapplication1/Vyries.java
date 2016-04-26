@@ -106,14 +106,16 @@ public class Vyries {
        
         // mem.uloz_stav(cislo, statistika, pocet_cyklov);
         boolean dokoncena = check(inic2.riesenie);
-       
+     //  mem.uloz_vysledky(dokoncena);
       // MyInt.toString(inic2.riesenie);
     //  System.out.println(cislo);
 //if (pravidla.size()==1) mem.uloz_vysledky();
-//else mem.uloz_vysledky(dokoncena);
-mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
-      //if (pravidla.size()> 1 && !check_with(inic2.riesenie)) System.out.println("si to DOSRALA!!! "+ cislo);
+//else
+    // mem.uloz_vysledky(dokoncena);
+//mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
+    //  if (pravidla.size()> 1 && !check_with(inic2.riesenie)) System.out.println("si to DOSRALA!!! "+ cislo);
         if (!dokoncena){
+         // mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
             //System.out.println(cislo);
             return false;
         }
@@ -162,9 +164,9 @@ mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
        Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num: databaza){
-          if (Integer.parseInt(num)>149346){
+         // if (Integer.parseInt(num)>149346){
             Vyries v= new Vyries(Integer.parseInt(num), pravidla);}
-       }
+      // }
     }
     
     public static void tieto_ries(Path file) throws IOException, Porucha{
@@ -183,8 +185,7 @@ mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num : databaza) {
            // if (Integer.parseInt(num)==163481){
-            Vyries v1 = new Vyries(Integer.parseInt(num), MP);
-           
+            Vyries v1 = new Vyries(Integer.parseInt(num), MP);           
             MyInt.reset(v1.inic2.riesenie);                  
             v1.pravidla = Vytvor_sadu(LG, v1.inic2, v1.inic);
             v1.statistika = new int[15];
