@@ -25,13 +25,13 @@ public class Read_nono {
     Path file;
     int number_nono;
     int prazdne;
+    boolean dataRN;
 
-    public Read_nono(int number) {
+    public Read_nono(int number, boolean dataRN) {
         this.number_nono = number;
-       file = Paths.get("nonograms/" + this.number_nono + ".txt");
-       prazdne = 0;
-     // file = Paths.get("" + this.number_nono + ".txt");
-        //System.out.println(file);
+        file = Paths.get("nonograms/" + this.number_nono + ".txt");
+        prazdne = 0;
+        this.dataRN = dataRN;
     }
 
     public Inicializacia zrob_stlpce() throws IOException {
@@ -51,14 +51,7 @@ public class Read_nono {
         String[] vyska = riadky.get(2).split(":");
         heigh = Integer.parseInt(vyska[1].trim());
 
-        String[] cas = riadky.get(4).split("  ");
-        time = cas[1].trim().replaceAll("'","");
-        cas = time.split(":");
-        if(time.equals("NULL"))sekundy=0;
-        else sekundy = (Integer.parseInt(cas[0].trim())*3600) + (Integer.parseInt(cas[1].trim())*60)+ Integer.parseInt(cas[2].trim());
-        
-        String[] poc = riadky.get(5).split(":");
-        count = poc[1].trim();
+       
                 
         String bez_zatv;
         String[] pom;
@@ -82,6 +75,15 @@ public class Read_nono {
             zadanie.add(line);
         } 
         
+         if (dataRN){
+        String[] cas = riadky.get(4).split("  ");
+        time = cas[1].trim().replaceAll("'","");
+        cas = time.split(":");
+        if(time.equals("NULL"))sekundy=0;
+        else sekundy = (Integer.parseInt(cas[0].trim())*3600) + (Integer.parseInt(cas[1].trim())*60)+ Integer.parseInt(cas[2].trim());
+        
+        String[] poc = riadky.get(5).split(":");
+        count = poc[1].trim();
         
         String oddelovac = Memento.oddelovac;
         FileWriter fw = new FileWriter(Memento.file_name, true);
@@ -100,7 +102,8 @@ public class Read_nono {
         fw.write(count);
         fw.write(oddelovac);
         fw.close();
-        
+         }
+         
         return new Inicializacia(zadanie, heigh, number_nono);
             }catch(IOException e){
             System.out.println("Krizovku " + this.number_nono + " sa nepodarilo najst");
@@ -139,12 +142,13 @@ try{
             }
             zadanie.add(line);
         }
-        
+        if (dataRN){
         String oddelovac = Memento.oddelovac;
         FileWriter fw = new FileWriter(Memento.file_name, true);
         fw.write(Integer.toString(prazdne));
         fw.write(oddelovac);
         fw.close();
+        }
         /* for (ArrayList<Integer> x : zadanie) {
             System.out.println(x.toString());
         }*/

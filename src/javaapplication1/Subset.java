@@ -28,6 +28,7 @@ public class Subset {
     public Subset(int cislo_krizovky) throws IOException, Porucha {
         this.cislo_krizovky = cislo_krizovky;
         this.mnozina = new ArrayList<>();
+       
    //     otvorDoc();
        // if(cislo_krizovky >154154){
         vytvor();
@@ -37,7 +38,7 @@ public class Subset {
     public void vytvor() throws IOException, Porucha {
         ArrayList<int[]> zoznam;
         int [] pom ={0};
-        Vyries v = new Vyries(cislo_krizovky,pom );
+        Vyries v = new Vyries(cislo_krizovky,pom, false);
         for (int i = 1; i <= N; i++) {
             zoznam = combinations(i);
             for (int[] t : zoznam) {                              
@@ -55,7 +56,7 @@ public class Subset {
             }
             
         }
-        ulozUdaje();
+        Memento.uloz_sety(cislo_krizovky, mnozina);
     }
 
     public ArrayList<int[]> combinations(int k) {
@@ -111,28 +112,5 @@ public class Subset {
         } this.mnozina.add(nova);
     }
     
-//    public void otvorDoc() throws IOException{
-//        this.fw = new FileWriter("Sets.txt", true);
-//         String oddelovac = "    ";
-//        fw.write(this.cislo_krizovky);
-//        fw.write(oddelovac);
-//    }
-    
-    public void ulozUdaje() throws IOException{
-        
-       Integer i = this.cislo_krizovky;
-        System.out.println(i);
-        FileWriter fw = new FileWriter("Setiky.txt", true);
-//        BufferedWriter bw = new BufferedWriter(out);
-//        PrintWriter fw = new PrintWriter(bw);
-        String oddelovac = " ";
-        fw.write(Integer.toString(i));
-        fw.write(oddelovac);
-        for(Set s: mnozina){
-            fw.write(s.toString());
-            fw.write(oddelovac);
-        }
-        fw.write("\n");
-        fw.close();
-    }
+
 }

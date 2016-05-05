@@ -1,5 +1,6 @@
 package javaapplication1;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,32 +8,32 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 
 /**
  *
  * @author krista
  */
 public class Memento {
-public static String file_name = "RBoth_ways2.txt";
+public static String file_name;
     public static int id;
-    int por_cislo;
     Inicializacia stlpce;
     Inicializacia riadky;
     int[] statistika;
     public static String oddelovac = ", ";
 
     public Memento(Inicializacia stlpce, Inicializacia riadky, int[] statistika) {
-        this.por_cislo = id;
         this.stlpce = stlpce;
         this.riadky = riadky;
         this.statistika = statistika;
+        File theDir = new File("Memento");
+        if (!theDir.exists()) theDir.mkdir();
     }
    
 
-    public void uloz_stav(int krizovka, int[] statistika, int pocet) throws FileNotFoundException, UnsupportedEncodingException {
-        por_cislo++;
-        PrintWriter writer = new PrintWriter("MEM" + por_cislo + krizovka, "UTF-8");
-        writer.println("Puzzle number: " + krizovka);
+    public void uloz_stav() throws FileNotFoundException, UnsupportedEncodingException {
+        PrintWriter writer = new PrintWriter("Memento/MEM" + stlpce.ID, "UTF-8");
+        writer.println("Puzzle number: " + stlpce.ID);
         writer.println("width: " + riadky.p_stlpcov);
         writer.println("height: " + stlpce.p_stlpcov);
         writer.println();
@@ -42,7 +43,7 @@ public static String file_name = "RBoth_ways2.txt";
         writer.println();
         
         writer.println("Pocet cyklov");
-        writer.println(pocet);
+        writer.println(Integer.toString(statistika[0]));
         writer.println();
         
         writer.println("riesenie");
@@ -74,7 +75,7 @@ public static String file_name = "RBoth_ways2.txt";
         writer.close();
     }
     
-    public void uloz_vysledky() throws IOException{
+    public static void uloz_vysledky(int[] statistika) throws IOException{
      FileWriter fw = new FileWriter(file_name, true);
 //      fw.write(Integer.toString(riadky.ID));
 //        fw.write(" : ");
@@ -85,7 +86,7 @@ public static String file_name = "RBoth_ways2.txt";
         fw.close();
     }
     
-    public void uloz_vysledky(boolean b) throws IOException{
+    public static void uloz_vysledky(int[] statistika, boolean b) throws IOException{
      FileWriter fw = new FileWriter(file_name, true);
 //      fw.write(Integer.toString(riadky.ID));
 //        fw.write(" : ");
@@ -96,8 +97,20 @@ public static String file_name = "RBoth_ways2.txt";
        if(b) fw.write("1\n"); else fw.write("0\n");
         fw.close();
     }
-    
-    public void import_stav(String name){
-        
+   
+       public static void uloz_sety(int ID, ArrayList<Set<Integer>> mnozina) throws IOException{        
+        System.out.println(ID);
+        FileWriter fw = new FileWriter(file_name, true);
+//        BufferedWriter bw = new BufferedWriter(out);
+//        PrintWriter fw = new PrintWriter(bw);
+        oddelovac = " ";
+        fw.write(Integer.toString(ID));
+        fw.write(oddelovac);
+        for(Set s: mnozina){
+            fw.write(s.toString());
+            fw.write(oddelovac);
+        }
+        fw.write("\n");
+        fw.close();
     }
 }

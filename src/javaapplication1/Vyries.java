@@ -26,13 +26,14 @@ public class Vyries {
     ArrayList<Pravidla> pravidla;
     Inicializacia inic,inic2;
     int[] statistika;
+    boolean data_RN;
     
-    public Vyries(int cislo, int[] pole) throws IOException, Porucha {
+    public Vyries(int cislo, int[] pole, boolean data_RN) throws IOException, Porucha {
         this.cislo = cislo;
-        Read_nono krizovka = new Read_nono(cislo);
+        Read_nono krizovka = new Read_nono(cislo, data_RN);
         this.inic = krizovka.zrob_stlpce(); if (inic == null) {return;}        
         this.inic2 = krizovka.zrob_riadky(inic);    
-    
+        this.data_RN =data_RN;
         this.pravidla = Vytvor_sadu(pole, inic2, inic);
   //      System.out.println(cislo);
 
@@ -62,7 +63,7 @@ public class Vyries {
         boolean[] us_r = new boolean[inic.p_stlpcov];
         boolean[] us_s = new boolean[inic2.p_stlpcov];
 
-        Memento mem = new Memento(inic, inic2, statistika);
+        //Memento mem = new Memento(inic, inic2, statistika);
         do {
             sum = 0;
             statistika[0]++;
@@ -109,11 +110,12 @@ public class Vyries {
      //  mem.uloz_vysledky(dokoncena);
       // MyInt.toString(inic2.riesenie);
     //  System.out.println(cislo);
-if (pravidla.size() == 1) {
-            mem.uloz_vysledky();
+        if (this.data_RN){
+        if (pravidla.size() == 1) {
+            Memento.uloz_vysledky(statistika);
         } else {
-            mem.uloz_vysledky(dokoncena);
-        }
+            Memento.uloz_vysledky(statistika, dokoncena);
+        }}
         //mem.uloz_stav(this.inic.ID, statistika, statistika[0]);
     //  if (pravidla.size()> 1 && !check_with(inic2.riesenie)) System.out.println("si to DOSRALA!!! "+ cislo);
         if (!dokoncena){
@@ -177,7 +179,12 @@ if (pravidla.size() == 1) {
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num: databaza){
          // if (Integer.parseInt(num)>149346){
-            Vyries v= new Vyries(Integer.parseInt(num), pravidla);}
+            Vyries v= new Vyries(Integer.parseInt(num), pravidla, false);
+        if (uloz){
+            Memento mem = new Memento(v.inic2, v.inic, v.statistika);
+            mem.uloz_stav();
+        }
+        }
       // }
     }
     
@@ -191,6 +198,7 @@ if (pravidla.size() == 1) {
      * tych pravidiel
      */
     public static void ries_podmnoziny(Path file) throws IOException, Porucha{
+       Memento.file_name = "Sets.txt";
        Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num: databaza){
@@ -213,13 +221,14 @@ if (pravidla.size() == 1) {
      * pocet iteracii s LR, pocet jednotliveho vyuzitia LR [], 0/1 doriesene/nedoriesene pomocou LR 
      */
      public static void ries_dvojako(Path file) throws IOException, Porucha{
+         Memento.file_name = "Boths.txt";
          int[] LG = {1,2,3,4,5, 6,7,8,9,10, 11,12,13};
          int[] MP = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,14};
         Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num : databaza) {
            // if (Integer.parseInt(num)==163481){
-            Vyries v1 = new Vyries(Integer.parseInt(num), MP);           
+            Vyries v1 = new Vyries(Integer.parseInt(num), MP, true);           
             MyInt.reset(v1.inic2.riesenie);                  
             v1.pravidla = Vytvor_sadu(LG, v1.inic2, v1.inic);
             v1.statistika = new int[15];
@@ -238,7 +247,7 @@ if (pravidla.size() == 1) {
       */
     public static void roznymi_sposobmi(int num, ArrayList<int[]> zoznam) throws IOException, Porucha{
         for(int [] takto: zoznam){
-            Vyries v = new Vyries(num, takto);
+            Vyries v = new Vyries(num, takto, false);
         }
     }
   
@@ -277,7 +286,7 @@ if (pravidla.size() == 1) {
      */
     public boolean check_with(ArrayList<ArrayList<MyInt>> riesenie) throws IOException, Porucha{
         int[] p = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,1};
-        Vyries v = new Vyries(cislo, p);
+        Vyries v = new Vyries(cislo, p, false);
          ArrayList<ArrayList<MyInt>> mostPossible = v.inic2.riesenie;
          for (int i= 0 ; i< riesenie.size(); i++){
              for (int j = 0; j<riesenie.get(i).size(); j++){
