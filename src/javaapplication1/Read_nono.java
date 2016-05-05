@@ -24,10 +24,12 @@ public class Read_nono {
 
     Path file;
     int number_nono;
+    int prazdne;
 
     public Read_nono(int number) {
         this.number_nono = number;
        file = Paths.get("nonograms/" + this.number_nono + ".txt");
+       prazdne = 0;
      // file = Paths.get("" + this.number_nono + ".txt");
         //System.out.println(file);
     }
@@ -67,7 +69,10 @@ public class Read_nono {
             pom = bez_zatv.split(",");
             line = new ArrayList<>();
             for (String a : pom) {
-                if (a.equals(""))line.add(0);
+                if (a.equals("")){
+                    line.add(0);
+                    prazdne++;
+                }
                 else {
                     value = Integer.parseInt(a.trim());
                     p_ciernych += value;
@@ -126,11 +131,20 @@ try{
             pom = bez_zatv.split(",");
             line = new ArrayList<>();
             for (String a : pom) {
-                if (a.equals(""))line.add(0);
+                if (a.equals("")){
+                    line.add(0);
+                    prazdne++;
+                }
                 else line.add(Integer.parseInt(a.trim()));
             }
             zadanie.add(line);
         }
+        
+        String oddelovac = Memento.oddelovac;
+        FileWriter fw = new FileWriter(Memento.file_name, true);
+        fw.write(Integer.toString(prazdne));
+        fw.write(oddelovac);
+        fw.close();
         /* for (ArrayList<Integer> x : zadanie) {
             System.out.println(x.toString());
         }*/

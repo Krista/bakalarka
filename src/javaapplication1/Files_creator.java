@@ -15,12 +15,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -31,10 +26,10 @@ import org.jsoup.nodes.Element;
  */
 public class Files_creator {
    
-    static Integer[] array = {143330,154154,154875,145550,155386,147207,154754,143177,153419,80145,145419,146080,143720,148884,143516,
-                    145114,145449,145450,145482,145598,147233,147669,148136,149384,150946,151133,151185,153379,153592,153811,153815,
-                    153855,153858,154873,154876,155387,155390,155391,155870,156810,156901,157009,157468,157481,157582,157736,159018,160608};
-     static Set<Integer> esteTieto = new HashSet<> (Arrays.asList(array));
+//    static Integer[] array = {143330,154154,154875,145550,155386,147207,154754,143177,153419,80145,145419,146080,143720,148884,143516,
+//                    145114,145449,145450,145482,145598,147233,147669,148136,149384,150946,151133,151185,153379,153592,153811,153815,
+//                    153855,153858,154873,154876,155387,155390,155391,155870,156810,156901,157009,157468,157481,157582,157736,159018,160608};
+//     static Set<Integer> esteTieto = new HashSet<> (Arrays.asList(array));
     
      /**
      * 
@@ -176,8 +171,8 @@ public class Files_creator {
                 line = line.replaceAll("[()]", "");
                 String[] riadok = line.split(",");
                 //System.out.println(Arrays.toString(riadok));
-                int dote = Integer.parseInt(riadok[0]);
-                if (dote >= 147207 && esteTieto.contains(dote) && riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
+                int doteraz = Integer.parseInt(riadok[0]);
+                if (riadok[4].equals(" 2") && riadok[3].equals(" 'f'")) {
                     //String nazov = riadok[0] + ".txt";
                     String nazov = "nonograms/" + riadok[0] + ".txt";
                      File f = new File(nazov);
@@ -190,7 +185,7 @@ public class Files_creator {
                     writer.println("AVE_TIME: " + riadok[7]);
                     writer.println("ave_time_count: " + riadok[8]);
                     writer.println("");
-                    System.out.println("mam to " + dote);
+                    System.out.println("mam to " + doteraz);
                     spracuj(riadok[0], writer);
                     //nepodarilo sa : 143177,143330,143516,154753,154875,155386
                     /*System.out.println("puzzle number: " + riadok[0]);
@@ -206,14 +201,14 @@ public class Files_creator {
         }
     }
  
-    public static void skuska(){
-        Scanner s = new Scanner(System.in);
-        for (int i =0; i<5; i++){
-            int a = s.nextInt();
-            if (esteTieto.contains(a))System.out.println("ano");
-            else System.out.println("nie");
-        }
-    }
+//    public static void skuska(){
+//        Scanner s = new Scanner(System.in);
+//        for (int i =0; i<5; i++){
+//            int a = s.nextInt();
+//            if (esteTieto.contains(a))System.out.println("ano");
+//            else System.out.println("nie");
+//        }
+//    }
 
     /**
      * 

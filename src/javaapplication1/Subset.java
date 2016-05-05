@@ -122,7 +122,7 @@ public class Subset {
         
        Integer i = this.cislo_krizovky;
         System.out.println(i);
-        FileWriter fw = new FileWriter("Sety.txt", true);
+        FileWriter fw = new FileWriter("Setiky.txt", true);
 //        BufferedWriter bw = new BufferedWriter(out);
 //        PrintWriter fw = new PrintWriter(bw);
         String oddelovac = " ";

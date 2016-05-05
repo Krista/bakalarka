@@ -66,7 +66,7 @@ public class Rules {
         public int getID() {return  2;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {                                                                                                                                                                                                                                                                   // beyuzova babka
+        public int run(int num, Inicializacia start) throws Porucha {                                                                                                                                                                                                                                                                   
             boolean check = false;
         int poc_indicii = start.zadanie.get(num).size() - 1;
         for (int i = 0; i < start.pole_hodnot[num][0][0]; i++) { //rule 1.2 (1)
@@ -126,7 +126,7 @@ public class Rules {
                     check = true;
                 }
                 }
-            }                                                                                                                                                                                                                                                                                                                                                   // "poser sa" - majaneza         
+            }                                                                                                                                                                                                                                                                                                                                                           
             boolean check2 = jednotky_za(num, check, start);
             return (check || check2) ? 3 : 0;
         }
@@ -196,8 +196,8 @@ public class Rules {
             int min, max;
         ArrayList<Integer> sek;
         int biele, biele2;
-        boolean check;
-       check = (lep_zac(num,start) || lep_kon(num,start));       
+        boolean check = false;
+     //  check = (lep_zac(num,start) || lep_kon(num,start));       
        
         for (int i = 1; i < start.p_stlpcov; i++) {//bod 0
             if (start.riesenie.get(num).get(i - 1).value != 1 && start.riesenie.get(num).get(i).value == 1) {
@@ -441,7 +441,7 @@ public class Rules {
         int poc =start.zadanie.get(num).size();
         for (int i = 0; i < poc; i++) {
             zac =  (i==0) ?  start.pole_hodnot[num][i][0] : Math.max(start.pole_hodnot[num][i-1][1]+1, start.pole_hodnot[num][i][0]);
-            kon = (i==poc-1) ? start.pole_hodnot[num][i][1] :Math.min(start.pole_hodnot[num][i+1][0]-1, start.pole_hodnot[num][i][1]);
+            kon = (i==poc-1) ? start.pole_hodnot[num][i][1] : Math.min(start.pole_hodnot[num][i+1][0]-1, start.pole_hodnot[num][i][1]);
             list = najdi_cierne(num, zac, kon, start);//zac a kon zabezpecuju, ze najdene cierne budu patrit len 1 indicii
             if (list.size() > 1) {
                 for (int x = list.get(0); x < list.get(list.size()-1); x++) {//spaja vsetky cierne sekvencie dokopy
@@ -483,7 +483,7 @@ public class Rules {
         boolean check = false;
         for (int i = 0; i < start.zadanie.get(num).size(); i++) {
             list = segmenty(num, i, start);
-int x,y;
+        int x,y;
             for (x = 0; x < list.size(); x++) {//pozerame zlava
                 dlzka = list.get(x).get(1) - list.get(x).get(0) + 1;
                 if (start.pole_hodnot[num][i][0] != list.get(x).get(0)) { //nastavujeme na zaciatok potencionalnej sekvencie
@@ -544,7 +544,7 @@ int x,y;
              int zac, dlzka, kon;
         boolean check = false;
         int pocet = start.zadanie.get(num).size();
-        for (int i = 1; i < pocet-1; i++) {
+        for (int i = 1; i < pocet; i++) {
             zac = start.pole_hodnot[num][i][0];
             kon = start.pole_hodnot[num][i][1];
             dlzka = start.zadanie.get(num).get(i);
@@ -563,7 +563,7 @@ int x,y;
                         start.riesenie.get(num).get(zac - 1).value = 0;
                         check = true;
                     }
-                    if (start.riesenie.get(num).get(dlzka + zac).value != 0) {//kedze je prve vyfarbene za sekvenciou musi nasledovat prazdne policko
+                    if (i!= pocet-1 && start.riesenie.get(num).get(dlzka + zac).value != 0) {//kedze je prve vyfarbene za sekvenciou musi nasledovat prazdne policko, okrem poslednej
                         start.riesenie.get(num).get(dlzka + zac).value = 0;
                         check = true;
                     }
