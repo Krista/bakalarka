@@ -41,6 +41,7 @@ public class RulesMedzivyplnTest {
         list.add(new ArrayList(Arrays.asList(3,2,3,3,1)));
         
         list.add(new ArrayList(Arrays.asList(5,3,4)));//3.1 
+        list.add(new ArrayList(Arrays.asList(5)));
                 
         inic = new Inicializacia(list, 25, 1);
         rule = r.new Medzivypln(inic, inic);
@@ -150,7 +151,18 @@ public class RulesMedzivyplnTest {
         assertTrue(Arrays.deepEquals(pom15,inic.pole_hodnot[5]));
     }
     
-     
+     @Test
+    public void test6() throws Chyba {
+        inic.riesenie.get(6).get(10).value = 1;
+        inic.riesenie.get(6).get(11).value = 1;
+
+        int[][] pom16 = {{7,14}}; 
+        int[] a = {3,3,3,3,3, 3,3,3,3,3, 1,1,3,3,3, 3,3,3,3,3, 3,3,3,3,3};
+        moje_riesenie.add(new ArrayList(MyInt.asList(a)));
+        rule.run(6,inic);
+        assertTrue(moje_riesenie.get(0).equals(inic.riesenie.get(6)));
+        assertTrue(Arrays.deepEquals(pom16,inic.pole_hodnot[6]));
+    } 
     
     
 }

@@ -41,7 +41,8 @@ public class RulesUpdate0Test {
         list.add(new ArrayList(Arrays.asList(1, 4, 1, 2)));
         
         list.add(new ArrayList(Arrays.asList(2, 1, 1, 2)));
-                
+        list.add(new ArrayList(Arrays.asList(2, 1, 3)));     
+        
         inic = new Inicializacia(list, 20, 1);
         rule = r.new Update0(inic, inic);
         moje_riesenie= new ArrayList<>();
@@ -101,6 +102,21 @@ public class RulesUpdate0Test {
         int[][] pom15 = {{0,12},{3,14},{5,16},{7,19}};
         rule.run(5,inic);
         assertTrue(Arrays.deepEquals(pom15,inic.pole_hodnot[5]));
+    }
+    
+      @Test
+    public void test6() throws Chyba {
+        int[][] pom6 = {{0,8},{4,6},{5,14}};
+        inic.set_hranice(pom6, 6);
+        inic.riesenie.get(6).get(13).value = 0;
+        inic.riesenie.get(6).get(14).value = 0;
+        
+        int[][] pom16 = {{0,8},{4,6},{5,14}};
+        rule.run(6,inic);
+        System.out.print(Arrays.toString(inic.pole_hodnot[6][0]));
+        System.out.print(Arrays.toString(inic.pole_hodnot[6][1]));
+        System.out.print(Arrays.toString(inic.pole_hodnot[6][2]));
+        assertTrue(Arrays.deepEquals(pom16,inic.pole_hodnot[6]));
     }
     
     

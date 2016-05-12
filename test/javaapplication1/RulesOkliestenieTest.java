@@ -34,9 +34,11 @@ public class RulesOkliestenieTest {
     public void setUp() {
         list = new ArrayList<>();
         
-        list.add(new ArrayList(Arrays.asList(4, 3, 1)));
+        list.add(new ArrayList(Arrays.asList(4,3,1)));
         list.add(new ArrayList(Arrays.asList(3,3,4)));
         list.add(new ArrayList(Arrays.asList(4,4,2)));
+        list.add(new ArrayList(Arrays.asList(3)));
+        list.add(new ArrayList(Arrays.asList(3,2)));
                 
         inic = new Inicializacia(list, 25, 1);
         rule = r.new Okliestenie(inic, inic);
@@ -97,43 +99,48 @@ public class RulesOkliestenieTest {
         assertTrue(Arrays.deepEquals(pom12,inic.pole_hodnot[2]));
     }
     
-   /*  @Test
+     @Test
     public void test3() throws Chyba {
-        int[][] pom3 = {{0,6},{2,22},{22,24}};
+        int[][] pom3 = {{0,14}};
         inic.set_hranice(pom3, 3);
-          inic.riesenie.get(3).get(8).value = 1;
-          inic.riesenie.get(3).get(9).value = 1;
-          inic.riesenie.get(3).get(15).value = 1;
-          inic.riesenie.get(3).get(20).value = 1;
-          inic.riesenie.get(3).get(21).value = 1;
+          inic.riesenie.get(3).get(1).value = 0;
+          inic.riesenie.get(3).get(3).value = 0;
+          inic.riesenie.get(3).get(4).value = 0;
+          inic.riesenie.get(3).get(7).value = 1;
+          inic.riesenie.get(3).get(9).value = 0;
+          inic.riesenie.get(3).get(11).value = 0;
         
-        int[][] pom13 = {{0,6}, {2,22}, {22,24}};
-        int[] a = {3,3,3,3,3, 3,3,3,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,3,3,3};
+        int[][] pom13 = {{5,14}};
+        int[] a = {3,0,3,0,0, 3,3,1,3,0, 0,0,3,3,3, 3,3,3,3,3, 3,3,3,3,3};
         moje_riesenie.add(new ArrayList(MyInt.asList(a)));
         rule.run(3,inic);
+        //MyInt.jeden_toString(inic.riesenie.get(3));
+        //System.out.println(Arrays.toString(inic.pole_hodnot[3][0]));
         assertTrue(moje_riesenie.get(0).equals(inic.riesenie.get(3)));
         assertTrue(Arrays.deepEquals(pom13,inic.pole_hodnot[3]));
     }
     
     @Test
     public void test4() throws Chyba {       
-         int[][] pom4 = {{1,11}, {7,13}, {12,19},{16,22},{20,24}};
+         int[][] pom4 = {{0,11}, {4,14}};
         inic.set_hranice(pom4, 4);
-          inic.riesenie.get(4).get(0).value = 0;
-          inic.riesenie.get(4).get(4).value = 1;
+          inic.riesenie.get(4).get(5).value = 0;
+          inic.riesenie.get(4).get(9).value = 0;
           inic.riesenie.get(4).get(10).value = 1;
-          inic.riesenie.get(4).get(17).value = 1;
-          inic.riesenie.get(4).get(19).value = 1;
+          inic.riesenie.get(4).get(14).value = 0;
         
-        int[][] pom14 = {{2,6}, {9,11},{12,19},{16,22},{20,24}};
-        int[] a = {0,3,3,3,1, 3,3,3,3,3, 1,3,3,3,3, 3,3,1,3,1, 3,3,3,3,3};
+        int[][] pom14 = {{0,8}, {6,13}};
+        int[] a = {3,3,3,3,3, 0,3,3,3,0, 1,3,3,3,0, 3,3,3,3,3, 3,3,3,3,3};
         moje_riesenie.add(new ArrayList(MyInt.asList(a)));
         rule.run(4,inic);
+        //MyInt.jeden_toString(inic.riesenie.get(4));
+//        System.out.println(Arrays.toString(inic.pole_hodnot[4][0]));
+//        System.out.println(Arrays.toString(inic.pole_hodnot[4][1]));
         assertTrue(moje_riesenie.get(0).equals(inic.riesenie.get(4)));
         assertTrue(Arrays.deepEquals(pom14,inic.pole_hodnot[4]));
     }
     
-     @Test
+   /*  @Test
     public void test5() throws Chyba {
          int[][] pom5 = {{0,19}, {7,14}, {13,24}};
         inic.set_hranice(pom5, 5);
