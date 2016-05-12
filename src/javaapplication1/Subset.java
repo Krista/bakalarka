@@ -25,7 +25,7 @@ public class Subset {
     ArrayList<Set<Integer>> mnozina;
   //  FileWriter fw;
 
-    public Subset(int cislo_krizovky) throws IOException, Porucha {
+    public Subset(int cislo_krizovky) throws IOException, Chyba {
         this.cislo_krizovky = cislo_krizovky;
         this.mnozina = new ArrayList<>();
        
@@ -35,7 +35,7 @@ public class Subset {
     //} else return;
     }
 
-    public void vytvor() throws IOException, Porucha {
+    public void vytvor() throws IOException, Chyba {
         ArrayList<int[]> zoznam;
         int [] pom ={0};
         Vyries v = new Vyries(cislo_krizovky,pom, false);

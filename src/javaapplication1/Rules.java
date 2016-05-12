@@ -26,7 +26,7 @@ public class Rules {
         public int getID() {return 1;}
 
         @Override
-        public int run(int num, Inicializacia start) throws Porucha{
+        public int run(int num, Inicializacia start) throws Chyba{
              int poc_cisel = start.pole_hodnot[num].length;
         int rozdiel = 0;
         int act_cislo;
@@ -37,12 +37,12 @@ public class Rules {
             zaciatok = start.pole_hodnot[num][i][0];
             rozdiel = start.pole_hodnot[num][i][1] + 1 - zaciatok;
             act_cislo = start.zadanie.get(num).get(i);
-            if (rozdiel < act_cislo) throw new Porucha("PRIENIK", num, i, start.ID);
+            if (rozdiel < act_cislo) throw new Chyba("PRIENIK", num, i, start.ID_nono);
             if (act_cislo * 2 > rozdiel) {
                 farbi = rozdiel - act_cislo;
                 for (int x = 0; x < (act_cislo * 2 - rozdiel); x++, farbi++) {
                     if (start.riesenie.get(num).get(zaciatok + farbi).value != 1) {
-                            if (start.riesenie.get(num).get(zaciatok + farbi).value == 0) throw new Porucha("prienik", num, i, start.ID);
+                            if (start.riesenie.get(num).get(zaciatok + farbi).value == 0) throw new Chyba("prienik", num, i, start.ID_nono);
  //                           System.out.println("riadok: " + num + " rule 1.1 , policko: " + (zaciatok + farbi));
                             start.riesenie.get(num).get(zaciatok + farbi).value = 1;
                             check = true;
@@ -66,12 +66,12 @@ public class Rules {
         public int getID() {return  2;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {                                                                                                                                                                                                                                                                   
+        public int run(int num, Inicializacia start) throws Chyba {                                                                                                                                                                                                                                                                   
             boolean check = false;
         int poc_indicii = start.zadanie.get(num).size() - 1;
         for (int i = 0; i < start.pole_hodnot[num][0][0]; i++) { //rule 1.2 (1)
             if (start.riesenie.get(num).get(i).value != 0) {
-                if (start.riesenie.get(num).get(i).value == 1) throw new Porucha("jed_medzery0", num, i, start.ID);
+                if (start.riesenie.get(num).get(i).value == 1) throw new Chyba("jed_medzery0", num, i, start.ID_nono);
   //              System.out.println("riadok: " + num + " rule 1.2.1 , policko: " + i);
                 start.riesenie.get(num).get(i).value = 0;
                 check = true;
@@ -79,7 +79,7 @@ public class Rules {
         }
         for (int i = start.pole_hodnot[num][poc_indicii][1] + 1; i < start.p_stlpcov; i++) { //rule 1.2 (2)
             if (start.riesenie.get(num).get(i).value != 0) {
-                if (start.riesenie.get(num).get(i).value == 1) throw new Porucha("jed_medzery1", num, i, start.ID);
+                if (start.riesenie.get(num).get(i).value == 1) throw new Chyba("jed_medzery1", num, i, start.ID_nono);
 //                System.out.println("riadok: " + num + " rule 1.2.2 , policko: " + i);
                 start.riesenie.get(num).get(i).value = 0;
                 check = true;
@@ -89,14 +89,14 @@ public class Rules {
             // if (start.pole_hodnot[num][i + 1][0] < start.pole_hodnot[num][i][1]) {
             for (int x = start.pole_hodnot[num][i][1] + 1; x < start.pole_hodnot[num][i + 1][0]; x++) {
                 if (start.riesenie.get(num).get(x).value != 0) {
-                    if (start.riesenie.get(num).get(x).value == 1) throw new Porucha("jed_medzery2", num, i, start.ID);
+                    if (start.riesenie.get(num).get(x).value == 1) throw new Chyba("jed_medzery2", num, i, start.ID_nono);
  //                   System.out.println("riadok: " + num + " rule 1.2.3 , policko: " + x);
                     start.riesenie.get(num).get(x).value = 0;
                     check = true;
                 }
             }
             // }
-        }return check ? 2 : 0 ;}
+        }return check ? getID() : 0 ;}
 
     }
     
@@ -110,7 +110,7 @@ public class Rules {
         public int getID() {return  3;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
            int pocet_indicii = start.zadanie.get(num).size();
         int s_pozicia;
         boolean check = false;
@@ -120,7 +120,7 @@ public class Rules {
                 ArrayList<Integer> pom = najdi_cisla(num, s_pozicia, start);
                 pom.remove(Integer.valueOf(i));
                 if (maximum(num, pom, start) == 1) {
-                    if (start.riesenie.get(num).get(s_pozicia - 1).value == 1) throw new Porucha("jednotky", num, i, start.ID);
+                    if (start.riesenie.get(num).get(s_pozicia - 1).value == 1) throw new Chyba("jednotky", num, i, start.ID_nono);
 //                    System.out.println("riadok: " + num + " rule 1.3.1 , policko: " + (s_pozicia - 1));
                     start.riesenie.get(num).get(s_pozicia - 1).value = 0;
                     check = true;
@@ -128,10 +128,10 @@ public class Rules {
                 }
             }                                                                                                                                                                                                                                                                                                                                                           
             boolean check2 = jednotky_za(num, check, start);
-            return (check || check2) ? 3 : 0;
+            return (check || check2) ? getID() : 0;
         }
         
-         public boolean jednotky_za(int num, boolean check, Inicializacia start) throws Porucha { //rule 1.3 - za 
+         public boolean jednotky_za(int num, boolean check, Inicializacia start) throws Chyba { //rule 1.3 - za 
         int pocet = start.zadanie.get(num).size();
         int e_pozicia;
         for (int i = 0; i < pocet - 1; i++) {
@@ -140,7 +140,7 @@ public class Rules {
                 ArrayList<Integer> pom = najdi_cisla(num, e_pozicia, start);
                 pom.remove(Integer.valueOf(i));
                 if (maximum(num, pom, start) == 1 && start.riesenie.get(num).get(e_pozicia + 1).value == 3) {
-                    if (start.riesenie.get(num).get(e_pozicia + 1).value == 1) throw new Porucha("jednotky_za", num, i, start.ID);
+                    if (start.riesenie.get(num).get(e_pozicia + 1).value == 1) throw new Chyba("jednotky_za", num, i, start.ID_nono);
  //                   System.out.println("riadok: " + num + " rule 1.3.2 , policko: " + (e_pozicia + 1));
                     start.riesenie.get(num).get(e_pozicia + 1).value = 0;
                     check = true;
@@ -161,7 +161,7 @@ public class Rules {
         public int getID() {return  4;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
              boolean check = false;
         for (int i = 0; i < start.riesenie.get(num).size() - 2; i++) {
             if (start.riesenie.get(num).get(i).value == 1 && start.riesenie.get(num).get(i + 1).value == 3 && start.riesenie.get(num).get(i + 2).value == 1) {
@@ -192,7 +192,7 @@ public class Rules {
         public int getID() {return  5;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
             int min, max;
         ArrayList<Integer> sek;
         int biele, biele2;
@@ -249,7 +249,7 @@ public class Rules {
                         start.riesenie.get(num).get(w[1]+1).value = 0;
                         check = true;
                     }
-                    if (sek.size() == 1) {// sekvencia patri len jednej indicii
+                  /*  if (sek.size() == 1) {// sekvencia patri len jednej indicii
                         if (start.pole_hodnot[num][sek.get(0)][0] != w[0]) {
 //                            System.out.println("update1.5+ " + num);
                             start.pole_hodnot[num][sek.get(0)][0] = w[0];
@@ -261,7 +261,7 @@ public class Rules {
                             check = true;
                             //System.out.println(Arrays.toString(start.pole_hodnot[num][sek.get(0)]));
                         }
-                    }
+                    }*/
                 }
 
             }
@@ -331,7 +331,7 @@ public class Rules {
         public int getID() {return  6;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
               boolean check = false;
         for (int i = 0; i < start.zadanie.get(num).size() - 1; i++) {
             if (start.pole_hodnot[num][i][0] + start.zadanie.get(num).get(i) >= start.pole_hodnot[num][i + 1][0]) {
@@ -357,7 +357,7 @@ public class Rules {
         public int getID() {return 7;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
             int poz_e, poz_s;
         boolean check = false;
 
@@ -395,7 +395,7 @@ public class Rules {
         public int getID() {return  8;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
             int indicia, dlzka_seg;
         int x = 0;
         boolean check = false;
@@ -434,7 +434,7 @@ public class Rules {
         public int getID() {return  9;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
             int zac, kon;           //pred tymto pravidloom NUTNE aplikovat UPDATE 1---urcite??
         ArrayList<Integer> list;
         boolean check = false;
@@ -449,7 +449,7 @@ public class Rules {
 //                        System.out.println("riadok: " + num + "rule 3.1 , policko: " + x);
                         start.riesenie.get(num).get(x).value = 1;
                         check = true;
-                    }else if (start.riesenie.get(num).get(x).value==0) throw new Porucha("Medzivypln", num, i, start.ID);
+                    }else if (start.riesenie.get(num).get(x).value==0) throw new Chyba("Medzivypln", num, i, start.ID_nono);
                     
                 }}
             if(list.size()>0){//aby sme pokryli moznosti, ked tam je len 1 cierna sekvencia
@@ -477,7 +477,7 @@ public class Rules {
         public int getID() {return  10;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
              ArrayList<ArrayList<Integer>> list;
         int dlzka;
         boolean check = false;
@@ -540,7 +540,7 @@ public class Rules {
         public int getID() {return  11;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
              int zac, dlzka, kon;
         boolean check = false;
         int pocet = start.zadanie.get(num).size();
@@ -560,10 +560,14 @@ public class Rules {
                     }
                     if (start.riesenie.get(num).get(zac - 1).value != 0) {//len nastavime predchadzajuce policko prazdne
  //                       System.out.println("riadok: " + num + "rule 3.3.1b , policko: " + (zac - 1));
+                        if (start.riesenie.get(num).get(zac - 1).value == 1) 
+                            throw new Chyba("Prve cierne", num, i, start.ID_nono);
                         start.riesenie.get(num).get(zac - 1).value = 0;
                         check = true;
                     }
                     if (i!= pocet-1 && start.riesenie.get(num).get(dlzka + zac).value != 0) {//kedze je prve vyfarbene za sekvenciou musi nasledovat prazdne policko, okrem poslednej
+                        if (start.riesenie.get(num).get(zac + dlzka).value == 1) 
+                            throw new Chyba("Prve cierne", num, i, start.ID_nono);
                         start.riesenie.get(num).get(dlzka + zac).value = 0;
                         check = true;
                     }
@@ -584,7 +588,7 @@ public class Rules {
         public int getID() {return  12;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
           int zac, dlzka, kon;
         boolean check = false;
         int pocet = start.zadanie.get(num).size();
@@ -621,7 +625,7 @@ public class Rules {
         public int getID() {return  13;}
         
         @Override
-        public int run(int num, Inicializacia start) throws Porucha {
+        public int run(int num, Inicializacia start) throws Chyba {
             int zac, dlzka, kon;
         boolean check = false;
         int pocet = start.zadanie.get(num).size();

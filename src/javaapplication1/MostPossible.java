@@ -31,12 +31,12 @@ public class MostPossible extends Pravidla {
         public int getID() {return  14;}
     
         @Override
-    public int run(int num, Inicializacia start) throws Porucha {
+    public int run(int num, Inicializacia start) throws Chyba {
         boolean b = false;
         return CoToDa(num, start) ? getID() : 0;
     }
 
-    public boolean CoToDa(int num, Inicializacia start) throws Porucha {
+    public boolean CoToDa(int num, Inicializacia start) throws Chyba {
         this.step_1 = new boolean[start.zadanie.get(num).size()+1][start.p_stlpcov+1];
         this.step_2 = new boolean[start.zadanie.get(num).size()+1][start.p_stlpcov+1];
         this.c_white = new boolean[start.p_stlpcov];
@@ -57,30 +57,36 @@ public class MostPossible extends Pravidla {
      * @return true, ak existuje riesenie, ze na prvych j policok ulozime prvych
      * i indicii
      */
-    public void step1(int num, Inicializacia start) {
-        for (int i=0; i< start.zadanie.get(num).size()+1; i++){
-            for(int j = 0; j<= start.p_stlpcov; j++){//j je pocet policok ktore berieme v uvahu
-                       
-        if (i == 0) {
-            if (super.najdi_cierne(num, 0, j-1, start).isEmpty()) {
-                step_1[i][j] = true;continue;
-            } else {
-                step_1[i][j] = false;continue;
+    public void step1(int num, Inicializacia inic) {
+        for (int i = 0; i < inic.zadanie.get(num).size() + 1; i++) {
+            for (int j = 0; j <= inic.p_stlpcov; j++) {//j je pocet policok ktore berieme v uvahu
+
+                if (i == 0) {
+                    if (super.najdi_cierne(num, 0, j - 1, inic).isEmpty()) {
+                        step_1[i][j] = true; continue;
+                    } else {
+                        step_1[i][j] = false; continue;
+                    }
+                }
+                if (j == 0) {
+                    if (inic.zadanie.get(num).get(i - 1) != 0) {
+                        step_1[i][j] = false; continue;
+                    } else {
+                        step_1[i][j] = true;continue;
+                    }
+                }
+                if (inic.riesenie.get(num).get(j - 1).value == 0) {
+                    step_1[i][j] = step_1[i][j - 1];
+                    continue;
+                }
+                if (inic.riesenie.get(num).get(j - 1).value == 1) {
+                    step_1[i][j] = uloz_indiciu(num, i, j, inic);
+                    continue;
+                }
+                step_1[i][j] = step_1[i][j - 1] || uloz_indiciu(num, i, j, inic);
             }
         }
-        if (j==0) {
-            if (start.zadanie.get(num).get(i - 1) != 0) {step_1[i][j] = false;continue;}
-            else {step_1[i][j] = true;continue;}}
-        if (start.riesenie.get(num).get(j-1).value == 0) {
-            step_1[i][j] = step_1[i][j - 1];continue;
-        }
-        if (start.riesenie.get(num).get(j-1).value == 1) {
-           step_1[i][j] = uloz_indiciu(num, i, j, start);continue;
-        }
-        
-        step_1[i][j] = step_1[i][j - 1] || uloz_indiciu(num, i, j, start);
     }
-        }}
 
     public boolean uloz_indiciu(int num, int i, int j, Inicializacia inic) {
         int indicia = inic.zadanie.get(num).get(i - 1);
@@ -175,13 +181,13 @@ public class MostPossible extends Pravidla {
     }
     
 
-    public boolean step5(int num, Inicializacia inic) throws Porucha{
+    public boolean step5(int num, Inicializacia inic) throws Chyba{
         boolean check = false;
             for (int i = 0; i< inic.p_stlpcov; i++){
             if(inic.riesenie.get(num).get(i).value == 3){
                 if (c_black[i] && !c_white[i]){inic.riesenie.get(num).get(i).value = 1; check= true;}
                 if (!c_black[i] && c_white[i]){inic.riesenie.get(num).get(i).value = 0; check= true;}
-                if (!c_black[i] && !c_white[i])throw new Porucha("MostPOSSIBLE", num, i, inic.ID);
+                if (!c_black[i] && !c_white[i])throw new Chyba("MostPOSSIBLE", num, i, inic.ID_nono);
             }
         }return check;
     }

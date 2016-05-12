@@ -27,7 +27,7 @@ public abstract class Pravidla {
     }
     
     public abstract int getID();
-    public abstract int run(int num, Inicializacia start) throws Porucha;
+    public abstract int run(int num, Inicializacia start) throws Chyba;
     
      
     /**

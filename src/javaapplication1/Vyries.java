@@ -5,6 +5,7 @@
  */
 package javaapplication1;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -28,17 +29,15 @@ public class Vyries {
     int[] statistika;
     boolean data_RN;
     
-    public Vyries(int cislo, int[] pole, boolean data_RN) throws IOException, Porucha {
-        this.cislo = cislo;
-        Read_nono krizovka = new Read_nono(cislo, data_RN);
-        this.inic = krizovka.zrob_stlpce(); if (inic == null) {return;}        
-        this.inic2 = krizovka.zrob_riadky(inic);    
-        this.data_RN =data_RN;
+    public Vyries(int cislo, int[] pole, boolean dataRN) throws IOException, Chyba {
+        this.cislo = cislo; 
+        this.data_RN = dataRN;
         this.pravidla = Vytvor_sadu(pole, inic2, inic);
-  //      System.out.println(cislo);
-
-        this.statistika = new int[15];
-       
+        Read_nono krizovka = new Read_nono(cislo, dataRN);        
+        this.inic = krizovka.zrob_stlpce();  
+                if (inic == null) {return;}      
+        this.inic2 = krizovka.zrob_riadky(inic);    
+        this.statistika = new int[15];       
         Ries();
      }
     
@@ -55,7 +54,7 @@ public class Vyries {
 //        statistika[0]=-1;
 //     }
       
-    public boolean Ries() throws IOException, Porucha {    
+    public boolean Ries() throws IOException, Chyba {    
         statistika[0]=-1;
         int sum;
         int result;
@@ -171,34 +170,55 @@ public class Vyries {
         * @param uloz ak je true, po dorieseni krizovky sa ulozi vysledok krizovky, do priecinka MEMENTO / 
         * kazda krizovka je v samostatnom subore MEMid.txt
         * @throws IOException
-        * @throws Porucha 
+        * @throws Chyba 
         * vsetky krizovky, ktore su v zozname sa vyriesia rovnakou sadou pravidiel, ktoru mu vodpred urcime
         */
-    public static void tieto_ries(Path file, int[] pravidla, boolean uloz) throws IOException, Porucha{
+    public static void tieto_ries(Path file, int[] pravidla, boolean uloz) throws IOException, Chyba{
        Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num: databaza){
          // if (Integer.parseInt(num)>149346){
             Vyries v= new Vyries(Integer.parseInt(num), pravidla, false);
         if (uloz){
-            Memento mem = new Memento(v.inic2, v.inic, v.statistika);
+            Memento mem = new Memento(v.inic, v.inic2, v.statistika);
             mem.uloz_stav();
         }
         }
       // }
     }
     
+          public static void tieto_ries_LG(Path file) throws IOException, Chyba{
+         Memento.file_name = "Results_LG.txt";
+         FileWriter fw = new FileWriter(Memento.file_name); //stary subor vymaze
+         int[] LG = {1,2,3,4,5, 6,7,8,9,10, 11,12,13};
+        Charset charset = Charset.forName("ISO-8859-1");
+        List<String> databaza = Files.readAllLines(file, charset);
+        for (String num : databaza) {
+           // if (Integer.parseInt(num)==163481){
+            Vyries v = new Vyries(Integer.parseInt(num), LG, true);           
+        }
+     //}
+    }
+    
+          
+          public static void tuto_vyries(int cislo, int[] pravidla, boolean uloz) throws IOException, Chyba{
+           Vyries v = new Vyries(cislo, pravidla, false);
+           if (uloz==true){
+           Memento.uloz_riesenie(v.inic2, v.statistika);
+        }
+    }
     /**
      * 
      * @param file obsahuje zoznam ID krizoviek, ktore chceme vyriesit
      * @throws IOException
-     * @throws Porucha 
-     * Vystupom je subor Sets.txt, ktore ma na zaciatku riadka ID krizovky, a za tym nasleduju podmnoziny pravidiel,
+     * @throws Chyba 
+     * Vystupom je novy! subor Sets.txt, ktore ma na zaciatku riadka ID krizovky, a za tym nasleduju podmnoziny pravidiel,
      * pomocou ktorych je krizovku mozne doriesit. Podmnoziny su vzdy najmensie mozne = nenachadzaju sa tam nadmnoziny 
      * tych pravidiel
      */
-    public static void ries_podmnoziny(Path file) throws IOException, Porucha{
+    public static void ries_podmnoziny(Path file) throws IOException, Chyba{
        Memento.file_name = "Sets.txt";
+       FileWriter fw = new FileWriter(Memento.file_name);//stary subor vymaze
        Charset charset = Charset.forName("ISO-8859-1");
         List<String> databaza = Files.readAllLines(file, charset);
         for (String num: databaza){
@@ -212,16 +232,17 @@ public class Vyries {
      *  
      * @param file obsahuje zoznam ID krizoviek, ktore chceme vyriesit
      * @throws IOException
-     * @throws Porucha 
+     * @throws Chyba 
      * Kazda krizovka sa vyriesi 2-ma sposobmi. Najskor pomocou dynamickeho programovania = pravidla MostPossible
      * a potom pomocou celej sady logickych pravidiel, t.j. pravidiel 1-13
-     * Vysledky ulozi do suboru Both_ways.txt kde su tieto data:
+     * Vysledky ulozi do noveho! suboru Both_ways.txt kde su tieto data:
      * ID, sirka, vyska, sirka*vyska, velkost konecnej vyfarbenej casti, pocet vyrieseni krizovky, stredna hodnota vyriesenia krizovky v sekundach,
      * pocet volnych riadkov v zadani, pocet iteracii v dynamike, pocet aplikovani dynamiky,
      * pocet iteracii s LR, pocet jednotliveho vyuzitia LR [], 0/1 doriesene/nedoriesene pomocou LR 
      */
-     public static void ries_dvojako(Path file) throws IOException, Porucha{
-         Memento.file_name = "Boths.txt";
+     public static void ries_dvojako(Path file) throws IOException, Chyba{
+         Memento.file_name = "Both_ways.txt";
+         FileWriter fw = new FileWriter(Memento.file_name); //stary subor vymaze
          int[] LG = {1,2,3,4,5, 6,7,8,9,10, 11,12,13};
          int[] MP = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,14};
         Charset charset = Charset.forName("ISO-8859-1");
@@ -237,15 +258,15 @@ public class Vyries {
         }
      //}
     }
-     
+          
      /**
       * 
       * @param num ID krizovky
       * @param zoznam sady pravidiel pomocou ktorych sa ma krizovka riesit
       * @throws IOException
-      * @throws Porucha 
+      * @throws Chyba 
       */
-    public static void roznymi_sposobmi(int num, ArrayList<int[]> zoznam) throws IOException, Porucha{
+    public static void roznymi_sposobmi(int num, ArrayList<int[]> zoznam) throws IOException, Chyba{
         for(int [] takto: zoznam){
             Vyries v = new Vyries(num, takto, false);
         }
@@ -282,9 +303,9 @@ public class Vyries {
      * @return true, ak sa riesenie zhoduje s riesenim pomocou dynamickeho programovanie.
      * V pripade ak krizovka nie je doriesena porovnava policka kde je 0,1.
      * @throws IOException
-     * @throws Porucha 
+     * @throws Chyba 
      */
-    public boolean check_with(ArrayList<ArrayList<MyInt>> riesenie) throws IOException, Porucha{
+    public boolean check_with(ArrayList<ArrayList<MyInt>> riesenie) throws IOException, Chyba{
         int[] p = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,1};
         Vyries v = new Vyries(cislo, p, false);
          ArrayList<ArrayList<MyInt>> mostPossible = v.inic2.riesenie;

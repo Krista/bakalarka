@@ -9,7 +9,7 @@ package javaapplication1;
  *
  * @author krista
  */
-public class Porucha extends Exception {
+public class Chyba extends Exception {
 
     String pravidlo;
     int riadok, indicia, krizovka;
@@ -21,7 +21,7 @@ public class Porucha extends Exception {
   * @param riadok na ktorom riadku problem vznikol
   * @param indicia na ktorej indicii to bolo
   */
-    public Porucha(String pravidlo, int riadok, int indicia, int krizovka) {
+    public Chyba(String pravidlo, int riadok, int indicia, int krizovka) {
         this.indicia = indicia;
         this.pravidlo = pravidlo;
         this.riadok = riadok;
@@ -30,7 +30,7 @@ public class Porucha extends Exception {
     
      @Override
         public String getMessage() {
-            return "chyba na krizovke " + krizovka + " v pravidle "+ pravidlo + " na riadku " + riadok + " v indicii " +  indicia;
+            return "chyba v krizovke " + krizovka + " v pravidle "+ pravidlo + " na riadku " + riadok + " v indicii " +  indicia;
         }
 }
 //

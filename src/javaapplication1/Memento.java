@@ -15,7 +15,7 @@ import java.util.Set;
  * @author krista
  */
 public class Memento {
-public static String file_name;
+public static String file_name = "data.txt";
     public static int id;
     Inicializacia stlpce;
     Inicializacia riadky;
@@ -32,8 +32,8 @@ public static String file_name;
    
 
     public void uloz_stav() throws FileNotFoundException, UnsupportedEncodingException {
-        PrintWriter writer = new PrintWriter("Memento/MEM" + stlpce.ID, "UTF-8");
-        writer.println("Puzzle number: " + stlpce.ID);
+        PrintWriter writer = new PrintWriter("Memento/MEM" + stlpce.ID_nono, "UTF-8");
+        writer.println("Puzzle number: " + stlpce.ID_nono);
         writer.println("width: " + riadky.p_stlpcov);
         writer.println("height: " + stlpce.p_stlpcov);
         writer.println();
@@ -47,14 +47,7 @@ public static String file_name;
         writer.println();
         
         writer.println("riesenie");
-        for (ArrayList<MyInt> a : riadky.riesenie) {
-            for (MyInt m : a) {
-                if (m.value==3) writer.print(". ");
-                else writer.print(m.value + " ");
-            }
-            writer.println();
-        }
-        writer.println();
+        nakresli(riadky, writer);
 
         writer.println("hranice riadky");
         for (int[][] a : riadky.pole_hodnot) {
@@ -73,6 +66,37 @@ public static String file_name;
         } writer.println();
         
         writer.close();
+    }
+    
+    public static void uloz_riesenie(Inicializacia inic, int[] statistika) throws FileNotFoundException, UnsupportedEncodingException{
+        PrintWriter writer = new PrintWriter("MEM" + inic.ID_nono, "UTF-8");
+        writer.println("Puzzle number: " + inic.ID_nono);
+        writer.println("Statistika");
+        writer.println(Arrays.toString(statistika));
+        writer.println();
+        writer.println("Riesenie");
+        nakresli(inic, writer);
+        writer.println();
+        writer.close();
+    }
+    
+    static void nakresli(Inicializacia inic, PrintWriter writer) {
+        for (ArrayList<MyInt> a : inic.riesenie) {
+            for (MyInt m : a) {
+                switch (m.value) {
+                    case 0:
+                        writer.print(". ");
+                        break;
+                    case 1:
+                        writer.print("X ");
+                        break;
+                    case 3:
+                        writer.print("? ");
+                        break;
+                }
+            }
+            writer.println();
+        }
     }
     
     public static void uloz_vysledky(int[] statistika) throws IOException{

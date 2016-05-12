@@ -75,7 +75,7 @@ public class Read_nono {
             zadanie.add(line);
         } 
         
-         if (dataRN){
+         if (dataRN){ //ukladame len pri Boths
         String[] cas = riadky.get(4).split("  ");
         time = cas[1].trim().replaceAll("'","");
         cas = time.split(":");

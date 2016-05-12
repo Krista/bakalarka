@@ -12,19 +12,19 @@ import java.util.ArrayList;
  * @author User
  */
 public class Inicializacia {
-   // public int[] statistika;
+    //public int[] statistika;
     public int[][][] pole_hodnot;
     public int p_stlpcov;
     public ArrayList<ArrayList<Integer>> zadanie;
     public ArrayList<ArrayList<MyInt>> riesenie = new ArrayList<>();
-    public int ID;
+    public int ID_nono;
 
     public Inicializacia(ArrayList<ArrayList<Integer>> zadanie, int p_stlpcov, int ID) {
         this.zadanie = zadanie;
         this.pole_hodnot = new int[zadanie.size()][][];
         this.p_stlpcov = p_stlpcov;
-        this.ID = ID;
-     //   this.statistika = new int[15];
+        this.ID_nono = ID;
+       // this.statistika = new int[15];
         for (int i = 0; i < zadanie.size(); i++) {
             this.pole_hodnot[i] = inic(zadanie.get(i), p_stlpcov);
 
@@ -35,33 +35,13 @@ public class Inicializacia {
             this.riesenie.add(pom);
         }
 
-       /* for (int i = 0; i < zadanie.size(); i++) { //ak by sme mali nuly po okrajoch --treba nastavit aj v druhej inicializacii
-            this.pole_hodnot[i] = inic(zadanie.get(i), p_stlpcov);
-
-        }
-        for (int i = 0; i < zadanie.size() + 2; i++) {
-            ArrayList<MyInt> pom = new ArrayList<>();
-            for (int j = 0; j < p_stlpcov + 2; j++) {
-                pom.add(new MyInt(3));
-            }
-            this.riesenie.add(pom);
-        }
-        for (int i = 0; i <= zadanie.size() + 1; i++) {
-            this.riesenie.get(i).get(0).value = 0;
-            this.riesenie.get(i).get(zadanie.size() + 1).value = 0;
-        }
-        for (int j = 0; j < p_stlpcov + 2; j++) {
-            this.riesenie.get(0).get(j).value = 0;
-            this.riesenie.get(0).get(p_stlpcov + 1).value = 0;
-        }*/
-
     }
 
     public Inicializacia(ArrayList<ArrayList<Integer>> zadanie, int p_stlpcov, Inicializacia rr) {
         this.zadanie = zadanie;
         this.pole_hodnot = new int[zadanie.size()][][];
         this.p_stlpcov = p_stlpcov;
-        this.ID = rr.ID;
+        this.ID_nono = rr.ID_nono;
         //this.statistika = new int[14];
         for (int i = 0; i < zadanie.size(); i++) {
             this.pole_hodnot[i] = inic(zadanie.get(i), p_stlpcov);
